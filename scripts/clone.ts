@@ -1,0 +1,70 @@
+import { execSync } from 'node:child_process'
+import { existsSync, mkdirSync, readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { exit } from 'node:process'
+import { fileURLToPath } from 'node:url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const envPath = join(__dirname, '..', '.env')
+const envContent = readFileSync(envPath, 'utf-8')
+const env = Object.fromEntries(
+  envContent
+    .split('\n')
+    .filter(line => line.trim() && !line.startsWith('#'))
+    .map((line) => {
+      const eqIndex = line.indexOf('=')
+      if (eqIndex === -1)
+        return [line.trim(), '']
+      const key = line.slice(0, eqIndex).trim()
+      const value = line.slice(eqIndex + 1).trim()
+      return [key, value]
+    }),
+)
+
+const GITHUB_TOKEN = env.GITHUB_TOKEN
+const INFO_REPO = env.INFO_REPO
+const PASSAGE_REPO = env.PASSAGE_REPO
+
+if (!GITHUB_TOKEN || !INFO_REPO || !PASSAGE_REPO) {
+  console.error('Missing required environment variables in .env')
+  exit(1)
+}
+
+const contentDir = join(__dirname, '..', 'content')
+const infoDir = join(contentDir, 'info')
+const passagesDir = join(contentDir, 'passages')
+
+if (!existsSync(contentDir)) {
+  mkdirSync(contentDir, { recursive: true })
+}
+
+function cloneRepo(repo: string, targetDir: string) {
+  const gitDir = join(targetDir, '.git')
+  if (existsSync(targetDir)) {
+    if (existsSync(gitDir)) {
+      console.log(`Repository ${repo} already cloned at ${targetDir}, skipping`)
+      return
+    }
+    else {
+      console.error(`Directory ${targetDir} exists but is not a git repository`)
+      exit(1)
+    }
+  }
+  const url = `https://${GITHUB_TOKEN}@github.com/${repo}.git`
+  console.log(`Cloning ${repo} into ${targetDir}`)
+  try {
+    execSync(`git clone --depth 1 ${url} ${targetDir}`, { stdio: 'inherit' })
+    console.log(`Successfully cloned ${repo}`)
+  }
+  catch (error) {
+    console.error(`Failed to clone ${repo}:`, error)
+    exit(1)
+  }
+}
+
+cloneRepo(INFO_REPO, infoDir)
+cloneRepo(PASSAGE_REPO, passagesDir)
+
+console.log('All repositories cloned successfully')

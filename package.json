@@ -6,18 +6,22 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "pnpm run clone && nuxt generate",
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clone": "tsx scripts/clone.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
+    "@types/node": "catalog:types",
+    "@typescript-eslint/parser": "catalog:lint",
     "@unocss/nuxt": "catalog:nuxt",
     "better-sqlite3": "catalog:nuxt",
     "eslint": "catalog:lint",
-    "nuxt": "catalog:nuxt"
+    "nuxt": "catalog:nuxt",
+    "tsx": "catalog:cli"
   }
 }
