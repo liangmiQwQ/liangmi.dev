@@ -1,0 +1,23 @@
+{
+  "name": "liangmi-dev",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.29.2",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "prepare": "nuxt prepare",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:lint",
+    "@nuxt/content": "catalog:nuxt",
+    "@nuxt/eslint": "catalog:lint",
+    "@unocss/nuxt": "catalog:nuxt",
+    "better-sqlite3": "catalog:nuxt",
+    "eslint": "catalog:lint",
+    "nuxt": "catalog:nuxt"
+  }
+}
