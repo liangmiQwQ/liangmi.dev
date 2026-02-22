@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { exit } from 'node:process'
 import { fileURLToPath } from 'node:url'
@@ -33,29 +33,37 @@ if (!GITHUB_TOKEN || !INFO_REPO || !PASSAGE_REPO) {
 }
 
 const contentDir = join(__dirname, '..', 'content')
-const infoDir = join(contentDir, 'info')
-const passagesDir = join(contentDir, 'passages')
+const publicDir = join(__dirname, '..', 'public')
+const infoDir = publicDir
+const passagesDir = contentDir
 
-if (!existsSync(contentDir)) {
-  mkdirSync(contentDir, { recursive: true })
+if (existsSync(contentDir)) {
+  console.log(`Cleaning content directory: ${contentDir}`)
+  rmSync(contentDir, { recursive: true, force: true })
 }
+mkdirSync(contentDir, { recursive: true })
+
+if (existsSync(infoDir)) {
+  console.log(`Cleaning info directory: ${infoDir}`)
+  rmSync(infoDir, { recursive: true, force: true })
+}
+mkdirSync(infoDir, { recursive: true })
 
 function cloneRepo(repo: string, targetDir: string) {
-  const gitDir = join(targetDir, '.git')
-  if (existsSync(targetDir)) {
-    if (existsSync(gitDir)) {
-      console.log(`Repository ${repo} already cloned at ${targetDir}, skipping`)
-      return
-    }
-    else {
-      console.error(`Directory ${targetDir} exists but is not a git repository`)
-      exit(1)
-    }
-  }
   const url = `https://${GITHUB_TOKEN}@github.com/${repo}.git`
   console.log(`Cloning ${repo} into ${targetDir}`)
   try {
     execSync(`git clone --depth 1 ${url} ${targetDir}`, { stdio: 'inherit' })
+
+    const toRemove = ['.git', '.vscode', 'LICENSE', 'README.md', '.gitignore']
+    for (const item of toRemove) {
+      const itemPath = join(targetDir, item)
+      if (existsSync(itemPath)) {
+        console.log(`Removing ${item}: ${itemPath}`)
+        rmSync(itemPath, { recursive: true, force: true })
+      }
+    }
+
     console.log(`Successfully cloned ${repo}`)
   }
   catch (error) {

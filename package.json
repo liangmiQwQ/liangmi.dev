@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
     "lint": "eslint .",
-    "clone": "tsx scripts/clone.ts"
+    "clone": "tsx scripts/clone.ts",
+    "cdev": "pnpm run clone && pnpm run dev"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
@@ -22,6 +23,8 @@
     "better-sqlite3": "catalog:nuxt",
     "eslint": "catalog:lint",
     "nuxt": "catalog:nuxt",
-    "tsx": "catalog:cli"
+    "tsx": "catalog:cli",
+    "typescript": "catalog:types",
+    "unocss": "catalog:website"
   }
 }
