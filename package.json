@@ -21,6 +21,7 @@
     "@typescript-eslint/parser": "catalog:lint",
     "@unocss/nuxt": "catalog:nuxt",
     "better-sqlite3": "catalog:nuxt",
+    "dotenv": "catalog:cli",
     "eslint": "catalog:lint",
     "nuxt": "catalog:nuxt",
     "tsx": "catalog:cli",

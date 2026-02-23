@@ -1,31 +1,16 @@
 import { execSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdirSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { exit } from 'node:process'
+import process, { exit } from 'node:process'
 import { fileURLToPath } from 'node:url'
+import 'dotenv/config'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const envPath = join(__dirname, '..', '.env')
-const envContent = readFileSync(envPath, 'utf-8')
-const env = Object.fromEntries(
-  envContent
-    .split('\n')
-    .filter(line => line.trim() && !line.startsWith('#'))
-    .map((line) => {
-      const eqIndex = line.indexOf('=')
-      if (eqIndex === -1)
-        return [line.trim(), '']
-      const key = line.slice(0, eqIndex).trim()
-      const value = line.slice(eqIndex + 1).trim()
-      return [key, value]
-    }),
-)
-
-const GITHUB_TOKEN = env.GITHUB_TOKEN
-const INFO_REPO = env.INFO_REPO
-const PASSAGE_REPO = env.PASSAGE_REPO
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN
+const INFO_REPO = process.env.INFO_REPO
+const PASSAGE_REPO = process.env.PASSAGE_REPO
 
 if (!GITHUB_TOKEN || !INFO_REPO || !PASSAGE_REPO) {
   console.error('Missing required environment variables in .env')
