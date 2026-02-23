@@ -26,6 +26,7 @@
     "nuxt": "catalog:nuxt",
     "tsx": "catalog:cli",
     "typescript": "catalog:types",
-    "unocss": "catalog:website"
+    "unocss": "catalog:website",
+    "vue-tsc": "catalog:types"
   }
 }

@@ -21,6 +21,7 @@ catalogs:
   types:
     '@types/node': ^25.3.0
     typescript: ^5.9.3
+    vue-tsc: ^3.2.5
 
   website:
     unocss: ^66.6.0
