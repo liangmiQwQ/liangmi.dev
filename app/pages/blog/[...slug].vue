@@ -11,7 +11,11 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => {
 <template>
   <main class="animation-fade-in max-w-3xl mx-auto">
     <div mb-8>
-      <NuxtLink to="/blog" text="sm warmfg-light/60 dark:warmfg-dark/60 hover:warmfg-light hover:dark:warmfg-dark" transition-colors inline-flex items-center gap-1>
+      <NuxtLink
+        to="/blog"
+        class="sm warmfg-light/60 dark:warmfg-dark/60 hover:warmfg-light hover:dark:warmfg-dark"
+        inline-flex items-center gap-1
+      >
         <div i-ph-arrow-left-duotone />
         Back to Blog
       </NuxtLink>

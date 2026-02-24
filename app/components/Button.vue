@@ -56,7 +56,8 @@ const sizeClasses = computed(() => {
   <component
     :is="tag"
     v-bind="attrs"
-    class="inline-flex items-center justify-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warmbg-dark/20 dark:focus-visible:ring-warmbg-light/20 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+    cursor-pointer inline-flex items-center justify-center font-medium
+    class="focus-visible:outline-black disabled:(pointer-events-none opacity-50) hover:duration-300"
     :class="[
       variantClasses,
       sizeClasses,

@@ -11,20 +11,23 @@ useHead({
 <template>
   <div flex flex-col gap-8 animation-fade-in>
     <div flex items-center justify-between>
-      <h1 text="3xl md:4xl" font-bold tracking-tight>
+      <h1 class="3xl md:4xl" font-bold tracking-tight>
         Blog
       </h1>
-      <NuxtLink to="/" text="sm warmfg-light/60 dark:warmfg-dark/60 hover:warmfg-light hover:dark:warmfg-dark" transition-colors>
+      <NuxtLink
+        to="/"
+        class="sm warmfg-light/60 dark:warmfg-dark/60 hover:(warmfg-light dark:warmfg-dark)"
+      >
         ← Back to Home
       </NuxtLink>
     </div>
 
-    <p text="lg warmfg-light/70 dark:warmfg-dark/70" max-w-2xl>
+    <p class="lg warmfg-light/70 dark:warmfg-dark/70" max-w-2xl>
       Thoughts, learnings, and experiences shared along my journey.
     </p>
 
     <div grid grid-cols-1 gap-4 mt-4>
-      <div v-if="!posts || posts.length === 0" text="warmfg-light/50 dark:warmfg-dark/50 italic">
+      <div v-if="!posts || posts.length === 0" class="warmfg-light/50 dark:warmfg-dark/50 italic">
         No posts found.
       </div>
       <BlogPostCard v-for="post in posts" :key="post.path" :post="{ ...post, path: `/blog${post.path}` }" />
