@@ -1,4 +1,12 @@
-import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWind4, transformerDirectives } from 'unocss'
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetWind4,
+  transformerDirectives,
+  transformerVariantGroup,
+} from 'unocss'
 
 export default defineConfig({
   presets: [
@@ -9,6 +17,7 @@ export default defineConfig({
   ],
   transformers: [
     transformerDirectives(),
+    transformerVariantGroup(),
   ],
   theme: {
     colors: {
