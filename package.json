@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "pnpm run clone && nuxt generate",
+    "typecheck": "vue-tsc --noEmit",
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
     "lint": "eslint .",
