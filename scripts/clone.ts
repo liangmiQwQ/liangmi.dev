@@ -18,9 +18,7 @@ if (!GITHUB_TOKEN || !INFO_REPO || !PASSAGE_REPO) {
 }
 
 const contentDir = join(__dirname, '..', 'content')
-const publicDir = join(__dirname, '..', 'public')
-const infoDir = publicDir
-const passagesDir = contentDir
+const meDir = join(__dirname, '..', 'app/assets/me')
 
 if (existsSync(contentDir)) {
   console.log(`Cleaning content directory: ${contentDir}`)
@@ -28,11 +26,11 @@ if (existsSync(contentDir)) {
 }
 mkdirSync(contentDir, { recursive: true })
 
-if (existsSync(infoDir)) {
-  console.log(`Cleaning info directory: ${infoDir}`)
-  rmSync(infoDir, { recursive: true, force: true })
+if (existsSync(meDir)) {
+  console.log(`Cleaning assets/me directory: ${meDir}`)
+  rmSync(meDir, { recursive: true, force: true })
 }
-mkdirSync(infoDir, { recursive: true })
+mkdirSync(meDir, { recursive: true })
 
 function cloneRepo(repo: string, targetDir: string) {
   const url = `https://${GITHUB_TOKEN}@github.com/${repo}.git`
@@ -57,7 +55,7 @@ function cloneRepo(repo: string, targetDir: string) {
   }
 }
 
-cloneRepo(INFO_REPO, infoDir)
-cloneRepo(PASSAGE_REPO, passagesDir)
+cloneRepo(INFO_REPO, meDir)
+cloneRepo(PASSAGE_REPO, contentDir)
 
 console.log('All repositories cloned successfully')

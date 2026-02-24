@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Liang\'s Growth Timeline' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/avatar.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
     },
   },

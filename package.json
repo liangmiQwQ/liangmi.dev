@@ -11,8 +11,8 @@
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
     "lint": "eslint .",
-    "clone": "tsx scripts/clone.ts",
-    "cdev": "pnpm run clone && pnpm run dev"
+    "metadata": "tsx scripts/run.ts",
+    "cdev": "pnpm run metadata && pnpm run dev"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
@@ -22,6 +22,7 @@
     "@nuxt/eslint": "catalog:lint",
     "@nuxtjs/color-mode": "catalog:nuxt",
     "@types/node": "catalog:types",
+    "@types/to-ico": "catalog:types",
     "@typescript-eslint/parser": "catalog:lint",
     "@unocss/nuxt": "catalog:nuxt",
     "@vueuse/core": "catalog:website",
@@ -30,6 +31,7 @@
     "dotenv": "catalog:cli",
     "eslint": "catalog:lint",
     "nuxt": "catalog:nuxt",
+    "to-ico": "catalog:cli",
     "tsx": "catalog:cli",
     "typescript": "catalog:types",
     "unocss": "catalog:website",

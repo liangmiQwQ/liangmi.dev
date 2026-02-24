@@ -26,6 +26,7 @@ logs
 # Passages and information
 content
 public
+app/assets/me
 
 # Agent Skills
 .agent
