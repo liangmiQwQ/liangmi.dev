@@ -9,5 +9,11 @@ html {
 }
 
 body {
-  --at-apply: 'bg-background-light text-black dark:(bg-background-dark text-white)';
+  --at-apply: 'bg-background-light dark:(bg-background-dark)';
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }

@@ -1,7 +1,7 @@
 <template>
   <div
     min-h-screen
-    font-sans duration-300 antialiased
+    font-sans antialiased
   >
     <SiteNav />
     <main>

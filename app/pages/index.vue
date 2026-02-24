@@ -34,13 +34,13 @@ const socialLinks = Object.entries(contact).map(([key, _]) => {
   <div class="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-12">
     <!-- Circular logo with hover effect -->
     <div
-      class="relative w-48 h-48 rounded-full overflow-hidden animate-fade-in-up"
+      class="relative w-48 h-48 rounded-full p-2 overflow-hidden"
     >
       <Logo :size="192" class="absolute inset-0 w-full h-full" />
     </div>
 
     <!-- Introduction text -->
-    <div class="max-w-2xl text-center space-y-4 animate-fade-in-up animation-delay-100">
+    <div class="max-w-2xl text-center space-y-4">
       <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">
         <span class="text-primary-light dark:text-primary-dark">{{ info?.name || 'Liang Mi' }}</span>
       </h1>
@@ -50,50 +50,18 @@ const socialLinks = Object.entries(contact).map(([key, _]) => {
     </div>
 
     <!-- Social links -->
-    <div class="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
+    <div class="flex flex-wrap items-center justify-center gap-4">
       <Button
-        v-for="(link, index) in socialLinks"
+        v-for="link in socialLinks"
         :key="link.key"
         :href="link.url"
         target="_blank"
         variant="ghost"
         size="icon"
         :aria-label="link.label"
-        class="hover:scale-110 transition-transform"
-        :style="`animation-delay: ${index * 50 + 300}ms`"
       >
         <div :class="link.icon" class="text-2xl" />
       </Button>
     </div>
   </div>
 </template>
-
-<style scoped>
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animation-delay-100 {
-  animation-delay: 100ms;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-</style>
