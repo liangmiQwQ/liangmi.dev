@@ -6,6 +6,5 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-
-  --at-apply: 'bg-light dark:bg-dark';
+  --at-apply: bg-background;
 }
