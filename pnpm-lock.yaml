@@ -35,6 +35,9 @@ catalogs:
     '@unocss/nuxt':
       specifier: ^66.6.0
       version: 66.6.0
+    '@vueuse/nuxt':
+      specifier: ^14.2.1
+      version: 14.2.1
     better-sqlite3:
       specifier: ^12.6.2
       version: 12.6.2
@@ -52,6 +55,12 @@ catalogs:
       specifier: ^3.2.5
       version: 3.2.5
   website:
+    '@iconify-json/ph':
+      specifier: ^1.2.2
+      version: 1.2.2
+    '@iconify/json':
+      specifier: ^2.2.442
+      version: 2.2.442
     '@vueuse/core':
       specifier: ^14.2.1
       version: 14.2.1
@@ -67,10 +76,10 @@ importers:
         specifier: catalog:lint
         version: 7.4.3(@vue/compiler-sfc@3.5.28)(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3)
       '@iconify-json/ph':
-        specifier: ^1.2.2
+        specifier: catalog:website
         version: 1.2.2
       '@iconify/json':
-        specifier: ^2.2.442
+        specifier: catalog:website
         version: 2.2.442
       '@nuxt/content':
         specifier: catalog:nuxt
@@ -94,7 +103,7 @@ importers:
         specifier: catalog:website
         version: 14.2.1(vue@3.5.28(typescript@5.9.3))
       '@vueuse/nuxt':
-        specifier: ^14.2.1
+        specifier: catalog:nuxt
         version: 14.2.1(magicast@0.5.2)(nuxt@4.3.1(@parcel/watcher@2.5.6)(@types/node@25.3.0)(@vue/compiler-sfc@3.5.28)(better-sqlite3@12.6.2)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.6.2))(eslint@10.0.0(jiti@2.6.1))(ioredis@5.9.3)(magicast@0.5.2)(optionator@0.9.4)(rollup@4.57.1)(terser@5.46.0)(tsx@4.21.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.0)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue-tsc@3.2.5(typescript@5.9.3))(yaml@2.8.2))(vue@3.5.28(typescript@5.9.3))
       better-sqlite3:
         specifier: catalog:nuxt

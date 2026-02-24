@@ -23,7 +23,6 @@ const navLinks = [
       :title="link.label"
       flex="~ items-center justify-center"
       w-10 h-10 rounded-full
-      transition-all duration-300
       class="primary-light/60 dark:primary-dark/60 hover:(bg-primary-light/10 dark:bg-primary-dark/10 primary-light dark:primary-dark)"
       active-class="!primary-light !dark:primary-dark !bg-primary-light/10 !dark:bg-primary-dark/10 shadow-inner"
     >
