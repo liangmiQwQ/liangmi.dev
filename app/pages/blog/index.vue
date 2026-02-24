@@ -16,18 +16,18 @@ useHead({
       </h1>
       <NuxtLink
         to="/"
-        class="sm fg-light/60 dark:fg-dark/60 hover:(fg-light dark:fg-dark)"
+        class="sm primary-light/60 dark:primary-dark/60 hover:(primary-light dark:primary-dark)"
       >
         ← Back to Home
       </NuxtLink>
     </div>
 
-    <p class="lg fg-light/70 dark:fg-dark/70" max-w-2xl>
+    <p class="lg primary-light/70 dark:primary-dark/70" max-w-2xl>
       Thoughts, learnings, and experiences shared along my journey.
     </p>
 
     <div grid grid-cols-1 gap-4 mt-4>
-      <div v-if="!posts || posts.length === 0" class="fg-light/50 dark:fg-dark/50 italic">
+      <div v-if="!posts || posts.length === 0" class="primary-light/50 dark:primary-dark/50 italic">
         No posts found.
       </div>
       <PostCard v-for="post in posts" :key="post.path" :post="{ ...post, path: `/blog${post.path}` }" />

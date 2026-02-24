@@ -13,7 +13,7 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => {
     <div mb-8>
       <NuxtLink
         to="/blog"
-        class="sm fg-light/60 dark:fg-dark/60 hover:fg-light hover:dark:fg-dark"
+        class="sm primary-light/60 dark:primary-dark/60 hover:primary-light hover:dark:primary-dark"
         inline-flex items-center gap-1
       >
         <div i-ph-arrow-left-duotone />

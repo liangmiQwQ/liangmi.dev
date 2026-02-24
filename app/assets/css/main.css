@@ -6,5 +6,8 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  --at-apply: bg-background;
+}
+
+body {
+   --at-apply: bg-background;
 }

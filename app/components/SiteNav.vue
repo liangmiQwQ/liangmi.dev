@@ -12,7 +12,6 @@ const navLinks = [
     flex="~ col gap-4 items-center"
     p-3 rounded-full
     bg="white/10 dark:black/10"
-    border="~ fg-light/10 dark:fg-dark/10"
     backdrop-blur-md
     shadow-xl
     class="-translate-y-1/2"
@@ -25,13 +24,13 @@ const navLinks = [
       flex="~ items-center justify-center"
       w-10 h-10 rounded-full
       transition-all duration-300
-      class="fg-light/60 dark:fg-dark/60 hover:(bg-fg-light/10 dark:bg-fg-dark/10 fg-light dark:fg-dark)"
-      active-class="!fg-light !dark:fg-dark !bg-fg-light/10 !dark:bg-fg-dark/10 shadow-inner"
+      class="primary-light/60 dark:primary-dark/60 hover:(bg-primary-light/10 dark:bg-primary-dark/10 primary-light dark:primary-dark)"
+      active-class="!primary-light !dark:primary-dark !bg-primary-light/10 !dark:bg-primary-dark/10 shadow-inner"
     >
       <div :class="link.icon" text-2xl />
     </NuxtLink>
 
-    <div h-px w-6 bg="fg-light/10 dark:fg-dark/10" my-1 />
+    <div h-px w-6 bg="primary-light/10 dark:primary-dark/10" my-1 />
 
     <ThemeToggle />
   </nav>
