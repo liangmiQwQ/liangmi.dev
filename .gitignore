@@ -26,3 +26,8 @@ logs
 # Passages and information
 content
 public
+
+# Agent Skills
+.agent
+.agents
+skills-lock.json

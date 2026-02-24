@@ -17,6 +17,7 @@
     "@antfu/eslint-config": "catalog:lint",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
+    "@nuxtjs/color-mode": "catalog:nuxt",
     "@types/node": "catalog:types",
     "@typescript-eslint/parser": "catalog:lint",
     "@unocss/nuxt": "catalog:nuxt",

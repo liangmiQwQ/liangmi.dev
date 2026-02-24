@@ -29,6 +29,9 @@ catalogs:
     '@nuxt/content':
       specifier: ^3.11.2
       version: 3.11.2
+    '@nuxtjs/color-mode':
+      specifier: ^4.0.0
+      version: 4.0.0
     '@unocss/nuxt':
       specifier: ^66.6.0
       version: 66.6.0
@@ -66,6 +69,9 @@ importers:
       '@nuxt/eslint':
         specifier: catalog:lint
         version: 1.15.1(@typescript-eslint/utils@8.56.0(eslint@10.0.0(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.28)(eslint@10.0.0(jiti@2.6.1))(magicast@0.5.2)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.0)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))
+      '@nuxtjs/color-mode':
+        specifier: catalog:nuxt
+        version: 4.0.0(magicast@0.5.2)
       '@types/node':
         specifier: catalog:types
         version: 25.3.0
@@ -770,6 +776,9 @@ packages:
     peerDependenciesMeta:
       rolldown:
         optional: true
+
+  '@nuxtjs/color-mode@4.0.0':
+    resolution: {integrity: sha512-xyaVR/TPLdMuRa2VOgH6b75jvmFEsn9QKL6ISldaAw38ooFJfWY1ts2F3ye43wcT/goCbcuvPuskF2f8yUZhlw==}
 
   '@nuxtjs/mdc@0.20.1':
     resolution: {integrity: sha512-fGmtLDQAmmDHF5Z37Apfc3k806rb2XWDOQFhb5xlDSL7+HiiUjyFy3ctx3qWdlC08dRzfAetmsGOYbfDqYsB/w==}
@@ -6470,6 +6479,16 @@ snapshots:
       - vti
       - vue-tsc
       - yaml
+
+  '@nuxtjs/color-mode@4.0.0(magicast@0.5.2)':
+    dependencies:
+      '@nuxt/kit': 4.3.1(magicast@0.5.2)
+      exsolve: 1.0.8
+      pathe: 2.0.3
+      pkg-types: 2.3.0
+      semver: 7.7.4
+    transitivePeerDependencies:
+      - magicast
 
   '@nuxtjs/mdc@0.20.1(magicast@0.5.2)':
     dependencies:
