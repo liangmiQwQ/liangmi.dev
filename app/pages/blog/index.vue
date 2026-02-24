@@ -30,7 +30,7 @@ useHead({
       <div v-if="!posts || posts.length === 0" class="warmfg-light/50 dark:warmfg-dark/50 italic">
         No posts found.
       </div>
-      <BlogPostCard v-for="post in posts" :key="post.path" :post="{ ...post, path: `/blog${post.path}` }" />
+      <PostCard v-for="post in posts" :key="post.path" :post="{ ...post, path: `/blog${post.path}` }" />
     </div>
   </div>
 </template>
