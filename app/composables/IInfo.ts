@@ -1,6 +1,6 @@
 import type { IInfo } from '~/types'
+import info from '~/assets/me/i.json'
 
-export async function useIInfo(): Promise<ComputedRef<IInfo>> {
-  const { data } = await useFetch<IInfo>('/i.json')
-  return computed(() => data.value!)
+export function useIInfo(): IInfo {
+  return info as any
 }
