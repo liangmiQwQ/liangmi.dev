@@ -21,6 +21,8 @@
     "@types/node": "catalog:types",
     "@typescript-eslint/parser": "catalog:lint",
     "@unocss/nuxt": "catalog:nuxt",
+    "@vueuse/core": "catalog:website",
+    "@vueuse/nuxt": "^14.2.1",
     "better-sqlite3": "catalog:nuxt",
     "dotenv": "catalog:cli",
     "eslint": "catalog:lint",

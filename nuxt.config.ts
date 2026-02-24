@@ -1,12 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@nuxt/eslint', '@unocss/nuxt', '@nuxtjs/color-mode'],
+  modules: [
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@unocss/nuxt',
+    '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
+  ],
   devtools: { enabled: true },
 
   eslint: {
     config: {
       standalone: false,
     },
+  },
+
+  colorMode: {
+    classSuffix: '',
   },
 
   app: {

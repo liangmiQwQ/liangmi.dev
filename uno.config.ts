@@ -9,4 +9,16 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
+  theme: {
+    colors: {
+      warmbg: {
+        light: '#FDFBF7',
+        dark: '#1C1B1A',
+      },
+      warmfg: {
+        light: '#2A2928',
+        dark: '#F3F0EA',
+      },
+    },
+  },
 })
