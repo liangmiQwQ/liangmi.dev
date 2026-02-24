@@ -1,8 +1,8 @@
 <template>
   <div
     min-h-screen
-    bg="warmbg-light dark:warmbg-dark"
-    class="warmfg-light dark:warmfg-dark"
+    bg="bg-light dark:bg-dark"
+    class="fg-light dark:fg-dark"
     font-sans duration-300 antialiased
   >
     <SiteNav />

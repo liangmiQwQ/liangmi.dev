@@ -21,11 +21,11 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      warmbg: {
+      bg: {
         light: '#FDFBF7',
         dark: '#1C1B1A',
       },
-      warmfg: {
+      fg: {
         light: '#2A2928',
         dark: '#F3F0EA',
       },

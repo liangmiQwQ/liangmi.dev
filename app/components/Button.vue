@@ -30,13 +30,13 @@ const attrs = computed(() => {
 
 const variantClasses = computed(() => {
   const variants = {
-    default: 'bg-white/50 dark:bg-black/20 hover:bg-warmbg-dark/5 dark:hover:bg-warmbg-light/10 text-warmfg-light dark:text-warmfg-dark backdrop-blur-sm',
-    solid: 'bg-warmfg-light dark:bg-warmfg-dark text-warmbg-light dark:text-warmbg-dark hover:opacity-90',
+    default: 'bg-white/50 dark:bg-black/20 hover:bg-bg-dark/5 dark:hover:bg-bg-light/10 text-fg-light dark:text-fg-dark backdrop-blur-sm',
+    solid: 'bg-fg-light dark:bg-fg-dark text-bg-light dark:text-bg-dark hover:opacity-90',
     destructive: 'bg-red-500 text-white hover:bg-red-500/90 dark:bg-red-900 dark:text-red-100 dark:hover:bg-red-900/90',
-    outline: 'border border-warmbg-dark/20 dark:border-warmbg-light/20 bg-transparent hover:bg-warmbg-dark/5 dark:hover:bg-warmbg-light/10 text-warmfg-light dark:text-warmfg-dark',
-    secondary: 'bg-warmbg-dark/5 dark:bg-warmbg-light/10 text-warmfg-light dark:text-warmfg-dark hover:bg-warmbg-dark/10 dark:hover:bg-warmbg-light/20',
-    ghost: 'bg-transparent hover:bg-warmbg-dark/5 dark:hover:bg-warmbg-light/10 text-warmfg-light dark:text-warmfg-dark',
-    link: 'bg-transparent text-warmfg-light dark:text-warmfg-dark underline-offset-4 hover:underline',
+    outline: 'border border-bg-dark/20 dark:border-bg-light/20 bg-transparent hover:bg-bg-dark/5 dark:hover:bg-bg-light/10 text-fg-light dark:text-fg-dark',
+    secondary: 'bg-bg-dark/5 dark:bg-bg-light/10 text-fg-light dark:text-fg-dark hover:bg-bg-dark/10 dark:hover:bg-bg-light/20',
+    ghost: 'bg-transparent hover:bg-bg-dark/5 dark:hover:bg-bg-light/10 text-fg-light dark:text-fg-dark',
+    link: 'bg-transparent text-fg-light dark:text-fg-dark underline-offset-4 hover:underline',
   }
   return variants[props.variant]
 })

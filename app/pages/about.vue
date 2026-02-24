@@ -13,7 +13,7 @@ useHead({
     </div>
 
     <div class="prose dark:prose-invert max-w-none">
-      <p class="lg warmfg-light/70 dark:warmfg-dark/70">
+      <p class="lg fg-light/70 dark:fg-dark/70">
         Hi, I'm Liang. Welcome to my personal space on the web.
       </p>
       <!-- Add more content as needed -->
