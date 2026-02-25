@@ -1,4 +1,5 @@
 {
+  "compilerOptions": { "composite": true },
   "include": [
     "./uno.config.ts",
     "scripts/**/*.ts"
