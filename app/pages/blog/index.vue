@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template>
-  <div flex flex-col gap-8 animation-fade-in>
+  <div flex flex-col gap-8>
     <div flex items-center justify-between>
       <h1 class="3xl md:4xl" font-bold tracking-tight>
         Blog
@@ -36,18 +36,5 @@ useHead({
 </template>
 
 <style scoped>
-.animation-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>

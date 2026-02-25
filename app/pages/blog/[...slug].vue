@@ -9,7 +9,7 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => {
 </script>
 
 <template>
-  <main class="animation-fade-in max-w-3xl mx-auto">
+  <main class="max-w-3xl mx-auto">
     <div mb-8>
       <NuxtLink
         to="/blog"
@@ -30,18 +30,5 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => {
 </template>
 
 <style scoped>
-.animation-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>
