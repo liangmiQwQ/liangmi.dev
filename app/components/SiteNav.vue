@@ -16,18 +16,17 @@ const navLinks = [
     shadow-xl
     class="-translate-y-1/2"
   >
-    <NuxtLink
+    <Button
       v-for="link in navLinks"
       :key="link.to"
       :to="link.to"
       :title="link.label"
-      flex="~ items-center justify-center"
-      w-10 h-10 rounded-full
-      class="primary-light/60 dark:primary-dark/60 hover:(bg-primary-light/10 dark:bg-primary-dark/10 primary-light dark:primary-dark)"
+      variant="ghost"
+      size="icon"
       active-class="!primary-light !dark:primary-dark !bg-primary-light/10 !dark:bg-primary-dark/10 shadow-inner"
     >
       <div :class="link.icon" text-2xl />
-    </NuxtLink>
+    </Button>
 
     <div h-px w-6 bg="primary-light/10 dark:primary-dark/10" my-1 />
 

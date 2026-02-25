@@ -15,6 +15,6 @@ function toggleTheme() {
 
 <template>
   <Button title="Toggle Theme" variant="ghost" size="icon" @click="toggleTheme">
-    <div i-ph-moon-stars-duotone dark:i-ph-sun-dim-duotone text-xl />
+    <div i-ph-moon-stars-duotone dark:i-ph-sun-dim-duotone text-2xl />
   </Button>
 </template>
