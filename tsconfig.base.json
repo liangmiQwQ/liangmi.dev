@@ -1,0 +1,6 @@
+{
+  "include": [
+    "./uno.config.ts",
+    "scripts/**/*.ts"
+  ]
+}
