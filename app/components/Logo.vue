@@ -3,13 +3,13 @@ defineProps<{
   size?: number
 }>()
 
-const colorMode = useColorMode()
+const isDark = useDark()
 </script>
 
 <template>
   <ClientOnly>
-    <img v-if="colorMode.value === 'dark'" src="~/assets/me/animated-logo.dark.svg" :width="size" :height="size">
-    <img v-if="colorMode.value === 'light'" src="~/assets/me/animated-logo.light.svg" :width="size" :height="size">
+    <img v-if="isDark" src="~/assets/me/animated-logo.dark.svg" :width="size" :height="size">
+    <img v-else src="~/assets/me/animated-logo.light.svg" :width="size" :height="size">
   </ClientOnly>
 </template>
 
