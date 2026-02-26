@@ -31,6 +31,7 @@
     "dotenv": "catalog:cli",
     "eslint": "catalog:lint",
     "nuxt": "catalog:nuxt",
+    "remark-breaks": "catalog:website",
     "to-ico": "catalog:cli",
     "tsx": "catalog:cli",
     "typescript": "catalog:types",

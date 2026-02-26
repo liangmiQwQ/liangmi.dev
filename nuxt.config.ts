@@ -37,5 +37,13 @@ export default defineNuxtConfig({
     preset: 'static',
   },
 
+  content: {
+    build: {
+      markdown: {
+        remarkPlugins: { 'remark-breaks': {} },
+      },
+    },
+  },
+
   compatibilityDate: '2024-04-03',
 })
