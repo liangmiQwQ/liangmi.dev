@@ -4,11 +4,11 @@ export default defineContentConfig({
   collections: {
     articles: defineCollection({
       type: 'page',
-      source: 'articles/*',
+      source: 'articles/*.md',
     }),
-    info: defineCollection({
+    me: defineCollection({
       type: 'page',
-      source: 'info/*',
+      source: 'info/*.md',
     }),
   },
 }) as ReturnType<typeof defineContentConfig>

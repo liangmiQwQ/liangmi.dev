@@ -2,17 +2,18 @@
 useHead({
   title: 'Liang - About',
 })
+
+const { data: page } = await useAsyncData('about', async () => {
+  return await queryCollection('me').path('/info/about').first()
+})
 </script>
 
 <template>
   <div flex flex-col gap-8>
-    <div flex items-center justify-between>
-      <h1 class="3xl md:4xl" font-bold tracking-tight>
-        About
-      </h1>
+    <div v-if="page" class="prose prose-stone dark:prose-invert max-w-none">
+      <ContentRenderer :value="page" />
     </div>
-
-    <div class="prose dark:prose-invert max-w-none">
+    <div v-else class="prose prose-stone dark:prose-invert max-w-none">
       <p class="lg primary-light/70 dark:primary-dark/70">
         Hi, I'm Liang. Welcome to my personal space on the web.
       </p>
