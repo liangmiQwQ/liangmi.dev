@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('posts', () => {
-  return queryCollection('content').all()
+  return queryCollection('articles').all().then(docs => docs.map(doc => ({
+    ...doc,
+    path: doc.path.replace(/^\/articles/, ''),
+  })))
 })
 
 useHead({

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data: page } = await useAsyncData(`page-${route.path}`, () => {
-  // Try to remove /blog/ from the path since the source is likely `content/**` and URL mapping might be just `/**` or `/blog/**`
-  // Actually, wait! The collection path defaults to /path/to/file.
-  // But let's just query by route.path as content collection generates path mapped directly.
-  return queryCollection('content').path(route.path.replace('/blog', '')).first()
+  const queryPath = `/articles${route.path.replace('/blog', '')}`
+  return queryCollection('articles').path(queryPath).first()
 })
 </script>
 

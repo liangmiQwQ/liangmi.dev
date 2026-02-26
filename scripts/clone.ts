@@ -10,9 +10,9 @@ const __dirname = dirname(__filename)
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const INFO_REPO = process.env.INFO_REPO
-const PASSAGE_REPO = process.env.PASSAGE_REPO
+const ARTICLE_REPO = process.env.ARTICLE_REPO
 
-if (!GITHUB_TOKEN || !INFO_REPO || !PASSAGE_REPO) {
+if (!GITHUB_TOKEN || !INFO_REPO || !ARTICLE_REPO) {
   console.error('Missing required environment variables in .env')
   exit(1)
 }
@@ -56,6 +56,6 @@ function cloneRepo(repo: string, targetDir: string) {
 }
 
 cloneRepo(INFO_REPO, meDir)
-cloneRepo(PASSAGE_REPO, contentDir)
+cloneRepo(ARTICLE_REPO, join(contentDir, 'articles'))
 
 console.log('All repositories cloned successfully')

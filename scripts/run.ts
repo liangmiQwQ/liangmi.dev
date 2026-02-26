@@ -1,2 +1,3 @@
 import './clone.ts'
-import './update.ts'
+import './copy.ts'
+import './transfer.js'
