@@ -4,29 +4,18 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => {
   const queryPath = `/articles${route.path.replace('/blog', '')}`
   return queryCollection('articles').path(queryPath).first()
 })
+
+useHead(() => ({
+  title: page.value?.title || 'Article',
+}))
+
+definePageMeta({
+  layout: 'article',
+})
 </script>
 
 <template>
-  <main class="max-w-3xl mx-auto">
-    <div mb-8>
-      <NuxtLink
-        to="/blog"
-        class="sm primary-light/60 dark:primary-dark/60 hover:primary-light hover:dark:primary-dark"
-        inline-flex items-center gap-1
-      >
-        <div i-ph-arrow-left-duotone />
-        Back to Blog
-      </NuxtLink>
-    </div>
-    <div v-if="page" class="prose prose-stone dark:prose-invert max-w-none">
-      <ContentRenderer :value="page" />
-    </div>
-    <div v-else>
-      Post not found
-    </div>
-  </main>
+  <div>
+    <!-- Content is rendered by the article layout -->
+  </div>
 </template>
-
-<style scoped>
-
-</style>

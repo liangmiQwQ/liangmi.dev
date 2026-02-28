@@ -1,27 +1,32 @@
 <script setup lang="ts">
 useHead({
-  title: 'Liang - About',
+  title: 'About - Liang',
 })
 
 const { data: page } = await useAsyncData('about', async () => {
   return await queryCollection('me').path('/info/about').first()
 })
+
+definePageMeta({
+  layout: 'page',
+})
 </script>
 
 <template>
-  <div flex flex-col gap-8>
-    <div v-if="page" class="prose prose-stone dark:prose-invert max-w-none">
-      <ContentRenderer :value="page" />
-    </div>
-    <div v-else class="prose prose-stone dark:prose-invert max-w-none">
-      <p class="lg primary-light/70 dark:primary-dark/70">
-        Hi, I'm Liang. Welcome to my personal space on the web.
-      </p>
-      <!-- Add more content as needed -->
-    </div>
+  <div v-if="page">
+    <ContentRenderer :value="page" />
+  </div>
+  <div v-else>
+    <h1>About</h1>
+    <p class="lg primary-light/70 dark:primary-dark/70">
+      Hi, I'm Liang. Welcome to my personal space on the web.
+    </p>
+    <p>
+      I'm a student developer based in Hangzhou, China, passionate about open-source
+      and web technologies. I contribute to projects like oxc-project/oxc and vitejs/devtools.
+    </p>
+    <p>
+      Feel free to explore my blog and get in touch!
+    </p>
   </div>
 </template>
-
-<style scoped>
-
-</style>
