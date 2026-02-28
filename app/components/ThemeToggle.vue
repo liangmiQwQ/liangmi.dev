@@ -43,7 +43,7 @@ function toggleTheme(event: MouseEvent) {
 </script>
 
 <template>
-  <Button title="Toggle Theme" variant="ghost" size="icon" @click="toggleTheme">
+  <UiButton title="Toggle Theme" variant="ghost" size="icon" @click="toggleTheme">
     <div i-ph-moon-stars-duotone dark:i-ph-sun-dim-duotone text-2xl />
-  </Button>
+  </UiButton>
 </template>

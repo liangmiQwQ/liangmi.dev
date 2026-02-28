@@ -60,7 +60,7 @@ const socialLinks = computed(() => {
 
     <!-- Social links -->
     <div class="flex flex-wrap items-center justify-center gap-4">
-      <Button
+      <UiButton
         v-for="link in socialLinks"
         :key="link.key"
         :href="link.url"
@@ -70,7 +70,7 @@ const socialLinks = computed(() => {
         :aria-label="link.label"
       >
         <div :class="link.icon" class="text-2xl" />
-      </Button>
+      </UiButton>
     </div>
   </div>
 </template>

@@ -24,8 +24,8 @@ logs
 !.env.example
 
 # Passages and information
-content
-public
+/content
+/public
 app/assets/me
 
 # Agent Skills

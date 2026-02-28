@@ -7,12 +7,14 @@ const navLinks = [
 const isMobileMenuOpen = ref(false)
 const mobileMenuRef = ref<HTMLElement | null>(null)
 
-function toggleMobileMenu() {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
+function openMobileMenu() {
+  isMobileMenuOpen.value = true
 }
 
 function closeMobileMenu() {
-  isMobileMenuOpen.value = false
+  setTimeout(() => {
+    isMobileMenuOpen.value = false
+  }, 50)
 }
 
 onClickOutside(mobileMenuRef, closeMobileMenu)
@@ -21,47 +23,54 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
 <template>
   <!-- Desktop AppBar -->
   <nav
-    class="fixed left-1/2 top-3 z-[100] hidden md:flex -translate-x-1/2 items-center gap-2 px-4 py-1 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-lg"
+    px4 py1 fixed top-3
+    rounded-full bg-background shadow-sm
+    border border-secondary
+    z100
+    class="-translate-x-1/2 left-1/2"
   >
-    <Button
-      v-for="link in navLinks"
-      :key="link.to"
-      :to="link.to"
-      variant="ghost"
-      size="sm"
-      class="gap-1.5"
-      active-class="bg-gray-100 dark:bg-white/15"
+    <div
+      flex="~ items-center gap-2"
+      opacity-80 hover:opacity-100
+      duration-300
     >
-      <div :class="link.icon" />
-      {{ link.label }}
-    </Button>
+      <UiButton title="Home" variant="ghost" size="icon" mr-2 to="/">
+        <img src="assets/me/avatar.png" w8 h8 rounded-full>
+      </UiButton>
 
-    <div class="w-px h-4 bg-gray-300 dark:bg-gray-600" />
+      <div class="w-px h4 bg-secondary" />
 
-    <ThemeToggle />
-  </nav>
+      <UiButton
+        v-for="link in navLinks"
+        :key="link.to"
+        :to="link.to"
+        variant="ghost"
+        size="sm"
+        class="gap-1.5 hidden md:flex"
+        active-class="bg-secondary"
+      >
+        <div :class="link.icon" class="text-xl" />
+        {{ link.label }}
+      </UiButton>
 
-  <!-- Mobile AppBar -->
-  <nav
-    class="fixed left-1/2 top-4 z-[100] flex md:hidden -translate-x-1/2 items-center gap-2 px-1.5 py-1 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-lg"
-  >
-    <Button
-      variant="ghost"
-      size="icon"
-      class="w-8 h-8"
-      @click="toggleMobileMenu"
-    >
-      <div
-        class="text-lg transition-transform duration-300"
-        :class="[
-          isMobileMenuOpen ? 'i-ph-x-duotone rotate-90' : 'i-ph-list-duotone',
-        ]"
-      />
-    </Button>
+      <UiButton
+        variant="ghost"
+        size="icon"
+        class="w-8 h-8 md:hidden"
+        @click="openMobileMenu"
+      >
+        <div
+          class="transition-transform duration-300 text-xl"
+          :class="[
+            isMobileMenuOpen ? 'i-ph-x-duotone rotate-90' : 'i-ph-list-duotone',
+          ]"
+        />
+      </UiButton>
 
-    <div class="w-px h-4 bg-gray-300 dark:bg-gray-600" />
+      <div class="w-px h4 bg-secondary" />
 
-    <ThemeToggle />
+      <ThemeToggle />
+    </div>
   </nav>
 
   <!-- Mobile Menu Dropdown -->
@@ -73,12 +82,16 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
     leave-from-class="opacity-100 translate-y-0 scale-100"
     leave-to-class="opacity-0 -translate-y-4 scale-95"
   >
-    <div
+    <UiBox
       v-if="isMobileMenuOpen"
       ref="mobileMenuRef"
-      class="fixed left-1/2 top-16 z-[99] -translate-x-1/2 flex flex-col gap-1 p-2 rounded-2xl bg-white/90 dark:bg-black/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl min-w-44"
+      fixed
+      flex="~ gap-1"
+      p-2
+      flex-col
+      class=" left-1/2 top-16 z-[99] -translate-x-1/2 rounded-xl backdrop-blur-xl min-w-44"
     >
-      <Button
+      <UiButton
         v-for="link in navLinks"
         :key="link.to"
         :to="link.to"
@@ -89,7 +102,7 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
       >
         <div :class="link.icon" />
         {{ link.label }}
-      </Button>
-    </div>
+      </UiButton>
+    </uibox>
   </Transition>
 </template>

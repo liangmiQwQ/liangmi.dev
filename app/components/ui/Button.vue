@@ -58,7 +58,7 @@ const sizeClasses = computed(() => {
     :is="tag"
     v-bind="attrs"
     cursor-pointer inline-flex items-center justify-center font-medium
-    class="focus-visible:outline-black disabled:(pointer-events-none opacity-50) hover:duration-300"
+    class="focus-visible:outline-black disabled:(pointer-events-none opacity-50) duration-300"
     :class="[
       variantClasses,
       sizeClasses,

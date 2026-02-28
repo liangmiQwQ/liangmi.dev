@@ -12,7 +12,7 @@ const { formatShortDate } = useDateFormat()
 </script>
 
 <template>
-  <Button
+  <UiButton
     :to="post.path"
     variant="ghost"
     class="w-full !justify-start !h-auto p-6 rounded-2xl text-left"
@@ -28,5 +28,5 @@ const { formatShortDate } = useDateFormat()
         {{ post.description }}
       </p>
     </div>
-  </Button>
+  </UiButton>
 </template>

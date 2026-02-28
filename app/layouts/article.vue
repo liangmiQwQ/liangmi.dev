@@ -59,10 +59,10 @@ const meta = computed(() => ({
                 <p class="primary-light/60 dark:primary-dark/60" mb-6>
                   The article you're looking for doesn't exist or has been moved.
                 </p>
-                <Button to="/blog" variant="secondary">
+                <UiButton to="/blog" variant="secondary">
                   <div i-ph-arrow-left-duotone />
                   Back to Blog
-                </Button>
+                </UiButton>
               </div>
             </div>
           </article>

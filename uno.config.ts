@@ -20,8 +20,12 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: {
-    primary: 'bg-primary-light text-white dark:(bg-primary-dark text-black)',
-    secondary: 'bg-secondary-light text-black dark:(bg-secondary-dark text-white)',
+    'bg-background': 'bg-background-light dark:bg-background-dark',
+    'bg-primary': 'bg-primary-light dark:bg-primary-dark',
+    'bg-secondary': 'bg-secondary-light dark:bg-secondary-dark',
+    'border-secondary': 'border-secondary-light dark:border-secondary-dark',
+    'primary': 'bg-primary text-white dark:text-black',
+    'secondary': 'bg-secondary text-black dark:text-white',
   },
   theme: {
     colors: {

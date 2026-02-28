@@ -11,12 +11,12 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <Button
+  <UiButton
     :to="to"
     variant="ghost"
     class="inline-flex items-center gap-2 text-sm primary-light/60 dark:primary-dark/60 hover:primary-light hover:dark:primary-dark"
   >
     <div :class="icon" />
     {{ label }}
-  </Button>
+  </UiButton>
 </template>

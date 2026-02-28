@@ -73,7 +73,7 @@ const isMobileOpen = ref(false)
           :key="item.id"
           :style="{ paddingLeft: `${(item.depth - 1) * 0.75}rem` }"
         >
-          <button
+          <UiButton
             class="text-left w-full py-1 transition-colors duration-200"
             :class="activeId === item.id
               ? 'primary-light dark:primary-dark font-medium'
@@ -81,20 +81,20 @@ const isMobileOpen = ref(false)
             @click="scrollToSection(item.id)"
           >
             {{ item.text }}
-          </button>
+          </UiButton>
         </li>
       </ul>
     </nav>
 
     <!-- Mobile TOC Button -->
     <div lg:hidden fixed left-4 bottom-4 z-50>
-      <button
+      <UiButton
         class="p-3 rounded-full shadow-lg text-white dark:text-black bg-primary-light dark:bg-primary-dark"
 
         @click="isMobileOpen = true"
       >
         <div i-ph-list-dashes-duotone text-xl />
-      </button>
+      </UiButton>
     </div>
 
     <!-- Mobile TOC Drawer -->
@@ -137,13 +137,13 @@ const isMobileOpen = ref(false)
           <h3 text-lg font-semibold>
             Contents
           </h3>
-          <button
+          <UiButton
             p-2 rounded-lg
             class="hover:bg-primary-light/10 dark:hover:bg-primary-dark/10"
             @click="isMobileOpen = false"
           >
             <div i-ph-x-duotone text-xl />
-          </button>
+          </UiButton>
         </div>
 
         <ul space-y-3>
@@ -152,7 +152,7 @@ const isMobileOpen = ref(false)
             :key="item.id"
             :style="{ paddingLeft: `${(item.depth - 1) * 0.75}rem` }"
           >
-            <button
+            <UiButton
               class="text-left w-full py-1.5 transition-colors"
               :class="activeId === item.id
                 ? 'primary-light dark:primary-dark font-medium'
@@ -160,7 +160,7 @@ const isMobileOpen = ref(false)
               @click="scrollToSection(item.id); isMobileOpen = false"
             >
               {{ item.text }}
-            </button>
+            </UiButton>
           </li>
         </ul>
       </div>
