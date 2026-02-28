@@ -59,13 +59,10 @@ const meta = computed(() => ({
                 <p class="primary-light/60 dark:primary-dark/60" mb-6>
                   The article you're looking for doesn't exist or has been moved.
                 </p>
-                <NuxtLink
-                  to="/blog"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors bg-primary-light/10 dark:bg-primary-dark/10 hover:bg-primary-light/20 dark:hover:bg-primary-dark/20"
-                >
+                <Button to="/blog" variant="secondary">
                   <div i-ph-arrow-left-duotone />
                   Back to Blog
-                </NuxtLink>
+                </Button>
               </div>
             </div>
           </article>

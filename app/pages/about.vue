@@ -18,7 +18,7 @@ definePageMeta({
   </div>
   <div v-else>
     <h1>About</h1>
-    <p class="lg primary-light/70 dark:primary-dark/70">
+    <p class="text-lg primary-light/70 dark:primary-dark/70">
       Hi, I'm Liang. Welcome to my personal space on the web.
     </p>
     <p>

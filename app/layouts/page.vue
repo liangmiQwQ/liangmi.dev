@@ -15,13 +15,7 @@ defineProps<{
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <!-- Optional back link -->
         <div v-if="showBackLink" mb-8>
-          <NuxtLink
-            :to="backLink || '/'"
-            class="inline-flex items-center gap-2 text-sm transition-colors primary-light/60 dark:primary-dark/60 hover:primary-light hover:dark:primary-dark"
-          >
-            <div i-ph-arrow-left-duotone />
-            {{ backLabel || 'Back' }}
-          </NuxtLink>
+          <BackLink :to="backLink" :label="backLabel" />
         </div>
 
         <!-- Page header -->

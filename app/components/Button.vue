@@ -7,6 +7,7 @@ const props = withDefaults(defineProps<{
   target?: string
   variant?: 'default' | 'solid' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
   size?: 'default' | 'sm' | 'lg' | 'icon'
+  activeClass?: string
 }>(), {
   variant: 'default',
   size: 'default',
@@ -22,7 +23,7 @@ const tag = computed(() => {
 
 const attrs = computed(() => {
   if (props.to)
-    return { to: props.to }
+    return { to: props.to, activeClass: props.activeClass }
   if (props.href)
     return { href: props.href, target: props.target }
   return {}

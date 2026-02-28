@@ -21,17 +21,20 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
 <template>
   <!-- Desktop AppBar -->
   <nav
-    class="fixed left-1/2 top-4 z-[100] hidden md:flex -translate-x-1/2 items-center gap-2 px-4 py-1 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-lg"
+    class="fixed left-1/2 top-3 z-[100] hidden md:flex -translate-x-1/2 items-center gap-2 px-4 py-1 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-lg"
   >
-    <NuxtLink
+    <Button
       v-for="link in navLinks"
       :key="link.to"
       :to="link.to"
-      class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white transition-colors"
+      variant="ghost"
+      size="sm"
+      class="gap-1.5"
+      active-class="bg-gray-100 dark:bg-white/15"
     >
-      <div :class="link.icon" class="text-base" />
-      <span>{{ link.label }}</span>
-    </NuxtLink>
+      <div :class="link.icon" />
+      {{ link.label }}
+    </Button>
 
     <div class="w-px h-4 bg-gray-300 dark:bg-gray-600" />
 
@@ -75,27 +78,18 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
       ref="mobileMenuRef"
       class="fixed left-1/2 top-16 z-[99] -translate-x-1/2 flex flex-col gap-1 p-2 rounded-2xl bg-white/90 dark:bg-black/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl min-w-44"
     >
-      <NuxtLink
-        v-for="(link, index) in navLinks"
+      <Button
+        v-for="link in navLinks"
         :key="link.to"
         :to="link.to"
-        class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/20 active:scale-95 transition-all"
-        :style="{ animationDelay: `${index * 50}ms` }"
+        variant="ghost"
+        class="w-full !justify-start gap-3"
+        active-class="bg-gray-100 dark:bg-white/15"
         @click="closeMobileMenu"
       >
-        <div :class="link.icon" class="text-lg" />
-        <span>{{ link.label }}</span>
-      </NuxtLink>
+        <div :class="link.icon" />
+        {{ link.label }}
+      </Button>
     </div>
   </Transition>
 </template>
-
-<style scoped>
-.router-link-active {
-  background: rgb(243, 244, 246);
-}
-
-.dark .router-link-active {
-  background: rgba(255, 255, 255, 0.15);
-}
-</style>

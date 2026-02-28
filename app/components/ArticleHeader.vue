@@ -13,16 +13,7 @@ withDefaults(defineProps<Props>(), {
   title: 'Untitled',
 })
 
-function formatDate(dateStr: string): string {
-  if (!dateStr)
-    return ''
-  const date = new Date(dateStr)
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
+const { formatDate } = useDateFormat()
 
 function getLengthLabel(length?: string): string {
   if (!length)
@@ -53,13 +44,7 @@ function getGenreIcon(genre?: string): string {
   <header mb-8 pb-6 border-b class="border-primary-light/10 dark:border-primary-dark/10">
     <!-- Back link -->
     <div mb-6>
-      <NuxtLink
-        to="/blog"
-        class="inline-flex items-center gap-2 text-sm transition-colors primary-light/60 dark:primary-dark/60 hover:primary-light hover:dark:primary-dark"
-      >
-        <div :class="getGenreIcon(genre)" />
-        Back to Blog
-      </NuxtLink>
+      <BackLink to="/blog" label="Back to Blog" :icon="getGenreIcon(genre)" />
     </div>
 
     <!-- Title -->
