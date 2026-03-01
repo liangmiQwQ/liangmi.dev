@@ -29,11 +29,7 @@ onClickOutside(mobileMenuRef, closeMobileMenu)
     z100
     class="-translate-x-1/2 left-1/2"
   >
-    <div
-      flex="~ items-center gap-2"
-      opacity-80 hover:opacity-100
-      duration-300
-    >
+    <div flex="~ items-center gap-2">
       <UiButton title="Home" variant="ghost" size="icon" mr-2 to="/">
         <img src="assets/me/avatar.png" w8 h8 rounded-full>
       </UiButton>
