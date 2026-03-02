@@ -5,7 +5,7 @@ const info = useIInfo()
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-12">
+  <div class="h-full flex flex-col items-center justify-center gap-8">
     <!-- Circular logo with hover effect -->
     <div class="relative w-48 h-48 rounded-full p1 overflow-hidden">
       <ClientOnly>
@@ -25,13 +25,14 @@ const info = useIInfo()
     <!-- Introduction text -->
     <div class="max-w-2xl text-center space-y-4">
       <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">
-        <span font-title>
-          Hi! I'm <span class="text-lime-800 dark:text-lime-200" font-italic>{{ info.name }}</span>
+        <span font-title font-bold>
+          Hi, I'm <span class="text-lime-800 dark:text-lime-200" font-italic>{{ info.name }}</span>
+        </span>
+        <br>
+        <span font-title font-bold>
+          Build things with <span class="text-red-800 dark:text-red-200" font-italic>love</span>
         </span>
       </h1>
-      <p class="text-lg text-primary-light/70 dark:text-primary-dark/70">
-        Placeholder for future content.
-      </p>
     </div>
 
     <!-- Social links -->

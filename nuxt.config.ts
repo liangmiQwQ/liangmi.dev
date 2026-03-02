@@ -22,7 +22,10 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    families: [{ name: 'Playfair Display', provider: 'google' }],
+    families: [
+      { name: 'Playfair Display', provider: 'google' },
+      { name: 'DM Sans', provider: 'google' },
+    ],
   },
 
   css: ['~/assets/css/main.css'],

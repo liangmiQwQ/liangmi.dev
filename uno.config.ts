@@ -30,6 +30,7 @@ export default defineConfig({
   theme: {
     font: {
       title: 'Playfair Display',
+      sans: 'DM Sans',
     },
     colors: {
       background: {
