@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    '@nuxt/fonts',
   ],
   devtools: { enabled: true },
 
@@ -20,6 +21,10 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  fonts: {
+    families: [{ name: 'Playfair Display', provider: 'google' }],
+  },
+
   css: ['~/assets/css/main.css'],
 
   app: {
@@ -31,6 +36,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
+      htmlAttrs: { lang: 'en' },
     },
   },
 

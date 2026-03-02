@@ -7,21 +7,17 @@ const info = useIInfo()
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-12">
     <!-- Circular logo with hover effect -->
-    <div class="relative w-48 h-48 rounded-full p-2 overflow-hidden">
+    <div class="relative w-48 h-48 rounded-full p1 overflow-hidden">
       <ClientOnly>
         <img
           v-if="isDark"
           src="~/assets/me/animated-logo.dark.svg"
-          width="192"
-          height="192"
-          class="absolute inset-0 w-full h-full"
+          class="w-full h-full"
         >
         <img
           v-else
           src="~/assets/me/animated-logo.light.svg"
-          width="192"
-          height="192"
-          class="absolute inset-0 w-full h-full"
+          class="w-full h-full"
         >
       </ClientOnly>
     </div>
@@ -29,7 +25,9 @@ const info = useIInfo()
     <!-- Introduction text -->
     <div class="max-w-2xl text-center space-y-4">
       <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">
-        <span class="text-primary-light dark:text-primary-dark">{{ info.name }}</span>
+        <span font-title>
+          Hi! I'm <span class="text-lime-800 dark:text-lime-200" font-italic>{{ info.name }}</span>
+        </span>
       </h1>
       <p class="text-lg text-primary-light/70 dark:text-primary-dark/70">
         Placeholder for future content.

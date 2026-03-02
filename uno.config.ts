@@ -28,6 +28,9 @@ export default defineConfig({
     'secondary': 'bg-secondary text-black dark:text-white',
   },
   theme: {
+    font: {
+      title: 'Playfair Display',
+    },
     colors: {
       background: {
         light: '#FDFBF7',

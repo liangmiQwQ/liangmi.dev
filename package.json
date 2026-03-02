@@ -20,6 +20,7 @@
     "@iconify/json": "catalog:website",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
+    "@nuxt/fonts": "0.14.0",
     "@nuxtjs/color-mode": "catalog:nuxt",
     "@types/node": "catalog:types",
     "@types/to-ico": "catalog:types",
