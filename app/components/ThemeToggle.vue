@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const isDark = useDark()
-
 function toggleTheme(event: MouseEvent) {
   if ('startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
     const x = event.clientX
@@ -10,7 +8,7 @@ function toggleTheme(event: MouseEvent) {
       Math.max(y, innerHeight - y),
     )
     const transition = document.startViewTransition(async () => {
-      isDark.value = !isDark.value
+      toggleDark()
       await nextTick()
     })
     transition.ready
@@ -37,7 +35,7 @@ function toggleTheme(event: MouseEvent) {
       })
   }
   else {
-    isDark.value = !isDark.value
+    toggleDark()
   }
 }
 </script>

@@ -4,9 +4,9 @@
   "private": true,
   "packageManager": "pnpm@10.29.2",
   "scripts": {
-    "build": "nuxt build",
+    "build": "pnpm run metadata && nuxt generate",
     "dev": "nuxt dev",
-    "generate": "pnpm run metadata && nuxt generate",
+    "generate": "nuxi generate",
     "typecheck": "nuxt typecheck",
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",

@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     },
   },
 
+  // Since we use SSG, we use @nuxtjs/color-mode instead of VueUse
   colorMode: {
     classSuffix: '',
   },

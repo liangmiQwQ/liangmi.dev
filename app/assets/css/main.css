@@ -12,12 +12,9 @@ body {
   --at-apply: 'bg-background-light dark:(bg-background-dark)';
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+html.dark {
+  color-scheme: dark;
 }
-
 
 ::view-transition-old(root),
 ::view-transition-new(root) {

@@ -2,7 +2,6 @@
 import Contact from '~/components/content/Contact.vue'
 
 const info = useIInfo()
-const isDark = useDark()
 </script>
 
 <template>
