@@ -1,15 +1,5 @@
-::-webkit-scrollbar {
-  display: none;
-}
-
 html {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   scroll-behavior: smooth;
-}
-
-body {
-  --at-apply: 'bg-background-light dark:(bg-background-dark)';
 }
 
 html.dark {
@@ -32,8 +22,4 @@ html.dark {
 }
 .dark::view-transition-new(root) {
   z-index: 1;
-}
-
-::selection {
-  --at-apply: 'primary';
 }

@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
-    '@nuxt/fonts',
   ],
   devtools: { enabled: true },
 
@@ -20,15 +19,6 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
-
-  fonts: {
-    families: [
-      { name: 'Playfair Display', provider: 'google' },
-      { name: 'DM Sans', provider: 'google' },
-    ],
-  },
-
-  css: ['~/assets/css/main.css'],
 
   app: {
     head: {
