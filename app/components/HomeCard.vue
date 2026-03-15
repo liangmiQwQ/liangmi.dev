@@ -18,7 +18,7 @@ const tag = computed(() => props.href ? 'a' : 'div')
 <template>
   <component
     :is="tag"
-    class="home-card block rounded-2xl border border-zinc-200 p-4 text-inherit no-underline dark:border-zinc-800"
+    class="home-card group block rounded-3xl border border-zinc-200 p-5 text-inherit no-underline transition-colors hover:border-zinc-300 hover:bg-zinc-50/60 dark:border-zinc-800 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/20"
     :href="props.href"
     :target="props.href ? props.target : undefined"
     :rel="props.href && props.target === '_blank' ? 'noreferrer' : undefined"
@@ -56,8 +56,8 @@ const tag = computed(() => props.href ? 'a' : 'div')
 }
 
 .home-card__title {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 19px;
   font-weight: 650;
   letter-spacing: -0.01em;
 }
