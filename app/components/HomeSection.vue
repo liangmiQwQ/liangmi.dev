@@ -3,6 +3,7 @@ defineProps<{
   id: string
   title: string
   subtitle?: string
+  watermark?: boolean
 }>()
 </script>
 
@@ -10,9 +11,13 @@ defineProps<{
   <section
     :id="id"
     class="home-section"
+    data-snap
   >
     <div class="home-section__inner">
       <header class="home-section__header">
+        <div v-if="watermark" class="home-section__watermark" aria-hidden="true">
+          {{ title }}
+        </div>
         <h2 class="home-section__title text-zinc-500 dark:text-zinc-400">
           {{ title }}
         </h2>
@@ -35,6 +40,7 @@ defineProps<{
   min-height: 100dvh;
   display: flex;
   align-items: stretch;
+  border-top: 1px solid rgba(161, 161, 170, 0.22);
 }
 
 .home-section__inner {
@@ -45,12 +51,33 @@ defineProps<{
   flex-direction: column;
   justify-content: center;
   gap: 14px;
+  position: relative;
 }
 
 .home-section__header {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
+}
+
+.home-section__watermark {
+  position: absolute;
+  inset: -18px 0 auto 0;
+  font-size: clamp(56px, 12vw, 120px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  color: rgba(24, 24, 27, 0.06);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:global(html.dark) .home-section__watermark {
+  color: rgba(250, 250, 250, 0.04);
 }
 
 .home-section__title {

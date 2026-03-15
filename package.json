@@ -7,7 +7,7 @@
     "build": "pnpm run metadata && nuxt generate",
     "dev": "nuxt dev",
     "generate": "nuxi generate",
-    "typecheck": "nuxt typecheck",
+    "typecheck": "nuxt typecheck --noEmit",
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
     "lint": "eslint .",
