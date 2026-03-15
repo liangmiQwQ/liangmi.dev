@@ -2,7 +2,7 @@
   "name": "liangmi-dev",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "build": "pnpm run metadata && nuxt generate",
     "dev": "nuxt dev",
