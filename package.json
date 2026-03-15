@@ -11,6 +11,7 @@
     "preview": "nuxt preview",
     "prepare": "nuxt prepare",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "metadata": "tsx scripts/run.ts",
     "cdev": "pnpm run metadata && pnpm run dev"
   },
@@ -20,7 +21,7 @@
     "@iconify/json": "catalog:website",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
-    "@nuxt/fonts": "0.14.0",
+    "@nuxt/fonts": "catalog:nuxt",
     "@nuxtjs/color-mode": "catalog:nuxt",
     "@types/node": "catalog:types",
     "@types/to-ico": "catalog:types",
@@ -37,6 +38,7 @@
     "tsx": "catalog:cli",
     "typescript": "catalog:types",
     "unocss": "catalog:website",
+    "vue-router": "catalog:nuxt",
     "vue-tsc": "catalog:types"
   }
 }
