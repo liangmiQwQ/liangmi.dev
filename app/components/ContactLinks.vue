@@ -30,10 +30,9 @@ const links = computed(() => {
       :href="l.href"
       target="_blank"
       rel="noreferrer"
-      class="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-2 text-13px text-zinc-700 no-underline hover:border-zinc-300 dark:border-zinc-800 dark:text-zinc-200 dark:hover:border-zinc-700"
+      class="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-2 py-2 text-zinc-700 no-underline hover:border-zinc-300 dark:border-zinc-800 dark:text-zinc-200 dark:hover:border-zinc-700"
     >
-      <span :class="l.icon" class="h-4 w-4 text-zinc-500 dark:text-zinc-400" aria-hidden="true" />
-      <span v-if="variant === 'chip'">{{ l.label }}</span>
+      <span :class="l.icon" class="h-5 w-5 text-lg text-zinc-500 dark:text-zinc-400" aria-hidden="true" />
     </a>
   </div>
 </template>

@@ -32,13 +32,16 @@ const formattedPrCount = computed(() => {
     data-snap
     style="scroll-snap-align: start; scroll-snap-stop: always;"
   >
-    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div
-        class="absolute left-1/2 top-[-0.22em] -translate-x-1/2 text-center text-[clamp(84px,15vw,220px)] font-black -tracking-[0.08em] text-zinc-900/16 dark:text-zinc-100/9 select-none"
-        style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor;"
-      >
-        {{ props.info.name }}
-      </div>
+    <div
+      absolute
+      bottom-10 left-0 right-0
+      mx-auto
+      animate-bounce
+      flex="~ items-center gap-2"
+      class="w-fit font-mono text-12px tracking-[0.14em] text-zinc-500 dark:text-zinc-400 uppercase" aria-hidden="true"
+    >
+      <span class="i-ph-arrow-down h-4 w-4" />
+      <span>Scroll</span>
     </div>
 
     <div class="relative mx-auto w-full max-w-[1280px] px-4 py-10 md:px-8 md:py-16">
@@ -52,9 +55,12 @@ const formattedPrCount = computed(() => {
 
               <div flex="~ col gap-2" min-h="0">
                 <div class="font-mono text-12px tracking-[0.16em] text-zinc-500 dark:text-zinc-400 uppercase">
-                  Student · Developer · Open Source
+                  Open Source Developer · Student
                 </div>
-                <h1 class="m-0 font-serif text-[clamp(40px,7vw,74px)] leading-[0.95] -tracking-[0.06em]">
+                <h1
+                  font-italic
+                  class="m-0 font-serif text-[clamp(40px,7vw,74px)] leading-[0.95] -tracking-[0.06em]"
+                >
                   {{ props.info.name }}
                 </h1>
               </div>
@@ -63,7 +69,7 @@ const formattedPrCount = computed(() => {
             <div class="max-w-[64ch]">
               <div class="inline-flex items-center gap-2 font-mono text-12px tracking-[0.14em] text-zinc-500 dark:text-zinc-400 uppercase">
                 <span class="i-ph-seal-check h-4 w-4" aria-hidden="true" />
-                <span>Bold, but precise</span>
+                <span>An opensource developer coding with love</span>
               </div>
               <p class="mt-3 mb-0 text-[clamp(15px,1.6vw,18px)] leading-[1.7] text-zinc-700 dark:text-zinc-300">
                 {{ props.info.bio }}
@@ -73,11 +79,6 @@ const formattedPrCount = computed(() => {
 
           <div class="mt-7">
             <ContactLinks :info="props.info" />
-          </div>
-
-          <div class="mt-10 inline-flex items-center gap-2 font-mono text-12px tracking-[0.14em] text-zinc-500 dark:text-zinc-400 uppercase" aria-hidden="true">
-            <span class="i-ph-arrow-down h-4 w-4" />
-            <span>Scroll</span>
           </div>
         </div>
 
@@ -112,10 +113,6 @@ const formattedPrCount = computed(() => {
                     PRs (WIP)
                   </div>
                 </div>
-              </div>
-
-              <div class="mt-4 text-13px leading-18px text-zinc-700 dark:text-zinc-300">
-                Count the work. Then make it readable.
               </div>
             </div>
 
@@ -156,10 +153,6 @@ const formattedPrCount = computed(() => {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="mt-3 text-13px leading-18px text-zinc-700 dark:text-zinc-300">
-                Placeholder until the timeline page lands.
               </div>
             </div>
           </div>
