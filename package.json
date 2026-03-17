@@ -18,7 +18,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
     "@iconify-json/ph": "catalog:website",
-    "@iconify/json": "catalog:website",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
     "@nuxt/fonts": "catalog:nuxt",
