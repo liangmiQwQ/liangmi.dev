@@ -44,7 +44,7 @@ const formattedPrCount = computed(() => {
       <span>Scroll</span>
     </div>
 
-    <div class="relative mx-auto w-full max-w-[1280px] px-4 py-10 md:px-8 md:py-16">
+    <div class="relative mx-auto w-full max-w-[1280px] px-6 py-10 md:px-20 md:py-16">
       <div class="grid gap-10 md:grid-cols-12 md:items-center">
         <div class="md:col-span-7">
           <div class="grid gap-6">
