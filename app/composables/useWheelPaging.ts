@@ -8,9 +8,16 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
   const isAnimating = shallowRef(false)
   const isUserScrolling = shallowRef(false)
 
-  const targetPart = computed(() => {
-    const part = Number(route.query.part)
-    return Number.isNaN(part) ? 0 : Math.max(0, Math.min(3, part))
+  // Runs as an inline script before hydration — scrolls the overflow container
+  // to the hash target before first paint, avoiding the SSG flash.
+  onPrehydrate(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash || hash === 'hero')
+      return
+    const target = document.getElementById(hash)
+    const container = document.querySelector('main')
+    if (target && container)
+      container.scrollTop = target.offsetTop
   })
 
   function setupWheelPaging() {
@@ -102,16 +109,11 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     }
 
     function updateRoute(index: number) {
-      if (index === 0) {
-        if (route.query.part !== undefined) {
-          router.replace({ query: { ...route.query, part: undefined } })
-        }
-      }
-      else {
-        const currentPart = Number(route.query.part)
-        if (Number.isNaN(currentPart) || currentPart !== index) {
-          router.replace({ query: { ...route.query, part: index } })
-        }
+      const list = snaps()
+      const el = list[index]
+      const newHash = el?.id && el.id !== 'hero' ? `#${el.id}` : ''
+      if (route.hash !== newHash) {
+        router.replace({ hash: newHash })
       }
     }
 
@@ -137,11 +139,14 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     }
 
     watch(
-      targetPart,
-      (newPart) => {
+      () => route.hash,
+      (hash) => {
+        const id = hash.slice(1)
+        const list = snaps()
+        const targetIdx = id ? Math.max(0, list.findIndex(el => el.id === id)) : 0
         const { index } = nearestIndex()
-        if (newPart !== index && !isUserScrolling.value) {
-          scrollToIndex(newPart, true)
+        if (targetIdx !== index && !isUserScrolling.value) {
+          scrollToIndex(targetIdx, true)
         }
       },
       { immediate: false },
@@ -196,7 +201,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
           isUserScrolling.value = false
         }, 150)
 
-        if (wasActive)
+        if (wasActive || isAnimating.value)
           return
 
         const dir = e.deltaY > 0 ? 1 : -1
@@ -282,13 +287,6 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       { passive: true },
     )
 
-    onMounted(() => {
-      nextTick(() => {
-        if (targetPart.value > 0) {
-          scrollToIndex(targetPart.value, false)
-        }
-      })
-    })
   }
 
   onMounted(() => {
