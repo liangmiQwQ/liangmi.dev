@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { IInfo } from '~/types'
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   info: IInfo
-  variant?: 'chip' | 'icon'
-}>(), {
-  variant: 'chip',
-})
+}>()
 
 const links = computed(() => {
   const c = props.info.contact

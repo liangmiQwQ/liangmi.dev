@@ -73,7 +73,7 @@ const devCards = computed<DevCard[]>(() => {
           DEV
         </div>
         <div
-          absolute i-ph-github-logo font-black
+          absolute i-ph-github-logo
           class="-rotate-12 right-[-0.3em] bottom-[-0.1em] text-[clamp(56px,12vw,180px)] -tracking-[0.08em] text-zinc-900/6 dark:text-zinc-100/5 select-none"
         />
       </div>
