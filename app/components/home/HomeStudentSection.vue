@@ -32,7 +32,7 @@ const studentCards = [
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
           class="absolute left-[-0.15em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-zinc-900/18 dark:text-zinc-100/10 select-none"
-          style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor;"
+          style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
         >
           STUDENT
         </div>

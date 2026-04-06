@@ -68,12 +68,12 @@ const devCards = computed<DevCard[]>(() => {
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
           class="absolute left-[-0.2em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-zinc-900/18 dark:text-zinc-100/10 select-none"
-          style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor;"
+          style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
         >
           DEV
         </div>
         <div
-          absolute i-ph-github-logo
+          absolute i-ph-github-logo-duotone
           class="-rotate-12 right-[-0.3em] bottom-[-0.1em] text-[clamp(56px,12vw,180px)] -tracking-[0.08em] text-zinc-900/6 dark:text-zinc-100/5 select-none"
         />
       </div>

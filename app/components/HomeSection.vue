@@ -25,7 +25,7 @@ const titleId = computed(() => `home-${props.id}-title`)
         <div v-if="watermark" class="absolute inset-0">
           <div
             class="absolute left-[-0.15em] top-[-0.25em] text-[clamp(72px,14vw,220px)] font-extrabold -tracking-[0.08em] text-zinc-900/20 dark:text-zinc-100/12 select-none"
-            style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor;"
+            style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
           >
             {{ title }}
           </div>
