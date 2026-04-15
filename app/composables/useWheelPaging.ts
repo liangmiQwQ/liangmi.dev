@@ -286,7 +286,6 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       },
       { passive: true },
     )
-
   }
 
   onMounted(() => {
