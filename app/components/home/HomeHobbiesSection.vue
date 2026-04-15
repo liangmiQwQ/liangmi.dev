@@ -40,12 +40,12 @@ const hobbyCards = [
     <template #background>
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          class="absolute left-[-0.15em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-stone-900/10 dark:text-stone-100/8 select-none"
+          class="font-rounded absolute left-[-0.15em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.04em] text-stone-900/8 dark:text-stone-100/6 select-none"
           style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
         >
           HOBBIES
         </div>
-        <div class="absolute right-[-0.2em] bottom-[-0.25em] -rotate-12 text-[clamp(48px,11vw,180px)] font-black -tracking-[0.08em] text-stone-900/5 dark:text-stone-100/4 select-none">
+        <div class="font-rounded absolute right-[-0.2em] bottom-[-0.25em] -rotate-12 text-[clamp(48px,11vw,180px)] font-black -tracking-[0.04em] text-stone-900/4 dark:text-stone-100/3 select-none">
           PLAY
         </div>
       </div>

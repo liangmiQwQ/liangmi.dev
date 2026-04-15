@@ -73,7 +73,7 @@ const devCards = computed<DevCard[]>(() => {
     <template #background>
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          class="absolute left-[-0.2em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-stone-900/10 dark:text-stone-100/8 select-none"
+          class="font-rounded absolute left-[-0.2em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.04em] text-stone-900/8 dark:text-stone-100/6 select-none"
           style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
         >
           DEV

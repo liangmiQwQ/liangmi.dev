@@ -24,13 +24,13 @@ const titleId = computed(() => `home-${props.id}-title`)
       <slot name="background">
         <div v-if="watermark" class="absolute inset-0">
           <div
-            class="absolute left-[-0.15em] top-[-0.25em] text-[clamp(72px,14vw,220px)] font-extrabold -tracking-[0.08em] text-stone-900/10 dark:text-stone-100/8 select-none"
+            class="font-rounded absolute left-[-0.15em] top-[-0.25em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.04em] text-stone-900/8 dark:text-stone-100/6 select-none"
             style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
           >
             {{ title }}
           </div>
           <div
-            class="absolute right-[-0.35em] bottom-[-0.35em] -rotate-12 text-[clamp(56px,12vw,180px)] font-extrabold -tracking-[0.08em] text-stone-900/5 dark:text-stone-100/4 select-none"
+            class="font-rounded absolute right-[-0.35em] bottom-[-0.35em] -rotate-12 text-[clamp(56px,12vw,180px)] font-black -tracking-[0.04em] text-stone-900/4 dark:text-stone-100/3 select-none"
           >
             {{ title }}
           </div>
