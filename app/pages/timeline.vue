@@ -10,21 +10,21 @@ const nodes = [
   <div class="timeline-root">
     <main class="timeline">
       <header class="timeline__header">
-        <NuxtLink to="/" class="timeline__back border border-zinc-200 dark:border-zinc-800">
-          <span class="i-ph-arrow-left text-zinc-500 dark:text-zinc-400" aria-hidden="true" />
+        <NuxtLink to="/" class="timeline__back border border-stone-200 dark:border-stone-800 hover:border-amber-200 hover:text-amber-700 dark:hover:border-amber-900/60 dark:hover:text-amber-400 transition-all">
+          <span class="i-ph-arrow-left text-stone-500 dark:text-stone-400" aria-hidden="true" />
           <span>Home</span>
         </NuxtLink>
 
         <h1 class="timeline__title">
           Timeline
         </h1>
-        <p class="timeline__subtitle text-zinc-600 dark:text-zinc-400">
+        <p class="timeline__subtitle text-stone-600 dark:text-stone-400">
           A tree-ish view of how I grow up. This is a placeholder — the real interactive tree is coming later.
         </p>
       </header>
 
       <section class="tree" aria-label="Timeline placeholder">
-        <div class="tree__line bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
+        <div class="tree__line bg-stone-200 dark:bg-stone-800" aria-hidden="true" />
 
         <div class="tree__nodes">
           <article
@@ -33,17 +33,17 @@ const nodes = [
             class="tree__node"
             :class="i % 2 === 0 ? 'is-left' : 'is-right'"
           >
-            <div class="tree__dot bg-zinc-900 dark:bg-zinc-100" aria-hidden="true" />
-            <div class="tree__card border border-zinc-200 dark:border-zinc-800">
-              <div class="tree__meta text-zinc-500 dark:text-zinc-400">
-                <span class="tree__year text-zinc-900 dark:text-zinc-100">{{ n.year }}</span>
+            <div class="tree__dot bg-amber-400 dark:bg-amber-500" aria-hidden="true" />
+            <div class="tree__card border border-stone-200 dark:border-stone-800">
+              <div class="tree__meta text-stone-500 dark:text-stone-400">
+                <span class="tree__year text-stone-900 dark:text-stone-100">{{ n.year }}</span>
                 <span class="tree__sep">·</span>
-                <span class="tree__tag border border-zinc-200 dark:border-zinc-800">WIP</span>
+                <span class="tree__tag border border-stone-200 dark:border-stone-800">WIP</span>
               </div>
-              <div class="tree__h text-zinc-900 dark:text-zinc-100">
+              <div class="tree__h text-stone-900 dark:text-stone-100">
                 {{ n.title }}
               </div>
-              <div class="tree__p text-zinc-600 dark:text-zinc-400">
+              <div class="tree__p text-stone-600 dark:text-stone-400">
                 {{ n.desc }}
               </div>
             </div>
@@ -52,7 +52,7 @@ const nodes = [
       </section>
 
       <footer class="timeline__footer">
-        <div class="timeline__note border border-zinc-200 text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
+        <div class="timeline__note border border-stone-200 text-stone-600 dark:border-stone-800 dark:text-stone-400">
           Work in progress. Next step: render real data and replace this with a scrollable tree structure.
         </div>
       </footer>
@@ -180,9 +180,6 @@ const nodes = [
   font-size: 12px;
   line-height: 16px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-.tree__year {
 }
 
 .tree__tag {

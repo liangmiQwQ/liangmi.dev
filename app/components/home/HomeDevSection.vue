@@ -9,6 +9,7 @@ interface DevCard {
   title: string
   description: string
   icon: string
+  tags: string[]
   href?: string
   target?: '_blank' | '_self'
   gridClass?: string
@@ -20,21 +21,25 @@ const devCards = computed<DevCard[]>(() => {
       title: 'Frontend',
       description: 'Nuxt / Vue / TypeScript — with a strong bias for DX and clarity.',
       icon: 'i-ph-browser',
+      tags: ['Nuxt', 'Vue', 'TypeScript'],
     },
     {
       title: 'Design',
       description: 'Layout, motion, and details — simple, not boring.',
       icon: 'i-ph-paint-brush-broad',
+      tags: ['Layout', 'Motion', 'Type'],
     },
     {
       title: 'Tooling',
       description: 'Linting, formatting, build tools, and performance instincts.',
       icon: 'i-ph-wrench',
+      tags: ['ESLint', 'Vite', 'Perf'],
     },
     {
       title: 'Writing',
       description: 'Notes and reflections, when I can turn noise into words.',
       icon: 'i-ph-pencil-line',
+      tags: ['Notes', 'Reflections'],
       href: '/blog',
     },
   ]
@@ -44,6 +49,7 @@ const devCards = computed<DevCard[]>(() => {
       title: 'Open Source',
       description: 'Contributing, reviewing, and shipping small pieces that matter.',
       icon: 'i-ph-git-pull-request',
+      tags: ['Contributing', 'Reviews'],
       href: `https://github.com/${props.info.contact.github}`,
       target: '_blank',
       gridClass: 'md:col-span-2',
@@ -67,43 +73,43 @@ const devCards = computed<DevCard[]>(() => {
     <template #background>
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
-          class="absolute left-[-0.2em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-zinc-900/18 dark:text-zinc-100/10 select-none"
+          class="absolute left-[-0.2em] top-[-0.35em] text-[clamp(72px,14vw,220px)] font-black -tracking-[0.09em] text-stone-900/10 dark:text-stone-100/8 select-none"
           style="-webkit-text-fill-color: transparent; -webkit-text-stroke: 2px currentColor;"
         >
           DEV
         </div>
         <div
           absolute i-ph-github-logo-duotone
-          class="-rotate-12 right-[-0.3em] bottom-[-0.1em] text-[clamp(56px,12vw,180px)] -tracking-[0.08em] text-zinc-900/6 dark:text-zinc-100/5 select-none"
+          class="-rotate-12 right-[-0.3em] bottom-[-0.1em] text-[clamp(56px,12vw,180px)] -tracking-[0.08em] text-stone-900/5 dark:text-stone-100/4 select-none"
         />
       </div>
     </template>
 
     <div class="grid gap-3 md:grid-cols-12 md:gap-4">
       <div class="md:col-span-5">
-        <div class="rounded-3xl border border-zinc-200 p-5 dark:border-zinc-800">
-          <div class="font-mono text-12px tracking-[0.14em] text-zinc-500 dark:text-zinc-400 uppercase">
+        <div class="rounded-2xl border border-stone-200 p-5 dark:border-stone-800">
+          <div class="font-mono text-12px tracking-[0.14em] text-stone-500 dark:text-stone-400 uppercase">
             Focus
           </div>
-          <div class="mt-3 text-15px leading-20px text-zinc-950 dark:text-zinc-50">
+          <div class="mt-3 text-15px leading-20px text-stone-900 dark:text-stone-100">
             Frontend engineering, design details, and shipping.
           </div>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-zinc-200 px-3 py-1 text-12px text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">Nuxt</span>
-            <span class="rounded-full border border-zinc-200 px-3 py-1 text-12px text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">Vue</span>
-            <span class="rounded-full border border-zinc-200 px-3 py-1 text-12px text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">TypeScript</span>
-            <span class="rounded-full border border-zinc-200 px-3 py-1 text-12px text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">Tooling</span>
+            <span class="rounded-full border border-stone-200 px-3 py-1 text-12px text-stone-600 dark:border-stone-800 dark:text-stone-400">Nuxt</span>
+            <span class="rounded-full border border-stone-200 px-3 py-1 text-12px text-stone-600 dark:border-stone-800 dark:text-stone-400">Vue</span>
+            <span class="rounded-full border border-stone-200 px-3 py-1 text-12px text-stone-600 dark:border-stone-800 dark:text-stone-400">TypeScript</span>
+            <span class="rounded-full border border-stone-200 px-3 py-1 text-12px text-stone-600 dark:border-stone-800 dark:text-stone-400">Tooling</span>
           </div>
         </div>
 
-        <div class="mt-3 rounded-3xl border border-zinc-200 p-5 dark:border-zinc-800">
+        <div class="mt-3 rounded-2xl border border-stone-200 p-5 dark:border-stone-800">
           <div flex="~ items-center gap-2" min-h="0">
-            <span class="i-ph-star h-4 w-4 text-zinc-500 dark:text-zinc-400" aria-hidden="true" />
-            <div class="font-mono text-12px tracking-[0.14em] text-zinc-500 dark:text-zinc-400 uppercase">
+            <span class="i-ph-star h-4 w-4 text-amber-500 dark:text-amber-400" aria-hidden="true" />
+            <div class="font-mono text-12px tracking-[0.14em] text-stone-500 dark:text-stone-400 uppercase">
               Featured (placeholder)
             </div>
           </div>
-          <div class="mt-3 text-13px leading-18px text-zinc-700 dark:text-zinc-300">
+          <div class="mt-3 text-13px leading-18px text-stone-600 dark:text-stone-400">
             A project snapshot / case study lives here soon.
           </div>
         </div>
@@ -118,6 +124,7 @@ const devCards = computed<DevCard[]>(() => {
             :title="card.title"
             :description="card.description"
             :icon="card.icon"
+            :tags="card.tags"
             :href="card.href"
             :target="card.target"
           />
