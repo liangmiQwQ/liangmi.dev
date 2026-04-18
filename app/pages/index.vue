@@ -13,13 +13,13 @@
           <div class="relative overflow-hidden">
             <!-- Light Mode Logo with grayscale filter -->
             <img
-              src="/animated-logo.light.svg"
+              src="assets/me/animated-logo.light.svg"
               alt="LiangMi Logo"
               class="w-40 h-40 dark:hidden filter grayscale brightness-50 contrast-125 opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
             >
             <!-- Dark Mode Logo with grayscale filter -->
             <img
-              src="/animated-logo.dark.svg"
+              src="assets/me/animated-logo.dark.svg"
               alt="LiangMi Logo"
               class="hidden dark:block w-40 h-40 filter grayscale brightness-150 contrast-125 opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
             >
