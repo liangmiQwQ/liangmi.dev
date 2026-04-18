@@ -1,3 +1,6 @@
+[context.deploy-preview]
+ignore = "exit 0"
+
 [build]
 publish = ".output/public"
 command = "pnpm run build"
