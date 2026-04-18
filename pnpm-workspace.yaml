@@ -1,32 +1,46 @@
 shellEmulator: true
 trustPolicy: no-downgrade
-
+trustPolicyExclude:
+  - chokidar
+  - semver
 catalogs:
   cli:
-    dotenv: ^17.3.1
+    dotenv: ^17.4.2
+    to-ico: ^1.1.5
     tsx: ^4.21.0
 
   lint:
-    '@antfu/eslint-config': ^7.4.3
-    '@nuxt/eslint': ^1.15.1
-    '@typescript-eslint/parser': ^8.56.0
-    eslint: ^10.0.0
+    '@antfu/eslint-config': ^8.2.0
+    '@nuxt/eslint': ^1.15.2
+    '@typescript-eslint/parser': ^8.58.2
+    eslint: ^10.2.0
 
   nuxt:
-    '@nuxt/content': ^3.11.2
-    '@unocss/nuxt': ^66.6.0
-    better-sqlite3: ^12.6.2
-    nuxt: ^4.3.1
+    '@nuxt/content': ^3.13.0
+    '@nuxt/fonts': 0.14.0
+    '@nuxtjs/color-mode': ^4.0.0
+    '@unocss/nuxt': ^66.6.8
+    '@vueuse/nuxt': ^14.2.1
+    better-sqlite3: ^12.9.0
+    nuxt: ^4.4.2
+    vue-router: ^5.0.4
 
   types:
-    '@types/node': ^25.3.0
-    typescript: ^5.9.3
-    vue-tsc: ^3.2.5
+    '@types/node': ^25.6.0
+    '@types/to-ico': ^1.1.3
+    typescript: ^6.0.2
+    vue-tsc: ^3.2.6
 
   website:
-    unocss: ^66.6.0
+    '@iconify-json/ph': ^1.2.2
+    '@vueuse/core': ^14.2.1
+    remark-breaks: ^4.0.0
+    unocss: ^66.6.8
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - better-sqlite3
-  - sqlite3
+  - esbuild
   - eslint
+  - sqlite3
+  - unrs-resolver
