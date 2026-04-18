@@ -1,3 +1,3 @@
-import './clone.ts'
-import './copy.ts'
-import './transfer.js'
+import './clone'
+import './copy'
+import './transfer'

@@ -1,4 +1,4 @@
-export function useDateFormat() {
+export function useDateFormatter() {
   function formatDate(dateStr: string | undefined, options?: Intl.DateTimeFormatOptions): string {
     if (!dateStr)
       return ''
