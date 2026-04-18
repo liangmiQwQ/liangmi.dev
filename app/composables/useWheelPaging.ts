@@ -20,40 +20,35 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       container.scrollTop = target.offsetTop
   })
 
-  function setupWheelPaging() {
-    const root = scrollEl.value
-    if (!root)
-      return
-    const rootEl = root
-    const initialSnapType = getComputedStyle(rootEl).scrollSnapType || 'y mandatory'
+  function setup(root: HTMLElement) {
+    const initialSnapType = getComputedStyle(root).scrollSnapType || 'y mandatory'
+    const snapEls = [...root.querySelectorAll<HTMLElement>('[data-snap]')]
 
     function disableSnap() {
-      rootEl.style.scrollSnapType = 'none'
+      root.style.scrollSnapType = 'none'
     }
 
     function restoreSnap() {
-      rootEl.style.scrollSnapType = initialSnapType
+      root.style.scrollSnapType = initialSnapType
     }
 
-    const snaps = () => [...rootEl.querySelectorAll<HTMLElement>('[data-snap]')]
-
     function nearestIndex() {
-      const list = snaps()
-      const st = rootEl.scrollTop
+      const st = root.scrollTop
       let best = 0
       let bestDist = Infinity
-      for (let i = 0; i < list.length; i++) {
-        const d = Math.abs(list[i]!.offsetTop - st)
+      for (let i = 0; i < snapEls.length; i++) {
+        const d = Math.abs(snapEls[i]!.offsetTop - st)
         if (d < bestDist) {
           bestDist = d
           best = i
         }
       }
-      return { list, index: best }
+      return best
     }
 
     let rafId: number | undefined
     let wheelBurstTimer: ReturnType<typeof setTimeout> | undefined
+    let touchEndTimer: ReturnType<typeof setTimeout> | undefined
     let scrollEndTimer: ReturnType<typeof setTimeout> | undefined
 
     function cancelAnimation() {
@@ -68,12 +63,13 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     onBeforeUnmount(() => {
       cancelAnimation()
       clearTimeout(wheelBurstTimer)
+      clearTimeout(touchEndTimer)
       clearTimeout(scrollEndTimer)
     })
 
     function animateScrollTo(targetTop: number, durationMs = 600) {
       if (reducedMotion.value === 'reduce') {
-        rootEl.scrollTop = targetTop
+        root.scrollTop = targetTop
         return
       }
 
@@ -81,7 +77,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       isAnimating.value = true
       disableSnap()
 
-      const startTop = rootEl.scrollTop
+      const startTop = root.scrollTop
       const delta = targetTop - startTop
       if (Math.abs(delta) < 1) {
         isAnimating.value = false
@@ -94,7 +90,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
 
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / durationMs)
-        rootEl.scrollTop = startTop + delta * easeInOutQuint(t)
+        root.scrollTop = startTop + delta * easeInOutQuint(t)
         if (t < 1) {
           rafId = requestAnimationFrame(tick)
         }
@@ -109,8 +105,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     }
 
     function updateRoute(index: number) {
-      const list = snaps()
-      const el = list[index]
+      const el = snapEls[index]
       const newHash = el?.id && el.id !== 'hero' ? `#${el.id}` : ''
       if (route.hash !== newHash) {
         router.replace({ hash: newHash })
@@ -118,18 +113,17 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     }
 
     function scrollToIndex(index: number, animate = true) {
-      const list = snaps()
-      if (!list.length || index < 0 || index >= list.length)
+      if (!snapEls.length || index < 0 || index >= snapEls.length)
         return
 
-      const targetTop = list[index]!.offsetTop
+      const targetTop = snapEls[index]!.offsetTop
       activeSnapIndex.value = index
 
       if (animate) {
         animateScrollTo(targetTop, 600)
       }
       else {
-        rootEl.scrollTop = targetTop
+        root.scrollTop = targetTop
       }
 
       clearTimeout(scrollEndTimer)
@@ -142,9 +136,8 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       () => route.hash,
       (hash) => {
         const id = hash.slice(1)
-        const list = snaps()
-        const targetIdx = id ? Math.max(0, list.findIndex(el => el.id === id)) : 0
-        const { index } = nearestIndex()
+        const targetIdx = id ? Math.max(0, snapEls.findIndex(el => el.id === id)) : 0
+        const index = nearestIndex()
         if (targetIdx !== index && !isUserScrolling.value) {
           scrollToIndex(targetIdx, true)
         }
@@ -156,12 +149,12 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       if (isAnimating.value)
         cancelAnimation()
 
-      const { list, index } = nearestIndex()
+      const index = nearestIndex()
       activeSnapIndex.value = index
-      if (!list.length)
+      if (!snapEls.length)
         return
 
-      const next = Math.min(list.length - 1, Math.max(0, index + dir))
+      const next = Math.min(snapEls.length - 1, Math.max(0, index + dir))
       if (next === index)
         return
 
@@ -171,7 +164,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     let isWheelActive = false
 
     useEventListener(
-      rootEl,
+      root,
       'wheel',
       (e: WheelEvent) => {
         const target = e.target as HTMLElement
@@ -205,12 +198,12 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
           return
 
         const dir = e.deltaY > 0 ? 1 : -1
-        const { list, index } = nearestIndex()
+        const index = nearestIndex()
 
-        if (!list.length)
+        if (!snapEls.length)
           return
 
-        const next = Math.min(list.length - 1, Math.max(0, index + dir))
+        const next = Math.min(snapEls.length - 1, Math.max(0, index + dir))
         if (next === index)
           return
 
@@ -219,13 +212,12 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
       { passive: false },
     )
 
-    // Touch support
     let touchStartY = 0
     let touchStartTime = 0
     let isTouchActive = false
 
     useEventListener(
-      rootEl,
+      root,
       'touchstart',
       (e: TouchEvent) => {
         touchStartY = e.touches[0]!.clientY
@@ -237,7 +229,7 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     )
 
     useEventListener(
-      rootEl,
+      root,
       'touchend',
       (e: TouchEvent) => {
         if (!isTouchActive)
@@ -250,15 +242,15 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
 
         if (Math.abs(deltaY) > 50 && deltaTime < 300) {
           const dir = deltaY > 0 ? 1 : -1
-          const { list, index } = nearestIndex()
+          const index = nearestIndex()
 
-          if (!list.length) {
+          if (!snapEls.length) {
             isTouchActive = false
             isUserScrolling.value = false
             return
           }
 
-          const next = Math.min(list.length - 1, Math.max(0, index + dir))
+          const next = Math.min(snapEls.length - 1, Math.max(0, index + dir))
           if (next !== index) {
             e.preventDefault()
             flip(dir)
@@ -266,8 +258,8 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
         }
 
         isTouchActive = false
-        clearTimeout(wheelBurstTimer)
-        wheelBurstTimer = setTimeout(() => {
+        clearTimeout(touchEndTimer)
+        touchEndTimer = setTimeout(() => {
           isUserScrolling.value = false
         }, 150)
       },
@@ -275,21 +267,26 @@ export function useWheelPaging(scrollEl: Ref<HTMLElement | null>) {
     )
 
     useEventListener(
-      rootEl,
+      root,
       'scroll',
       () => {
         if (isAnimating.value)
           return
-        const { index } = nearestIndex()
+        const index = nearestIndex()
         activeSnapIndex.value = index
-        updateRoute(index)
+        clearTimeout(scrollEndTimer)
+        scrollEndTimer = setTimeout(() => {
+          updateRoute(index)
+        }, 50)
       },
       { passive: true },
     )
   }
 
   onMounted(() => {
-    setupWheelPaging()
+    const root = scrollEl.value
+    if (root)
+      setup(root)
   })
 
   return {

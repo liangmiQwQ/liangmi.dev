@@ -5,24 +5,28 @@ const hobbyCards = [
     description: 'Comfort stories, sharp visuals, and good music.',
     icon: 'i-ph-film-strip',
     tags: ['Comfort', 'Visuals', 'OST'],
+    gridClass: 'md:col-span-7',
   },
   {
     title: 'Minecraft',
     description: 'PvP / survival with friends, plus mods & plugins sometimes.',
     icon: 'i-ph-cube',
     tags: ['PvP', 'Survival', 'Mods'],
+    gridClass: 'md:col-span-5',
   },
   {
     title: 'Cubing',
     description: '3×3 in ~20s on a good day.',
     icon: 'i-ph-squares-four',
     tags: ['3×3', '~20s avg'],
+    gridClass: 'md:col-span-5',
   },
   {
     title: 'Hacking on ideas',
     description: 'Small experiments, small wins.',
     icon: 'i-ph-sparkle',
     tags: ['Experiments', 'Side projects'],
+    gridClass: 'md:col-span-7',
   },
 ] as const
 </script>
@@ -53,32 +57,13 @@ const hobbyCards = [
 
     <div class="grid gap-3 md:grid-cols-12 md:gap-4">
       <HomeCard
-        class="md:col-span-7"
-        :title="hobbyCards[0].title"
-        :description="hobbyCards[0].description"
-        :icon="hobbyCards[0].icon"
-        :tags="hobbyCards[0].tags"
-      />
-      <HomeCard
-        class="md:col-span-5"
-        :title="hobbyCards[1].title"
-        :description="hobbyCards[1].description"
-        :icon="hobbyCards[1].icon"
-        :tags="hobbyCards[1].tags"
-      />
-      <HomeCard
-        class="md:col-span-5"
-        :title="hobbyCards[2].title"
-        :description="hobbyCards[2].description"
-        :icon="hobbyCards[2].icon"
-        :tags="hobbyCards[2].tags"
-      />
-      <HomeCard
-        class="md:col-span-7"
-        :title="hobbyCards[3].title"
-        :description="hobbyCards[3].description"
-        :icon="hobbyCards[3].icon"
-        :tags="hobbyCards[3].tags"
+        v-for="card in hobbyCards"
+        :key="card.title"
+        :class="card.gridClass"
+        :title="card.title"
+        :description="card.description"
+        :icon="card.icon"
+        :tags="card.tags"
       />
     </div>
   </HomeSection>

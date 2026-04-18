@@ -8,29 +8,19 @@ const props = defineProps<{
 
 const { data: articleCount } = await useAsyncData('home:article-count', () => queryCollection('articles').count('*'))
 
-const prCount = shallowRef<number | null>(null)
+function formatStat(n: number | null | undefined): string {
+  return typeof n === 'number' && Number.isFinite(n) ? String(n) : '—'
+}
 
-const formattedArticleCount = computed(() => {
-  const n = articleCount.value
-  if (typeof n !== 'number' || !Number.isFinite(n))
-    return '—'
-  return String(n)
-})
-
-const formattedPrCount = computed(() => {
-  const n = prCount.value
-  if (typeof n !== 'number' || !Number.isFinite(n))
-    return '—'
-  return String(n)
-})
+const formattedArticleCount = computed(() => formatStat(articleCount.value))
+const formattedPrCount = '—'
 </script>
 
 <template>
   <section
     id="hero"
-    class="relative min-h-[100dvh] flex items-center"
+    class="relative min-h-[100dvh] flex items-center snap-start snap-always"
     data-snap
-    style="scroll-snap-align: start; scroll-snap-stop: always;"
   >
     <div
       absolute

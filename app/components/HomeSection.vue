@@ -15,10 +15,9 @@ const titleId = computed(() => `home-${props.id}-title`)
 <template>
   <section
     :id="id"
-    class="home-section relative min-h-[100dvh] flex items-stretch border-t border-stone-200/70 dark:border-stone-800/70"
+    class="home-section relative min-h-[100dvh] flex items-stretch border-t border-stone-200/70 dark:border-stone-800/70 snap-start snap-always"
     data-snap
     :aria-labelledby="titleId"
-    style="scroll-snap-align: start; scroll-snap-stop: always;"
   >
     <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       <slot name="background">
@@ -47,9 +46,6 @@ const titleId = computed(() => `home-${props.id}-title`)
             </slot>
           </div>
           <div class="h-px flex-1 bg-stone-200/70 dark:bg-stone-800/70" />
-          <div class="hidden md:block font-mono text-12px text-stone-400 dark:text-stone-500">
-            Scroll-snap
-          </div>
         </div>
 
         <h2 :id="titleId" class="sr-only">
