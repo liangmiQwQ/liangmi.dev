@@ -1,7 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@nuxt/eslint', '@unocss/nuxt'],
+  modules: [
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@unocss/nuxt',
+    '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
+  ],
   devtools: { enabled: true },
+
+  css: [
+    '~/assets/css/main.css',
+  ],
 
   eslint: {
     config: {
@@ -9,8 +19,9 @@ export default defineNuxtConfig({
     },
   },
 
-  typescript: {
-    typeCheck: true,
+  // Since we use SSG, we use @nuxtjs/color-mode instead of VueUse
+  colorMode: {
+    classSuffix: '',
   },
 
   app: {
@@ -20,13 +31,25 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Liang\'s Growth Timeline' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/avatar.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap' },
       ],
+      htmlAttrs: { lang: 'en' },
     },
   },
 
   nitro: {
     preset: 'static',
+  },
+
+  content: {
+    build: {
+      markdown: {
+        remarkPlugins: { 'remark-breaks': {} },
+      },
+    },
   },
 
   compatibilityDate: '2024-04-03',

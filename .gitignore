@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+tsconfig.base.tsbuildinfo
 
 # Node dependencies
 node_modules
@@ -24,5 +25,12 @@ logs
 !.env.example
 
 # Passages and information
-content
-public
+/content
+/public
+app/assets/me
+
+# Agent Skills
+.agent
+.agents
+skills-lock.json
+skills
