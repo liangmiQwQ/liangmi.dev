@@ -160,7 +160,7 @@ onMounted(async () => {
   meteors.value = generateMeteors(10)
   normalStars.value = generateNormalStars(190)
   glowStars.value = generateGlowStars(18, 190)
-  constellations.value = generateConstellations(1)
+  constellations.value = generateConstellations(2)
   const raw = generateFlashStars(56, 190 + 18)
   flashStars.value = raw.map(s => ({ ...s, visible: true }))
   flashStars.value.forEach((_, i) => schedule(i, rand(0, 20) * 1000, () => scheduleFlash(i)))
