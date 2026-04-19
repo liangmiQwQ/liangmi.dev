@@ -186,8 +186,6 @@ function glowFilter(r: number): string {
     return 'url(#glow-md)'
   return 'url(#glow-sm)'
 }
-
-const fill = computed(() => isDark.value ? 'white' : 'black')
 </script>
 
 <template>
@@ -227,9 +225,10 @@ const fill = computed(() => isDark.value ? 'white' : 'black')
         v-for="star in normalStars"
         :key="star.id"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r" :fill
+        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
         :animate="{ opacity: [star.opacity, star.opacity * 0.07, star.opacity] }"
         :transition="{ duration: star.duration, delay: star.delay, repeat: Infinity, ease: 'easeInOut' }"
+        fill="currentColor"
       />
 
       <!-- Glow stars -->
@@ -237,10 +236,11 @@ const fill = computed(() => isDark.value ? 'white' : 'black')
         v-for="star in glowStars"
         :key="star.id"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r" :fill
+        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
         :filter="glowFilter(star.r)"
         :animate="{ opacity: [star.opacity, star.opacity * 0.07, star.opacity] }"
         :transition="{ duration: star.duration, delay: star.delay, repeat: Infinity, ease: 'easeInOut' }"
+        fill="currentColor"
       />
 
       <!-- Flash stars: fade out → teleport → fade in -->
@@ -248,9 +248,10 @@ const fill = computed(() => isDark.value ? 'white' : 'black')
         v-for="(star, i) in flashStars"
         :key="`flash-${i}`"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r" :fill
+        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
         :animate="{ opacity: star.visible ? star.opacity : 0 }"
         :transition="{ duration: 1.5, ease: 'easeInOut' }"
+        fill="currentColor"
       />
     </svg>
 
