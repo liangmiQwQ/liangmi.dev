@@ -7,12 +7,15 @@ import { Motion } from 'motion-v'
     <!-- Text: appears third -->
     <Motion
       as="div"
-      class="text-4xl md:text-8xl font-serif pt-6 md:pt-12 flex flex-col items-center justify-center absolute h-full w-full op95"
+      class="text-4xl md:text-7xl lg:text-8xl
+      font-serif pt-6 md:pt-9
+      flex flex-col items-center justify-center
+      absolute h-full w-full op95"
       :initial="{ opacity: 0, y: -16 }"
       :animate="{ opacity: 0.95, y: 0 }"
       :transition="{ duration: 1, delay: 2.2, ease: 'easeOut' }"
     >
-      <span>
+      <span opacity-80>
         Do things I love
       </span>
       <span>
