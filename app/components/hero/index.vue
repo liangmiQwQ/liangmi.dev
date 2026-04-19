@@ -3,7 +3,7 @@ import { Motion } from 'motion-v'
 </script>
 
 <template>
-  <div h-screen relative overflow-x-clip overflow-y-visible bg-stone-950 text-stone-50>
+  <div h-screen relative overflow-hidden bg-stone-950 text-stone-50>
     <!-- Text: appears third -->
     <Motion
       as="div"
@@ -21,6 +21,32 @@ import { Motion } from 'motion-v'
       <span>
         Learn about myself
       </span>
+
+      <!-- Name + contacts: one row -->
+      <div flex="~ items-center gap-3 justify-center" mt-8>
+        <span class="text-xl md:text-2xl font-serif text-stone-50/70">Liang</span>
+        <div class="w-px h-5 bg-stone-700" />
+        <a
+          href="https://github.com/liangmiQwQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-9 h-9 rounded-full border-2 border-stone-700 text-stone-400 flex items-center justify-center transition-colors hover:(border-stone-400 text-stone-100)"
+        >
+          <span i-ph-github-logo text-base />
+        </a>
+        <a
+          href="mailto:liang@liangmi.dev"
+          class="w-9 h-9 rounded-full border-2 border-stone-700 text-stone-400 flex items-center justify-center transition-colors hover:(border-stone-400 text-stone-100)"
+        >
+          <span i-ph-envelope text-base />
+        </a>
+        <a
+          href="/bilibili"
+          class="w-9 h-9 rounded-full border-2 border-stone-700 text-stone-400 flex items-center justify-center transition-colors hover:(border-stone-400 text-stone-100)"
+        >
+          <span i-ph-video text-base />
+        </a>
+      </div>
     </Motion>
 
     <div
