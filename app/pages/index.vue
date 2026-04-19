@@ -3,7 +3,10 @@
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center p-8 bg-white dark:bg-black text-black dark:text-white font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-700">
+  <main
+    class="min-h-screen flex flex-col items-center justify-center p-8 bg-white dark:bg-black text-black dark:text-white font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-700"
+    @click="toggleDark"
+  >
     <!-- Main Content Container -->
     <div class="max-w-screen-sm w-full space-y-16 animate-section-in">
       <!-- Logo Section with minimalist styling -->
