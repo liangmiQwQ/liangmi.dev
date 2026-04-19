@@ -69,17 +69,19 @@ const projects = [
             a note
           </div>
           <p class="intro">
-            I'm a student and open-source developer from Hangzhou. I work on tools I find beautiful —
+            I'm a <span font-serif font-italic text-amber>student</span> and <span font-serif font-italic text-amber>open-source developer</span> from Hangzhou. I work on tools I find beautiful —
             parsers, dev tooling, little experiments — and I write down what I can't say out loud.
-            Lately I've been <em>a little confused</em>, but still moving forward.
-            <span class="mono-note">// a bird that yearns for freedom can never be caged.</span>
           </p>
+          <p class="intro">
+            Lately I've been a little confused, but still moving forward.
+          </p>
+          <span class="mono-note">// a bird that yearns for freedom can never be caged.</span>
         </section>
 
         <!-- things I'm building -->
         <section class="mb-24">
           <div class="section-label">
-            things I'm building
+            Things I'm building / take part in
           </div>
           <div class="projects-grid">
             <a
@@ -119,7 +121,7 @@ const projects = [
                 Patient with the details.
               </h4>
               <p class="now-body">
-                Parsers, compilers, dev tooling. I like quiet problems — the ones where the right answer takes a week and then looks obvious.
+                Parsers, compilers, linters. I like infra, cutting edge things, who give me a strong feeling of satisfaction.
               </p>
             </div>
             <div class="now-card">
@@ -131,19 +133,19 @@ const projects = [
                 Still learning how to learn.
               </h4>
               <p class="now-body">
-                In Hangzhou, balancing exams, side projects, and the slow work of figuring out what I actually want.
+                In China, as a public school's student. I try balancing exams, side projects. Then figuring out what I actually want.
               </p>
             </div>
             <div class="now-card">
               <div class="now-chip">
                 <span class="now-dot" style="background:#ffd8d2;box-shadow:0 0 8px #ffd8d2" />
-                player
+                person
               </div>
               <h4 class="now-heading">
                 Off the clock, too.
               </h4>
               <p class="now-body">
-                Bilibili late at night, games with friends on weekends, writing in my tree-hole repo when I can't sleep. Being a person, first.
+                YouTube late at night, Minecraft on weekends, write down thoughts when I can't sleep, or just daze. Being a person, first.
               </p>
             </div>
           </div>
