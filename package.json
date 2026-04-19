@@ -15,6 +15,9 @@
     "metadata": "tsx scripts/run.ts",
     "cdev": "pnpm run metadata && pnpm run dev"
   },
+  "dependencies": {
+    "motion-v": "catalog:website"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
     "@iconify-json/ph": "catalog:website",

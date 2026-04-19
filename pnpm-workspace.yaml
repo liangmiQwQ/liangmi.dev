@@ -34,6 +34,7 @@ catalogs:
   website:
     '@iconify-json/ph': ^1.2.2
     '@vueuse/core': ^14.2.1
+    motion-v: ^2.2.1
     remark-breaks: ^4.0.0
     unocss: ^66.6.8
 
