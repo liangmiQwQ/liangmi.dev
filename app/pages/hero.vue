@@ -4,9 +4,12 @@
 
 <template>
   <main w-full h-screen relative>
-    <div text-2xl flex="~ col items-center justify-center" absolute h-full w-full>
+    <div
+      text-7xl font-serif
+      flex="~ col items-center justify-center" absolute h-full w-full
+    >
       <span>
-        Do Things I love
+        Do things I love
       </span>
       <span>
         Learn about myself

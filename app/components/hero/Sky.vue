@@ -142,7 +142,7 @@ async function runMeteorLoop(el: HTMLElement, m: Meteor): Promise<void> {
     try {
       await animate(el, {
         transform: [tf(-220), tf(480)],
-        opacity: [1, 0],
+        opacity: [0, 1, 0],
       }, { duration: m.cycle * 0.13, ease: 'linear' }).finished
     }
     catch {

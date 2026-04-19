@@ -23,12 +23,18 @@
     </defs>
 
     <!-- The core star shape -->
-    <!-- <path
+    <path
       transform="translate(50, 50) rotate(30) translate(-50, -50)"
       fill="currentColor"
       filter="url(#glow-lg)"
       d="M52.5 45.66 l6.14 -.69 L55 50 l3.68 4.97 l-6.18 -.65 L50.03 60 L47.5 54.34 l-6.14 .69 L45 50 L41.32 45.03 l6.18 .65 L49.97 40"
-    /> -->
+    />
+    <path
+      transform="translate(50, 50) scale(0.78) translate(-50, -50)"
+      fill="currentColor"
+      filter="url(#glow-lg)"
+      d="M52.5 45.66 l6.14 -.69 L55 50 l3.68 4.97 l-6.18 -.65 L50.03 60 L47.5 54.34 l-6.14 .69 L45 50 L41.32 45.03 l6.18 .65 L49.97 40"
+    />
     <circle cx="50" cy="50" r="3" fill="currentColor" filter="url(#glow-lg)" />
     <circle
       cx="50" cy="50" r="4" fill="currentColor"
@@ -56,7 +62,7 @@
     <path
       v-for="i in 3"
       :key="i"
-      :transform="`translate(50, 50) scale(${i / 2}) rotate(${i * 30}) translate(-50, -50)`"
+      :transform="`translate(50, 50) scale(${Math.pow(i, 1 / 1.5) * 0.8}) rotate(${i * 30}) translate(-50, -50)`"
       d="M 50 25
            L 52 48
            L 75 50
