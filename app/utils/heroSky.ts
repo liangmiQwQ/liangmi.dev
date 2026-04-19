@@ -31,7 +31,7 @@ export interface Star {
   y: number
   r: number
   opacity: number
-  color: string
+  color: ComputedRef
   duration: number
   delay: number
   kind: StarKind
@@ -56,20 +56,16 @@ function randInt(min: number, max: number): number {
   return Math.floor(rand(min, max + 1))
 }
 
-const STAR_COLORS: string[] = ['#ffffff', '#dde8ff', '#e8eeff', '#fff8e0', '#d8eaff']
-
-function pickColor(): string {
-  return STAR_COLORS[randInt(0, STAR_COLORS.length - 1)] ?? '#ffffff'
-}
+const color = computed(() => isDark.value ? 'white' : 'black')
 
 export function generateNormalStars(count: number): Star[] {
   return Array.from({ length: count }, (_, id) => ({
     id,
     x: rand(0, 100),
     y: rand(0, 100),
-    r: rand(0.4, 1.8),
+    r: rand(0.6, 2.2),
     opacity: rand(0.2, 0.9),
-    color: pickColor(),
+    color,
     duration: rand(10, 30),
     delay: rand(0, 15),
     kind: 'normal' as const,
@@ -81,9 +77,9 @@ export function generateFlashStars(count: number, idOffset = 0): Star[] {
     id: idOffset + i,
     x: rand(0, 100),
     y: rand(0, 100),
-    r: rand(0.4, 1.4),
+    r: rand(0.6, 1.8),
     opacity: rand(0.4, 1),
-    color: pickColor(),
+    color,
     duration: rand(15, 40),
     delay: rand(0, 10),
     kind: 'flash' as const,
@@ -95,9 +91,9 @@ export function generateGlowStars(count: number, idOffset = 0): Star[] {
     id: idOffset + i,
     x: rand(0, 100),
     y: rand(0, 100),
-    r: rand(1.5, 3.5),
+    r: rand(2, 4),
     opacity: rand(0.6, 1),
-    color: pickColor(),
+    color,
     duration: rand(12, 28),
     delay: rand(0, 12),
     kind: 'glow' as const,

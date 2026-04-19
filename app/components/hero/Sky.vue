@@ -85,7 +85,7 @@ function glowFilter(r: number): string {
 </script>
 
 <template>
-  <div class="absolute inset-0 overflow-hidden bg-[#06090f]">
+  <div class="absolute inset-0 overflow-hidden">
     <svg
       class="w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
