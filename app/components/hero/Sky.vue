@@ -22,16 +22,28 @@ const glowStars = shallowRef<Star[]>([])
 const constellations = shallowRef<Constellation[]>([])
 const flashStars = ref<FlashStar[]>([])
 
-const timers: ReturnType<typeof setTimeout>[] = []
+const flashTimers = new Map<number, ReturnType<typeof setTimeout>>()
+
+function schedule(index: number, delay: number, task: () => void): void {
+  const existing = flashTimers.get(index)
+  if (existing)
+    clearTimeout(existing)
+
+  const timer = setTimeout(() => {
+    flashTimers.delete(index)
+    task()
+  }, delay)
+  flashTimers.set(index, timer)
+}
 
 function scheduleFlash(index: number): void {
-  const t1 = setTimeout(() => {
+  schedule(index, rand(15, 40) * 1000, () => {
     const star = flashStars.value[index]
     if (!star)
       return
     star.visible = false
 
-    const t2 = setTimeout(() => {
+    schedule(index, FLASH_TRANSITION_MS, () => {
       const s = flashStars.value[index]
       if (!s)
         return
@@ -39,10 +51,8 @@ function scheduleFlash(index: number): void {
       s.y = rand(0, 100)
       s.visible = true
       scheduleFlash(index)
-    }, FLASH_TRANSITION_MS)
-    timers.push(t2)
-  }, rand(15, 40) * 1000)
-  timers.push(t1)
+    })
+  })
 }
 
 onMounted(() => {
@@ -56,14 +66,13 @@ onMounted(() => {
 
   flashStars.value.forEach((_, i) => {
     // Stagger initial cycles so they don't all flash at once
-    const t = setTimeout(scheduleFlash, rand(0, 20) * 1000, i)
-    timers.push(t)
+    schedule(i, rand(0, 20) * 1000, () => scheduleFlash(i))
   })
 })
 
 onUnmounted(() => {
-  timers.forEach(clearTimeout)
-  timers.length = 0
+  flashTimers.forEach(clearTimeout)
+  flashTimers.clear()
 })
 
 function glowFilter(r: number): string {
