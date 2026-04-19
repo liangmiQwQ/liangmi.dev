@@ -3,7 +3,7 @@ import { Motion } from 'motion-v'
 </script>
 
 <template>
-  <main w-full h-screen relative overflow-x-hidden>
+  <main w-full h-screen relative overflow-hidden>
     <!-- Text: appears third -->
     <Motion
       as="div"
