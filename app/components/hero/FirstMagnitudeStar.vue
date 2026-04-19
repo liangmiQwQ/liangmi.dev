@@ -4,7 +4,7 @@
 
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="10 10 80 80"
+    xmlns="http://www.w3.org/2000/svg" width="350" height="350" viewBox="-5 -5 110 110"
   >
     <defs>
       <filter id="glow-lg" x="-300%" y="-300%" width="700%" height="700%">
