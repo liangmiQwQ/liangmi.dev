@@ -3,9 +3,11 @@
 </script>
 
 <template>
-  <main w-full h-screen relative>
+  <main w-full h-screen relative overflow-x-hidden>
     <div
-      text-7xl font-serif
+      text-4xl md:text-8xl
+      font-serif pt-6 md:pt-12
+      op95
       flex="~ col items-center justify-center" absolute h-full w-full
     >
       <span>
@@ -18,10 +20,13 @@
 
     <div
       flex="~ items-center justify-between col"
-      relative w-full h-screen overflow-hidden
+      relative w-full h-screen
     >
-      <HeroSky op80 />
-      <HeroFirstMagnitudeStar absolute -mt-4 />
+      <div overflow-hidden>
+        <HeroSky op80 />
+      </div>
+      <HeroFirstMagnitudeStar absolute md:-mt-4 />
+      <HeroLand />
     </div>
   </main>
 </template>
