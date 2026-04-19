@@ -3,7 +3,7 @@ import { Motion } from 'motion-v'
 </script>
 
 <template>
-  <main w-full h-screen relative overflow-hidden>
+  <main w-full h-screen relative overflow-hidden bg-stone-950 text-stone-50>
     <!-- Text: appears third -->
     <Motion
       as="div"
@@ -43,7 +43,7 @@ import { Motion } from 'motion-v'
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
       >
-        <HeroFirstMagnitudeStar />
+        <HeroFirstMagnitudeStar @click="toggleDark" />
       </Motion>
 
       <!-- Land: appears second -->

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { animate, Motion } from 'motion-v'
-import { computed, nextTick, onMounted, onUnmounted, ref, shallowRef } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
 interface Meteor { id: number, top: number, left: number, length: number, angle: number, cycle: number, delay: number }
 interface Star { id: number, x: number, y: number, r: number, opacity: number, duration: number, delay: number, kind: 'normal' | 'flash' | 'glow' }
@@ -125,7 +125,7 @@ function scheduleFlash(index: number): void {
 const meteorEls: Array<HTMLElement | null> = []
 const alive = ref(true)
 
-const meteorRgb = computed(() => isDark.value ? '255,255,255' : '28,25,23')
+const meteorRgb = '255,255,255'
 
 function meteorGradient(rgb: string): string {
   return `linear-gradient(to right, transparent, rgba(${rgb},0.3) 50%, rgba(${rgb},0.95) 88%, rgba(${rgb},0.4))`
