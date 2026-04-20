@@ -21,6 +21,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
     "@iconify-json/ph": "catalog:website",
+    "@iconify-json/streamline-cyber": "^1.2.2",
     "@nuxt/content": "catalog:nuxt",
     "@nuxt/eslint": "catalog:lint",
     "@nuxt/fonts": "catalog:nuxt",

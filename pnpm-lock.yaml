@@ -97,6 +97,9 @@ importers:
       '@iconify-json/ph':
         specifier: catalog:website
         version: 1.2.2
+      '@iconify-json/streamline-cyber':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@nuxt/content':
         specifier: catalog:nuxt
         version: 3.13.0(better-sqlite3@12.9.0)(magicast@0.5.2)
@@ -659,6 +662,9 @@ packages:
 
   '@iconify-json/ph@1.2.2':
     resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
+
+  '@iconify-json/streamline-cyber@1.2.2':
+    resolution: {integrity: sha512-tL+WUw96q5mUsfx+vP+UQOWCCNd45fTWju7niWkwsS2W8obzeSRyE3UvNtahNA4S4mJ1uIE68/7kxbZHTGKPYA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -6722,6 +6728,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@iconify-json/ph@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/streamline-cyber@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 

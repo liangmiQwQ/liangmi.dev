@@ -10,4 +10,5 @@ export interface IInfo {
     bilibili: string
     email: string
   }
+  projects: string[]
 }
