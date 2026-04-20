@@ -43,27 +43,27 @@ const forks = computed(() => repoData.value ? formatCount(repoData.value.forks_c
     rel="noopener noreferrer"
     flex="~ col"
     py-7 px-6 min-h="[200px]"
-    bg="stone-50 dark:stone-950 hover:stone-100 dark:hover:stone-900"
+    bg="taupe-50 dark:taupe-950 hover:taupe-100 dark:hover:taupe-900"
     no-underline transition-colors duration-200
     text-inherit group
   >
     <div flex justify-between items-baseline mb-4>
-      <span font-label text="[10.5px] stone-400" uppercase tracking="[0.08em]">{{ num }}</span>
-      <span font-label text="[10.5px] stone-400" uppercase tracking="[0.08em]" op60>{{ lang }}</span>
+      <span font-label text="[10.5px] taupe-400" uppercase tracking="[0.08em]">{{ num }}</span>
+      <span font-label text="[10.5px] taupe-400" uppercase tracking="[0.08em]" op60>{{ lang }}</span>
     </div>
     <h3 font-display font-bold text-lg m-0 mb-2 tracking="[-0.01em]" flex items-center gap-2>
       {{ name }}
       <span
         i-ph-arrow-up-right
-        text="[12px] stone-400 dark:stone-600"
+        text="[12px] taupe-400 dark:taupe-600"
         op0 group-hover:op100 transition-opacity duration-200
         translate-y-px
       />
     </h3>
-    <p text="[13px] stone-500 dark:stone-400" m-0 mb-auto leading-relaxed>
+    <p text="[13px] taupe-500 dark:taupe-400" m-0 mb-auto leading-relaxed>
       {{ desc }}
     </p>
-    <div flex items-center gap-4 mt-5 font-label text="[11px] stone-400" op70>
+    <div flex items-center gap-4 mt-5 font-label text="[11px] taupe-400" op70>
       <span flex items-center gap-1.5>
         <span i-ph-star />
         {{ stars }}

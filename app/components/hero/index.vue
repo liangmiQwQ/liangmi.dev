@@ -8,7 +8,7 @@ import { Motion } from 'motion-v'
     <Motion
       as="div"
       class="text-4xl md:text-7xl lg:text-8xl
-      font-serif pt-6 md:pt-9
+      font-serif pt-6 md:pt-9 lg:pt-20
       flex flex-col items-center justify-center
       absolute h-full w-full op95 z-10"
       :initial="{ opacity: 0, y: -16 }"
@@ -47,12 +47,12 @@ import { Motion } from 'motion-v'
       <!-- Star: appears first -->
       <Motion
         as="div"
-        class="absolute md:-mt-4"
+        class="absolute"
         :initial="{ opacity: 0, scale: 0.15 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
       >
-        <HeroFirstMagnitudeStar @click="toggleDark" />
+        <HeroFirstMagnitudeStar />
       </Motion>
 
       <!-- Land: appears second -->

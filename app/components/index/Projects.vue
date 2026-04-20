@@ -13,15 +13,15 @@ const projects = computed(() =>
   <section mb-28>
     <div
       flex items-center gap-3 mb-9
-      font-label text="[10.5px] stone-500" tracking="[0.16em]" uppercase
+      font-label text="[10.5px] taupe-400" tracking="[0.16em]" uppercase
     >
-      <span flex-shrink-0 w-7 h-px bg-current op40 />
+      <span flex-shrink-0 w-7 h-px bg-current op30 />
       Things I'm building / take part in
     </div>
     <div
       grid="~ cols-1 sm:cols-2 lg:cols-3"
-      gap-px bg="stone-200 dark:stone-800"
-      border="~ stone-200 dark:stone-800"
+      gap-px bg="taupe-200 dark:taupe-800"
+      border="~ taupe-200 dark:taupe-800"
     >
       <IndexProjectCard
         v-for="project in projects"
