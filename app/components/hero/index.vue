@@ -23,7 +23,7 @@ import { Motion } from 'motion-v'
       </span>
 
       <!-- Name + contacts: one row -->
-      <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8>
+      <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8 hover:opacity100 duration-500>
         <span class="text-xl md:text-2xl font-serif">Liang</span>
         <Contact />
       </div>
