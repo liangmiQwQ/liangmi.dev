@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-import projectsConfig from '~/assets/me/projects.json'
+const info = useIInfo()
+
+const projects = computed(() =>
+  info.projects.map((p, i) => ({
+    num: String(i + 1).padStart(2, '0'),
+    repo: p.includes('/') ? p : `${info.contact.github}/${p}`,
+  })),
+)
 </script>
 
 <template>
@@ -17,8 +24,8 @@ import projectsConfig from '~/assets/me/projects.json'
       border="~ stone-200 dark:stone-800"
     >
       <IndexProjectCard
-        v-for="project in projectsConfig"
-        :key="project.num"
+        v-for="project in projects"
+        :key="project.repo"
         v-bind="project"
       />
     </div>

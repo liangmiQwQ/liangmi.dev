@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const props = defineProps<{
   num: string
-  lang: string
-  name: string
-  desc: string
-  url: string
   repo: string
 }>()
 
 interface GithubRepo {
+  name: string
+  description: string | null
+  language: string | null
   stargazers_count: number
   forks_count: number
+  html_url: string
 }
 
 function formatCount(n: number): string {
@@ -19,7 +19,7 @@ function formatCount(n: number): string {
   return String(n)
 }
 
-const { data: repo } = await useAsyncData(`repo-${props.repo}`, async () => {
+const { data: repoData } = await useAsyncData(`repo-${props.repo}`, async () => {
   try {
     return await $fetch<GithubRepo>(`https://api.github.com/repos/${props.repo}`)
   }
@@ -28,8 +28,12 @@ const { data: repo } = await useAsyncData(`repo-${props.repo}`, async () => {
   }
 })
 
-const stars = computed(() => repo.value ? formatCount(repo.value.stargazers_count) : '—')
-const forks = computed(() => repo.value ? formatCount(repo.value.forks_count) : '—')
+const name = computed(() => repoData.value?.name ?? props.repo.split('/').pop() ?? props.repo)
+const desc = computed(() => repoData.value?.description ?? '')
+const lang = computed(() => repoData.value?.language ?? '')
+const url = computed(() => repoData.value?.html_url ?? `https://github.com/${props.repo}`)
+const stars = computed(() => repoData.value ? formatCount(repoData.value.stargazers_count) : '—')
+const forks = computed(() => repoData.value ? formatCount(repoData.value.forks_count) : '—')
 </script>
 
 <template>
