@@ -9,6 +9,7 @@ tsconfig.base.tsbuildinfo
 
 # Void dev/build outputs
 .void
+.wrangler
 
 # Node dependencies
 node_modules
