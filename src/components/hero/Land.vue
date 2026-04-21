@@ -1,21 +1,9 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
   <div
     w-200 h-200 rounded-full absolute
     class="top-13/20 colossal-backlit-sphere"
     flex="~ items-center justify-center"
-  >
-    <!-- Shadow Area -->
-    <!-- <div
-      w-600 h-600 rounded-full absolute
-      top-42
-      opacity-90
-      bg-white dark:bg-black
-    /> -->
-  </div>
+  />
 </template>
 
 <style>
@@ -37,7 +25,6 @@
   height: 1000px;
   border-radius: 50%;
   opacity: 1;
-
   background: radial-gradient(
     circle at 50% 5%,
     rgba(255, 255, 255, 0.4) 0%,
@@ -56,24 +43,11 @@
   width: 800px;
   height: 800px;
   border-radius: 50%;
-
   box-shadow:
     inset 0 35px 25px -10px rgba(255, 255, 255, 1),
     inset 0 60px 80px -20px rgba(255, 255, 255, 0.5);
-
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 45%,
-    transparent 65%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 45%,
-    transparent 65%
-  );
-
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 65%);
+  mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 65%);
   z-index: 1;
 }
 </style>

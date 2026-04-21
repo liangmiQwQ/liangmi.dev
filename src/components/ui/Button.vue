@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, resolveComponent } from 'vue'
+import { Link } from '@void/vue'
+import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
   to?: string
@@ -14,7 +15,7 @@ const props = withDefaults(defineProps<{
 
 const tag = computed(() => {
   if (props.to)
-    return resolveComponent('NuxtLink')
+    return Link
   if (props.href)
     return 'a'
   return 'button'
@@ -22,7 +23,7 @@ const tag = computed(() => {
 
 const attrs = computed(() => {
   if (props.to)
-    return { to: props.to }
+    return { href: props.to }
   if (props.href)
     return { href: props.href, target: props.target }
   return {}

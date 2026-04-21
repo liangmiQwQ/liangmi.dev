@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import { Motion } from 'motion-v'
+import Contact from '~/components/Contact.vue'
+import HeroFirstMagnitudeStar from '~/components/hero/FirstMagnitudeStar.vue'
+import HeroLand from '~/components/hero/Land.vue'
+import HeroSky from '~/components/hero/Sky.vue'
 </script>
 
 <template>
   <div h-screen relative overflow-hidden bg-stone-950 text-stone-50>
-    <!-- Text: appears third -->
     <Motion
       as="div"
       class="text-4xl md:text-7xl lg:text-8xl
@@ -22,7 +25,6 @@ import { Motion } from 'motion-v'
         Learn about myself
       </span>
 
-      <!-- Name + contacts: one row -->
       <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8 hover:opacity100 duration-500>
         <span class="text-xl md:text-2xl font-serif">Liang</span>
         <Contact />
@@ -33,7 +35,6 @@ import { Motion } from 'motion-v'
       flex="~ items-center justify-between col"
       relative w-full h-screen
     >
-      <!-- Sky: appears last -->
       <Motion
         as="div"
         class="overflow-hidden"
@@ -44,7 +45,6 @@ import { Motion } from 'motion-v'
         <HeroSky op80 />
       </Motion>
 
-      <!-- Star: appears first -->
       <Motion
         as="div"
         class="absolute"
@@ -55,7 +55,6 @@ import { Motion } from 'motion-v'
         <HeroFirstMagnitudeStar />
       </Motion>
 
-      <!-- Land: appears second -->
       <Motion
         as="div"
         :initial="{ opacity: 0, y: 100 }"
