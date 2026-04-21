@@ -36,10 +36,9 @@ html.dark {
   z-index: 1;
 }
 
-/* For Scrollbar */
 ::-webkit-scrollbar {
   width: 11px;
-} 
+}
 
 ::-webkit-scrollbar:horizontal {
   height: 11px;
@@ -51,7 +50,7 @@ html.dark {
 
 ::-webkit-scrollbar-thumb {
   background-color: #8884;
-  border-radius: 100px; 
+  border-radius: 100px;
   border: 2px solid transparent;
   background-clip: content-box;
 }

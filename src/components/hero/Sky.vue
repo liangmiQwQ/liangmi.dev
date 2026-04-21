@@ -121,10 +121,8 @@ function scheduleFlash(index: number): void {
   })
 }
 
-// Meteor animation
 const meteorEls: Array<HTMLElement | null> = []
 const alive = ref(true)
-
 const meteorRgb = '255,255,255'
 
 function meteorGradient(rgb: string): string {
@@ -209,7 +207,6 @@ function glowFilter(r: number): string {
         </filter>
       </defs>
 
-      <!-- Constellation lines -->
       <g v-for="(constellation, ci) in constellations" :key="`c-${ci}`">
         <line
           v-for="(line, li) in constellation.lines"
@@ -220,7 +217,6 @@ function glowFilter(r: number): string {
         />
       </g>
 
-      <!-- Normal twinkling stars -->
       <Motion
         v-for="star in normalStars"
         :key="star.id"
@@ -231,7 +227,6 @@ function glowFilter(r: number): string {
         fill="currentColor"
       />
 
-      <!-- Glow stars -->
       <Motion
         v-for="star in glowStars"
         :key="star.id"
@@ -243,7 +238,6 @@ function glowFilter(r: number): string {
         fill="currentColor"
       />
 
-      <!-- Flash stars: fade out → teleport → fade in -->
       <Motion
         v-for="(star, i) in flashStars"
         :key="`flash-${i}`"

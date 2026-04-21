@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Button from '~/components/ui/Button.vue'
+import { useIInfo } from '~/composables/info'
+
 interface SocialLink {
   key: string
   icon: string
@@ -17,7 +20,8 @@ const map: Record<string, { icon: string, url: string }> = {
   bsky: { icon: 'i-ph-butterfly-duotone', url: `https://bsky.app/profile/${contact.bsky}` },
   bilibili: { icon: 'i-ph-video-duotone', url: `https://space.bilibili.com/${contact.bilibili}` },
 }
-const socialLinks = Object.entries(contact).map(([key, _]) => {
+
+const socialLinks = Object.entries(contact).map(([key]) => {
   const mapping = map[key]
   if (!mapping)
     return null
@@ -32,7 +36,7 @@ const socialLinks = Object.entries(contact).map(([key, _]) => {
 
 <template>
   <div class="flex flex-wrap items-center justify-center gap-2 z-10">
-    <UiButton
+    <Button
       v-for="link in socialLinks"
       :key="link.key"
       :href="link.url"
@@ -42,6 +46,6 @@ const socialLinks = Object.entries(contact).map(([key, _]) => {
       :aria-label="link.label"
     >
       <div :class="link.icon" class="text-2xl" />
-    </UiButton>
+    </Button>
   </div>
 </template>

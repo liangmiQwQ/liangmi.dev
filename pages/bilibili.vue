@@ -1,4 +1,6 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
 onMounted(() => {
   window.location.href = 'https://space.bilibili.com/1964165864'
 })
@@ -7,7 +9,3 @@ onMounted(() => {
 <template>
   <div />
 </template>
-
-<style>
-
-</style>
