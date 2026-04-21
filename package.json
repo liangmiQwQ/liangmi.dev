@@ -35,7 +35,6 @@
     "typescript": "catalog:types",
     "unocss": "catalog:website",
     "vite": "catalog:void",
-    "vite-plus": "catalog:void",
     "void": "catalog:void",
     "vue": "catalog:void",
     "vue-tsc": "catalog:types"

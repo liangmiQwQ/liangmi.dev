@@ -26,11 +26,10 @@ catalogs:
   void:
     '@void/md': 'npm:@void-sdk/md@0.5.0'
     '@void/vue': 'npm:@void-sdk/vue@0.4.0'
-    vite: 'npm:@voidzero-dev/vite-plus-core@^0.1.18'
-    vite-plus: ^0.1.18
-
+    vite: ^8.0.9
     void: 'npm:@void-sdk/void@0.5.0'
     vue: ^3.5.32
+
   website:
     '@iconify-json/ph': ^1.2.2
     '@vueuse/core': ^14.2.1
