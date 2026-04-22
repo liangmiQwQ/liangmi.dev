@@ -1,0 +1,14 @@
+{
+  "name": "Liang Mi",
+  "bio": "A bird that yearns for freedom can never be caged.",
+  "website": "https://liangmi.dev/",
+  "contact": {
+    "github": "liangmiQwQ",
+    "twitter": "liangmiQwQ",
+    "email": "hi@liangmi.dev",
+    "bsky": "liangmi.dev",
+    "youtube": "liangmiQwQ",
+    "bilibili": "1964165864"
+  },
+  "projects": ["mo", "simple-introduce", "vue-oxc-toolkit", "voidzero-dev/vite-plus", "oxc-project/oxc", "vitejs/devtools"]
+}
