@@ -4,8 +4,8 @@
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "build": "pnpm run metadata && vp build",
-    "dev": "vp dev",
+    "build": "pnpm run metadata && vite build",
+    "dev": "vite",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
     "deploy": "void deploy",
