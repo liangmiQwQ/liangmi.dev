@@ -6,7 +6,7 @@
 
 Run `pnpm run lint:fix` and `pnpm run typecheck` after modifying code. And fix the errors if possible before telling me you've finished the task.
 
-This project uses **Void** (`void@npm:@void-sdk/void`) as the framework, deployed to Cloudflare Workers via `void deploy`. Dev: `pnpm dev` (`void dev`). Build: `pnpm build` (`void build`).
+This project uses **Void** (`void@npm:@void-sdk/void`) as the framework, deployed to Cloudflare Workers via `void deploy`. Dev: `pnpm dev` (`void dev`). Build: `pnpm build` (`void build`), load Void skills please.
 
 Pages are in `pages/`, server data loaders in `.server.ts` sibling files. Middleware in `middleware/`. Shared code in `src/`.
 
