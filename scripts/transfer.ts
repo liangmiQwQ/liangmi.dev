@@ -15,7 +15,7 @@ async function main() {
   }
   mkdirSync(publicDir, { recursive: true })
 
-  const meDir = join(__dirname, '..', 'app/assets/me')
+  const meDir = join(__dirname, '..', 'src/assets/me')
   if (existsSync(meDir)) {
     console.log(`Generating favicon.ico from avatar.png in ${meDir}`)
     const avatarPath = join(meDir, 'avatar.png')

@@ -3,6 +3,9 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - chokidar
   - semver
+catalog:
+  '@iconify-json/streamline-cyber': ^1.2.2
+  marked: ^15.0.12
 catalogs:
   cli:
     dotenv: ^17.4.2
@@ -11,19 +14,8 @@ catalogs:
 
   lint:
     '@antfu/eslint-config': ^8.2.0
-    '@nuxt/eslint': ^1.15.2
     '@typescript-eslint/parser': ^8.58.2
     eslint: ^10.2.0
-
-  nuxt:
-    '@nuxt/content': ^3.13.0
-    '@nuxt/fonts': 0.14.0
-    '@nuxtjs/color-mode': ^4.0.0
-    '@unocss/nuxt': ^66.6.8
-    '@vueuse/nuxt': ^14.2.1
-    better-sqlite3: ^12.9.0
-    nuxt: ^4.4.2
-    vue-router: ^5.0.4
 
   types:
     '@types/node': ^25.6.0
@@ -31,11 +23,17 @@ catalogs:
     typescript: ^6.0.2
     vue-tsc: ^3.2.6
 
+  void:
+    '@void/md': 'npm:@void-sdk/md@0.5.0'
+    '@void/vue': 'npm:@void-sdk/vue@0.4.0'
+    vite: ^8.0.9
+    void: 'npm:@void-sdk/void@0.5.0'
+    vue: ^3.5.32
+
   website:
     '@iconify-json/ph': ^1.2.2
     '@vueuse/core': ^14.2.1
     motion-v: ^2.2.1
-    remark-breaks: ^4.0.0
     unocss: ^66.6.8
 
 onlyBuiltDependencies:
@@ -45,3 +43,9 @@ onlyBuiltDependencies:
   - eslint
   - sqlite3
   - unrs-resolver
+  - workerd
+
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest

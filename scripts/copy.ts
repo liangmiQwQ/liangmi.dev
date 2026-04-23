@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-const meDir = join(__dirname, '..', 'app/assets/me')
+const meDir = join(__dirname, '..', 'src/assets/me')
 const infoDir = join(__dirname, '..', 'content/info')
 
 if (!existsSync(meDir)) {

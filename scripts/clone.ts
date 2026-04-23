@@ -18,7 +18,7 @@ if (!GITHUB_TOKEN || !INFO_REPO || !ARTICLE_REPO) {
 }
 
 const contentDir = join(__dirname, '..', 'content')
-const meDir = join(__dirname, '..', 'app/assets/me')
+const meDir = join(__dirname, '..', 'src/assets/me')
 
 if (existsSync(contentDir)) {
   console.log(`Cleaning content directory: ${contentDir}`)
