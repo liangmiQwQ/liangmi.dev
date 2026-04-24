@@ -1,7 +1,7 @@
 <template>
   <div
     w-200 h-200 rounded-full bg-stone-950
-    class="colossal-backlit-sphere"
+    class="top-13/20 colossal-backlit-sphere"
   />
 </template>
 
