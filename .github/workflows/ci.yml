@@ -14,12 +14,6 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - name: Debug auth token
-        run: |
-          echo "Token length: ${#NODE_AUTH_TOKEN}"
-          curl -s -o /dev/null -w "GitHub API status: %{http_code}\n" -H "Authorization: Bearer $NODE_AUTH_TOKEN" https://api.github.com/user
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
