@@ -1,30 +1,21 @@
 <template>
   <div
-    w-200 h-200 rounded-full absolute
-    class="top-13/20 colossal-backlit-sphere"
-    flex="~ items-center justify-center"
+    w-200 h-200 rounded-full bg-stone-950
+    class="colossal-backlit-sphere"
   />
 </template>
 
-<style>
+<style scoped>
 .colossal-backlit-sphere {
   position: relative;
-  width: 800px;
-  height: 800px;
-  border-radius: 50%;
-  background: #000;
   transform: translateY(100px);
 }
 
 .colossal-backlit-sphere::before {
   content: '';
   position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 1000px;
-  height: 1000px;
+  inset: -100px;
   border-radius: 50%;
-  opacity: 1;
   background: radial-gradient(
     circle at 50% 5%,
     rgba(255, 255, 255, 0.4) 0%,
@@ -38,10 +29,7 @@
 .colossal-backlit-sphere::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 800px;
-  height: 800px;
+  inset: 0;
   border-radius: 50%;
   box-shadow:
     inset 0 35px 25px -10px rgba(255, 255, 255, 1),
