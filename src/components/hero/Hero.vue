@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { Motion } from 'motion-v'
-import Contact from '~/components/Contact.vue'
-import HeroFirstMagnitudeStar from '~/components/hero/FirstMagnitudeStar.vue'
-import HeroLand from '~/components/hero/Land.vue'
+import Contact from '~/components/hero/Contact.vue'
+import HeroNav from '~/components/hero/Nav.vue'
+import HeroPlanet from '~/components/hero/Planet.vue'
 import HeroSky from '~/components/hero/Sky.vue'
+import HeroStar from '~/components/hero/Star.vue'
 </script>
 
 <template>
@@ -29,6 +30,8 @@ import HeroSky from '~/components/hero/Sky.vue'
         <span class="text-xl md:text-2xl font-serif">Liang</span>
         <Contact />
       </div>
+
+      <HeroNav mt-5 />
     </Motion>
 
     <div
@@ -52,7 +55,7 @@ import HeroSky from '~/components/hero/Sky.vue'
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
       >
-        <HeroFirstMagnitudeStar />
+        <HeroStar />
       </Motion>
 
       <Motion
@@ -61,7 +64,7 @@ import HeroSky from '~/components/hero/Sky.vue'
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1.2, delay: 1.2, ease: 'easeOut' }"
       >
-        <HeroLand />
+        <HeroPlanet />
       </Motion>
     </div>
   </div>

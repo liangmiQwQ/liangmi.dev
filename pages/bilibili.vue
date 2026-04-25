@@ -6,6 +6,10 @@ onMounted(() => {
 })
 </script>
 
+<script lang="ts">
+export const layout = false
+</script>
+
 <template>
   <div />
 </template>

@@ -2,6 +2,8 @@
 import { animate, Motion } from 'motion-v'
 import { nextTick, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
+const { subtle = false } = defineProps<{ subtle?: boolean }>()
+
 interface Meteor { id: number, top: number, left: number, length: number, angle: number, cycle: number, delay: number }
 interface Star { id: number, x: number, y: number, r: number, opacity: number, duration: number, delay: number, kind: 'normal' | 'flash' | 'glow' }
 interface ConstellationLine { x1: number, y1: number, x2: number, y2: number }
@@ -155,11 +157,11 @@ async function runMeteorLoop(el: HTMLElement, m: Meteor): Promise<void> {
 }
 
 onMounted(async () => {
-  meteors.value = generateMeteors(10)
-  normalStars.value = generateNormalStars(190)
-  glowStars.value = generateGlowStars(18, 190)
-  constellations.value = generateConstellations(2)
-  const raw = generateFlashStars(56, 190 + 18)
+  meteors.value = generateMeteors(subtle ? 3 : 10)
+  normalStars.value = generateNormalStars(subtle ? 80 : 190)
+  glowStars.value = generateGlowStars(subtle ? 6 : 18, subtle ? 80 : 190)
+  constellations.value = subtle ? [] : generateConstellations(2)
+  const raw = generateFlashStars(subtle ? 18 : 56, (subtle ? 80 : 190) + (subtle ? 6 : 18))
   flashStars.value = raw.map(s => ({ ...s, visible: true }))
   flashStars.value.forEach((_, i) => schedule(i, rand(0, 20) * 1000, () => scheduleFlash(i)))
 
