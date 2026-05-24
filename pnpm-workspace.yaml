@@ -24,11 +24,11 @@ catalogs:
     vue-tsc: ^3.2.6
 
   void:
-    '@void/md': 'npm:@void-sdk/md@0.5.0'
-    '@void/vue': 'npm:@void-sdk/vue@0.4.0'
-    vite: ^8.0.9
-    void: 'npm:@void-sdk/void@0.5.0'
-    vue: ^3.5.32
+    '@void/md': ^0.8.11
+    '@void/vue': ^0.8.11
+    vite: ^8.0.14
+    void: ^0.8.11
+    vue: ^3.5.34
 
   website:
     '@iconify-json/ph': ^1.2.2

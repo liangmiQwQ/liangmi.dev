@@ -13,8 +13,5 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          registry-url: https://npm.pkg.github.com
-      - run: pnpm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
