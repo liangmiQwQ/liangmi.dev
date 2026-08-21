@@ -1,3 +1,8 @@
+shellEmulator: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - chokidar
+  - semver
 catalog:
   '@iconify-json/streamline-cyber': ^1.2.2
   marked: ^18.0.10
@@ -44,8 +49,3 @@ peerDependencyRules:
   allowAny:
     - vite
     - vitest
-shellEmulator: true
-trustPolicy: no-downgrade
-trustPolicyExclude:
-  - chokidar
-  - semver

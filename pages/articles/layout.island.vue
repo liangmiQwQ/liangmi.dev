@@ -3,25 +3,37 @@ import Footer from '~/components/Footer.vue'
 </script>
 
 <template>
-  <div min-h-screen bg="taupe-50 dark:taupe-950" text="taupe-950 dark:taupe-50">
-    <div max-w-prose mx-auto px="6 md:12" py-16>
-      <nav mb-10>
-        <a
-          href="/"
-          flex="~ items-center gap-1.5"
-          text-sm op50
-          class="hover:op100 transition-opacity w-fit"
-        >
-          <span i-ph-arrow-left text-base />
-          Home
-        </a>
-      </nav>
+  <div
+    class="article-layout"
+    min-h-screen flex="~ col"
+    bg="taupe-50 dark:taupe-950"
+    text="taupe-950 dark:taupe-50"
+  >
+    <main class="article-main">
       <slot />
-    </div>
-    <Footer />
+      <Footer />
+    </main>
   </div>
 </template>
 
 <style>
 @import "@void/md/theme-content.css";
+
+.article-layout + a[aria-label="Built on Void"] {
+  display: none;
+}
+
+.article-main {
+  flex: 1;
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: 4rem 2rem;
+}
+
+@media (max-width: 39.999rem) {
+  .article-main {
+    padding: 3rem 1.25rem;
+  }
+}
 </style>
