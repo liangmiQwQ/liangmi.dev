@@ -1,40 +1,35 @@
-shellEmulator: true
-trustPolicy: no-downgrade
-trustPolicyExclude:
-  - chokidar
-  - semver
 catalog:
   '@iconify-json/streamline-cyber': ^1.2.2
-  marked: ^15.0.12
+  marked: ^18.0.10
 catalogs:
   cli:
     dotenv: ^17.4.2
     to-ico: ^1.1.5
-    tsx: ^4.21.0
+    tsx: ^4.23.12
 
   lint:
-    '@antfu/eslint-config': ^8.2.0
-    '@typescript-eslint/parser': ^8.58.2
-    eslint: ^10.2.0
+    '@antfu/eslint-config': ^9.3.0
+    '@typescript-eslint/parser': ^8.67.0
+    eslint: ^10.8.1
 
   types:
-    '@types/node': ^25.6.0
+    '@types/node': ^26.2.0
     '@types/to-ico': ^1.1.3
-    typescript: ^6.0.2
-    vue-tsc: ^3.2.6
+    typescript: ^7.0.2
+    vue-tsc: ^3.3.11
 
   void:
-    '@void/md': ^0.8.11
-    '@void/vue': ^0.8.11
-    vite: ^8.0.14
-    void: ^0.8.11
-    vue: ^3.5.34
+    '@void/md': ^0.10.12
+    '@void/vue': ^0.10.12
+    vite: ^8.2.2
+    void: ^0.10.12
+    vue: ^3.5.41
 
   website:
     '@iconify-json/ph': ^1.2.2
-    '@vueuse/core': ^14.2.1
-    motion-v: ^2.2.1
-    unocss: ^66.6.8
+    '@vueuse/core': ^14.4.0
+    motion-v: ^2.4.0
+    unocss: ^66.8.1
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
@@ -49,3 +44,8 @@ peerDependencyRules:
   allowAny:
     - vite
     - vitest
+shellEmulator: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - chokidar
+  - semver
