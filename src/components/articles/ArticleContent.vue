@@ -18,6 +18,10 @@ defineProps<{
   text-rendering: optimizeLegibility;
 }
 
+.article-content :deep(h1) {
+  margin-bottom: 2rem;
+}
+
 .article-content :deep(h2) {
   padding-bottom: 0;
   border-bottom: 0;

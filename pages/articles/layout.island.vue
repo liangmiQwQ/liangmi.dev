@@ -11,8 +11,8 @@ import Footer from '~/components/Footer.vue'
   >
     <main class="article-main">
       <slot />
+      <Footer />
     </main>
-    <Footer />
   </div>
 </template>
 

@@ -1,28 +1,45 @@
 <template>
-  <footer
-    mt-20 px="6 md:12" py-8
-    border="t taupe-200 dark:taupe-800"
-    flex="~ wrap justify-between items-center"
-    gap-3 text-xs text-taupe-500
-  >
-    <span op60>© Liang Mi 2026</span>
-    <div flex items-center gap-2.5>
+  <footer mt-12>
+    <nav aria-label="Social links" flex="~ items-center justify-between">
       <a
         href="https://github.com/liangmiQwQ"
         target="_blank" rel="noopener"
-        class="transition-colors hover:text-taupe-800 dark:hover:text-taupe-200"
-      >GitHub</a>
-      <span op30>·</span>
+        aria-label="GitHub" title="GitHub"
+        h-10 w-10 flex="~ items-center justify-center"
+        border="~ taupe-200 dark:taupe-800" rounded text-lg op60
+        class="transition-opacity hover:op100"
+      >
+        <span i-ph-github-logo inline-block aria-hidden="true" />
+      </a>
       <a
         href="https://x.com/liangmiQwQ"
         target="_blank" rel="noopener"
-        class="transition-colors hover:text-taupe-800 dark:hover:text-taupe-200"
-      >Twitter</a>
-      <span op30>·</span>
+        aria-label="X" title="X"
+        h-10 w-10 flex="~ items-center justify-center"
+        border="~ taupe-200 dark:taupe-800" rounded text-lg op60
+        class="transition-opacity hover:op100"
+      >
+        <span i-ph-x-logo inline-block aria-hidden="true" />
+      </a>
       <a
         href="/bilibili"
-        class="transition-colors hover:text-taupe-800 dark:hover:text-taupe-200"
-      >BiliBili</a>
-    </div>
+        aria-label="BiliBili" title="BiliBili"
+        h-10 w-10 flex="~ items-center justify-center"
+        border="~ taupe-200 dark:taupe-800" rounded text-lg op60
+        class="transition-opacity hover:op100"
+      >
+        <span i-ph-play-circle inline-block aria-hidden="true" />
+      </a>
+      <a
+        href="https://github.com/sponsors/liangmiQwQ"
+        target="_blank" rel="noopener"
+        aria-label="Sponsor on GitHub" title="Sponsor on GitHub"
+        h-10 w-10 flex="~ items-center justify-center"
+        border="~ taupe-200 dark:taupe-800" rounded text-lg op60
+        class="transition-opacity hover:op100"
+      >
+        <span i-ph-heart inline-block aria-hidden="true" />
+      </a>
+    </nav>
   </footer>
 </template>
