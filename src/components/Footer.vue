@@ -8,7 +8,7 @@
           aria-label="GitHub" title="GitHub"
           h-12 w-12 flex="~ items-center justify-center"
           rounded-lg text-2xl op60
-          class="transition hover:(bg-taupe-950/5 op100) dark:hover:bg-taupe-50/10"
+          class="transition-opacity hover:op100"
         >
           <span i-ph-github-logo inline-block aria-hidden="true" />
         </a>
@@ -18,7 +18,7 @@
           aria-label="X" title="X"
           h-12 w-12 flex="~ items-center justify-center"
           rounded-lg text-2xl op60
-          class="transition hover:(bg-taupe-950/5 op100) dark:hover:bg-taupe-50/10"
+          class="transition-opacity hover:op100"
         >
           <span i-ph-x-logo inline-block aria-hidden="true" />
         </a>
@@ -29,7 +29,7 @@
         aria-label="Sponsor on GitHub" title="Sponsor on GitHub"
         h-12 w-12 flex="~ items-center justify-center"
         rounded-lg text-2xl op60
-        class="transition hover:(bg-taupe-950/5 op100) dark:hover:bg-taupe-50/10"
+        class="transition-opacity hover:op100"
       >
         <span i-ph-heart inline-block aria-hidden="true" />
       </a>

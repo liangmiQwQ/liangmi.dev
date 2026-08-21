@@ -21,10 +21,10 @@ const formattedDate = computed(() => {
 
 <template>
   <article
-    class="void-md antialiased [&_h1]:mb-2 [&_.article-body_h2]:(border-b-0 pb-0) [&_.article-body_p]:text-taupe-950/75 dark:[&_.article-body_p]:text-taupe-50/75 [&_.article-body_p_strong]:text-taupe-950 dark:[&_.article-body_p_strong]:text-taupe-50"
+    class="void-md antialiased [&_h1]:mb-2 [&_.article-body_h2]:(border-b-0 pb-0) [&_.article-body_p]:text-current/75 [&_.article-body_p_a]:text-inherit [&_.article-body_p_code]:text-inherit [&_.article-body_p_strong]:text-[var(--vmd-text)]"
   >
     <h1 v-if="titleHtml" v-html="titleHtml" />
-    <div mb-8 flex="~ items-center gap-2" text="sm taupe-500">
+    <div mb-8 flex="~ items-center gap-2" text-lg op50>
       <template v-if="formattedDate">
         <time :datetime="date">{{ formattedDate }}</time>
         <span aria-hidden="true">·</span>
