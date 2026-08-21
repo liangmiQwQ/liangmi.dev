@@ -6,11 +6,11 @@ export const prerender = true
 
 export type Props = RenderedArticle
 
-export async function getPrerenderPaths() {
+export function getPrerenderPaths() {
   return getPublishedArticleSlugs()
 }
 
-export const loader = defineHandler(async (c) => {
+export const loader = defineHandler((c) => {
   const { slug } = c.req.param()
-  return await renderPublishedArticle(slug) ?? c.notFound()
+  return renderPublishedArticle(slug) ?? c.notFound()
 })

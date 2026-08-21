@@ -41,13 +41,12 @@ export function getPublishedArticlePaths(): ArticlePath[] {
 }
 
 export function getPublishedArticleSlugs(): { slug: string }[] {
-  const slugs = new Set(getPublishedArticlePaths()
+  return getPublishedArticlePaths()
     .filter(({ slug, lang }) => getArticleMetadata(slug)?.origin === lang)
-    .map(({ slug }) => slug))
-  return [...slugs].map(slug => ({ slug }))
+    .map(({ slug }) => ({ slug }))
 }
 
-export async function renderPublishedArticle(slug: string, lang?: string): Promise<RenderedArticle | null> {
+export function renderPublishedArticle(slug: string, lang?: string): RenderedArticle | null {
   const metadata = getArticleMetadata(slug)
   if (!isPublished(metadata))
     return null
@@ -57,7 +56,7 @@ export async function renderPublishedArticle(slug: string, lang?: string): Promi
   if (!rawContent)
     return null
 
-  const renderedHtml = await marked.parse(rawContent, { gfm: true, breaks: true })
+  const renderedHtml = marked.parse(rawContent, { async: false, gfm: true, breaks: true })
   const titleMatch = renderedHtml.match(/^<h1>(.*?)<\/h1>\n?/s)
 
   return {
