@@ -6,5 +6,5 @@ defineProps<Props>()
 </script>
 
 <template>
-  <ArticleContent :html />
+  <ArticleContent :date :html :reading-minutes :title-html />
 </template>
