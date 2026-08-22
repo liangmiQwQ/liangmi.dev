@@ -1,4 +1,4 @@
-import { marked } from 'marked'
+import { renderArticleContent } from '~/article-content'
 
 export interface ArticleMetadata {
   genre: string
@@ -11,8 +11,12 @@ export interface ArticleMetadata {
 
 export interface RenderedArticle {
   date?: string
+  description: string
   html: string
+  lang: string
   readingMinutes: number
+  slug: string
+  title: string
   titleHtml: string
 }
 
@@ -56,14 +60,11 @@ export function renderPublishedArticle(slug: string, lang?: string): RenderedArt
   if (!rawContent)
     return null
 
-  const renderedHtml = marked.parse(rawContent, { async: false, gfm: true, breaks: true })
-  const titleMatch = renderedHtml.match(/^<h1>(.*?)<\/h1>\n?/s)
-
   return {
     date: metadata.date,
-    html: titleMatch ? renderedHtml.slice(titleMatch[0].length) : renderedHtml,
-    readingMinutes: estimateReadingMinutes(rawContent),
-    titleHtml: titleMatch?.[1] ?? '',
+    lang: resolvedLang,
+    slug,
+    ...renderArticleContent(rawContent),
   }
 }
 
@@ -74,18 +75,4 @@ function getArticleMetadata(slug: string) {
 // Tree-hole metadata treats a missing publish field as private.
 function isPublished(metadata: ArticleMetadata | undefined): metadata is ArticleMetadata {
   return metadata?.publish === true
-}
-
-function estimateReadingMinutes(content: string) {
-  const text = content
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/`[^`]*`/g, ' ')
-    .replace(/https?:\/\/\S+/g, ' ')
-  const cjkCharacters = text.match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/gu)?.length ?? 0
-  const words = text
-    .replace(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/gu, ' ')
-    .match(/\p{L}+(?:['’]\p{L}+)*|\p{N}+/gu)
-    ?.length ?? 0
-
-  return Math.max(1, Math.ceil(words / 200 + cjkCharacters / 400))
 }
