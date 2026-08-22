@@ -55,8 +55,9 @@ await Promise.all(readdirSync(articlesDir, { withFileTypes: true }).flatMap((ent
           readingMinutes: article.readingMinutes,
           title: article.title,
         })) }])
-        .png({ compressionLevel: 9 })
-        .toFile(join(destinationDir, `${lang}.png`))
+        .removeAlpha()
+        .jpeg({ quality: 90 })
+        .toFile(join(destinationDir, `${lang}.jpg`))
     })
 }))
 
