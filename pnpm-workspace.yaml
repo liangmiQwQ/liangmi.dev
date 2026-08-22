@@ -6,6 +6,7 @@ trustPolicyExclude:
 catalog:
   '@iconify-json/streamline-cyber': ^1.2.2
   marked: ^18.0.10
+  sharp: ^0.35.2
 catalogs:
   cli:
     dotenv: ^17.4.2
