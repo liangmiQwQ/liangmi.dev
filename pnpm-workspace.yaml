@@ -3,6 +3,10 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - chokidar
   - semver
+overrides:
+  '@cloudflare/vite-plugin': 1.49.0
+  wrangler: 4.116.0
+
 catalog:
   '@iconify-json/streamline-cyber': ^1.2.2
   marked: ^18.0.10
