@@ -1,6 +1,14 @@
 {
   "$schema": "./node_modules/void/schema.json",
   "output": "static",
+  "routing": {
+    "redirects": {
+      "/article/*": {
+        "to": "/articles/:splat",
+        "status": 301
+      }
+    }
+  },
   "head": {
     "title": "Liang",
     "htmlAttrs": {
