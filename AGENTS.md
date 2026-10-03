@@ -16,7 +16,7 @@ This project use UnoCSS for styling. We use `wind4` present and enabled `presetA
 
 Use `presetAttributify` on elements but not components.
 
-Keep AGENTS.md updated with the project codebase. Consider if there is need to modify AGENTS.md after your changes. Don't write something weird like project structure or project status in AGENTS.md.
+If you find AGENTS.md is outdated, please notice users to change in response.
 
 Write simple code and make function reusable if possible. Use Unix philosophy to design your code (Every function should only do one thing and should not be too long or complex.).
 
