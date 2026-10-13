@@ -4,7 +4,7 @@
       <div flex="~ items-center gap-1">
         <a
           href="https://github.com/liangmiQwQ"
-          target="_blank" rel="noopener"
+          target="_blank" rel="me noopener"
           aria-label="GitHub" title="GitHub"
           h-12 w-12 flex="~ items-center justify-center"
           rounded-lg text-2xl op60
@@ -14,7 +14,7 @@
         </a>
         <a
           href="https://x.com/liangmiQwQ"
-          target="_blank" rel="noopener"
+          target="_blank" rel="me noopener"
           aria-label="X" title="X"
           h-12 w-12 flex="~ items-center justify-center"
           rounded-lg text-2xl op60

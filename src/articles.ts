@@ -50,6 +50,17 @@ export function getPublishedArticleSlugs(): { slug: string }[] {
     .map(({ slug }) => ({ slug }))
 }
 
+export function getPublishedArticleLangs(slug: string): string[] {
+  return getPublishedArticlePaths()
+    .filter(path => path.slug === slug)
+    .map(({ lang }) => lang)
+}
+
+// The origin language is served at /articles/:slug, so its /articles/:slug/:lang copy is a duplicate.
+export function getArticlePath(slug: string, lang: string) {
+  return lang === getArticleMetadata(slug)?.origin ? `/articles/${slug}` : `/articles/${slug}/${lang}`
+}
+
 export function renderPublishedArticle(slug: string, lang?: string): RenderedArticle | null {
   const metadata = getArticleMetadata(slug)
   if (!isPublished(metadata))

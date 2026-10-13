@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from '~/components/ui/Button.vue'
 import { useIInfo } from '~/composables/info'
+import { getContactUrls } from '~/social'
 
 interface SocialLink {
   key: string
@@ -11,14 +12,15 @@ interface SocialLink {
 
 const info = useIInfo()
 const contact = info.contact
+const urls = getContactUrls(contact)
 
 const map: Record<string, { icon: string, url: string }> = {
-  email: { icon: 'i-ph-envelope-duotone', url: `mailto:${contact.email}` },
-  github: { icon: 'i-ph-github-logo-duotone', url: `https://github.com/${contact.github}` },
-  twitter: { icon: 'i-ph-twitter-logo-duotone', url: `https://twitter.com/${contact.twitter}` },
-  youtube: { icon: 'i-ph-youtube-logo-duotone', url: `https://youtube.com/@${contact.youtube}` },
-  bsky: { icon: 'i-ph-butterfly-duotone', url: `https://bsky.app/profile/${contact.bsky}` },
-  bilibili: { icon: 'i-ph-video-duotone', url: `https://space.bilibili.com/${contact.bilibili}` },
+  email: { icon: 'i-ph-envelope-duotone', url: urls.email },
+  github: { icon: 'i-ph-github-logo-duotone', url: urls.github },
+  twitter: { icon: 'i-ph-twitter-logo-duotone', url: urls.twitter },
+  youtube: { icon: 'i-ph-youtube-logo-duotone', url: urls.youtube },
+  bsky: { icon: 'i-ph-butterfly-duotone', url: urls.bsky },
+  bilibili: { icon: 'i-ph-video-duotone', url: urls.bilibili },
 }
 
 const socialLinks = Object.entries(contact).map(([key]) => {
@@ -41,6 +43,7 @@ const socialLinks = Object.entries(contact).map(([key]) => {
       :key="link.key"
       :href="link.url"
       target="_blank"
+      rel="me noopener"
       variant="ghost"
       size="icon"
       :aria-label="link.label"

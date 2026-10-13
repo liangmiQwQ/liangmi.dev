@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "build": "pnpm run metadata && pnpm run social-images && vite build",
+    "build": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && vite build",
     "dev": "vite",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
@@ -12,8 +12,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "metadata": "tsx scripts/run.ts",
-    "cdev": "pnpm run metadata && pnpm run social-images && pnpm run dev",
-    "social-images": "tsx scripts/social-images.ts"
+    "cdev": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && pnpm run dev",
+    "social-images": "tsx scripts/social-images.ts",
+    "sitemap": "tsx scripts/sitemap.ts"
   },
   "dependencies": {
     "marked": "catalog:",
