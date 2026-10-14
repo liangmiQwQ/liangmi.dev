@@ -19,7 +19,7 @@ export const head = defineHead(() => createPageHead({
   path: '/about',
   title: 'About · Liang',
   socialTitle: 'About Liang',
-  description: 'About Liang (liangmiQwQ): open-source work on Vite+, Oxc and Vite DevTools, personal projects, writing, and profiles elsewhere.',
+  description: 'About Liang (liangmiQwQ): open-source work on Vite+, Oxc and Vite DevTools, projects like mo and vp-config, writing, and profiles elsewhere.',
   type: 'profile',
   image: avatarImage,
   graph: [

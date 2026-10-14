@@ -30,7 +30,7 @@ const profiles = [
       </template>
 
       <p>
-        I'm Liang, also known as <a href="https://github.com/liangmiQwQ" rel="me">liangmiQwQ</a> or 良米, a student and open-source developer from Hangzhou, China, focused on frontend and web tooling.
+        I'm Liang, also known as <a href="https://github.com/liangmiQwQ" rel="me">liangmiQwQ</a> or 良米, a senior high school freshman and open-source developer from Hangzhou, China, focused on frontend and web tooling.
       </p>
 
       <h2>Open source</h2>
@@ -41,8 +41,18 @@ const profiles = [
         <li>
           Contributor to <a href="https://github.com/oxc-project/oxc">Oxc</a> and <a href="https://github.com/vitejs/devtools">Vite DevTools</a>.
         </li>
+      </ul>
+
+      <h2>Projects</h2>
+      <ul>
         <li>
-          Author of <a href="https://github.com/liangmiQwQ/vue-oxlint-toolkit">vue-oxlint-toolkit</a>, an experimental toolkit for better Vue support in Oxlint, and <a href="https://github.com/liangmiQwQ/oxlint-flat-config">oxlint-flat-config</a>, which composes Oxlint configs from ESLint-style flat config arrays.
+          <a href="https://github.com/liangmiQwQ/mo">mo</a>: a project manager for open-source developers using GitHub.
+        </li>
+        <li>
+          <a href="https://github.com/liangmiQwQ/vp-config">vp-config</a>: unified Vite+ config presets for JavaScript development.
+        </li>
+        <li>
+          <a href="https://github.com/liangmiQwQ/oxlint-flat-config">oxlint-flat-config</a>: ESLint-style flat config arrays for Oxlint.
         </li>
       </ul>
 
