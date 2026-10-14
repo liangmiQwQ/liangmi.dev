@@ -26,7 +26,7 @@ import HeroSky from '~/components/hero/Sky.vue'
       </span>
 
       <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8 hover:opacity100 duration-500>
-        <span class="text-xl md:text-2xl font-serif">Liang</span>
+        <a href="/about" class="text-xl md:text-2xl font-serif">Liang</a>
         <Contact />
       </div>
     </Motion>

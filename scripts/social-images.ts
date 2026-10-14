@@ -30,6 +30,12 @@ const avatar = await sharp(avatarPath)
   .toBuffer()
 const avatarDataUrl = `data:image/png;base64,${avatar.toString('base64')}`
 
+mkdirSync(socialDir, { recursive: true })
+await sharp(avatarPath)
+  .resize(512, 512, { fit: 'cover' })
+  .png()
+  .toFile(join(socialDir, 'avatar.png'))
+
 await Promise.all(readdirSync(articlesDir, { withFileTypes: true }).flatMap((entry) => {
   if (!entry.isDirectory())
     return []

@@ -16,4 +16,4 @@ export const loader = defineHandler((c) => {
   return renderPublishedArticle(slug, lang) ?? c.notFound()
 })
 
-export const head = defineHead<Props>((c, article) => createArticleHead(c.req.path, article))
+export const head = defineHead<Props>((_c, article) => createArticleHead(article))

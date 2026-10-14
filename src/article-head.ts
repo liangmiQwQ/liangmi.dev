@@ -1,37 +1,51 @@
 import type { RenderedArticle } from '~/articles'
+import { getArticlePath, getPublishedArticleLangs } from '~/articles'
+import { absoluteUrl, author, createPageHead } from '~/seo'
 
-const siteUrl = 'https://liangmi.dev'
-
-export function createArticleHead(path: string, article: RenderedArticle) {
-  const url = new URL(path, siteUrl).href
-  const image = new URL(`/social/articles/${article.slug}/${article.lang}.jpg`, siteUrl).href
-  const imageAlt = `Starry sky preview for ${article.title}`
+export function createArticleHead(article: RenderedArticle) {
+  const path = getArticlePath(article.slug, article.lang)
+  const image = {
+    url: absoluteUrl(`/social/articles/${article.slug}/${article.lang}.jpg`),
+    type: 'image/jpeg',
+    width: 1200,
+    height: 630,
+    alt: `Starry sky preview for ${article.title}`,
+  }
+  const head = createPageHead({
+    path,
+    title: `${article.title} · Liang`,
+    socialTitle: article.title,
+    description: article.description,
+    type: 'article',
+    image,
+    graph: [{
+      '@type': 'BlogPosting',
+      'headline': article.title,
+      'description': article.description,
+      'image': image.url,
+      'inLanguage': article.lang,
+      'url': absoluteUrl(path),
+      'mainEntityOfPage': absoluteUrl(path),
+      'datePublished': article.date,
+      author,
+    }],
+  })
 
   return {
-    title: `${article.title} · Liang`,
+    ...head,
     htmlAttrs: { lang: article.lang },
-    link: [
-      { rel: 'canonical', href: url },
-    ],
+    link: [...head.link, ...createLanguageLinks(article.slug)],
     meta: [
-      { name: 'description', content: article.description },
-      { property: 'og:type', content: 'article' },
-      { property: 'og:site_name', content: 'Liang' },
-      { property: 'og:title', content: article.title },
-      { property: 'og:description', content: article.description },
-      { property: 'og:url', content: url },
-      { property: 'og:image', content: image },
-      { property: 'og:image:type', content: 'image/jpeg' },
-      { property: 'og:image:width', content: '1200' },
-      { property: 'og:image:height', content: '630' },
-      { property: 'og:image:alt', content: imageAlt },
+      ...head.meta,
       ...(article.date ? [{ property: 'article:published_time', content: `${article.date}T00:00:00.000Z` }] : []),
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:creator', content: '@liangmiQwQ' },
-      { name: 'twitter:title', content: article.title },
-      { name: 'twitter:description', content: article.description },
-      { name: 'twitter:image', content: image },
-      { name: 'twitter:image:alt', content: imageAlt },
     ],
   }
+}
+
+function createLanguageLinks(slug: string) {
+  const langs = getPublishedArticleLangs(slug)
+  if (langs.length < 2)
+    return []
+
+  return langs.map(lang => ({ rel: 'alternate', hreflang: lang, href: absoluteUrl(getArticlePath(slug, lang)) }))
 }

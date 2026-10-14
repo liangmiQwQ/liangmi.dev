@@ -6,7 +6,8 @@
       "/article/*": {
         "to": "/articles/:splat",
         "status": 301
-      }
+      },
+      "/bilibili": "https://space.bilibili.com/1964165864"
     }
   },
   "head": {
@@ -21,10 +22,6 @@
       {
         "name": "viewport",
         "content": "width=device-width, initial-scale=1"
-      },
-      {
-        "name": "description",
-        "content": "Liang's Growth Timeline"
       }
     ],
     "link": [
