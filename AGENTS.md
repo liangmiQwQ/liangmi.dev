@@ -2,9 +2,9 @@
 
 ## Project Setup
 
-`pnpm` is the package manager. We use `eslint` and `@antfu/eslint-config` to lint and format code. No tests for now.
+Vite+ manages the pnpm project. We use `@liangmi/vp-config` for linting and formatting. No tests for now.
 
-Run `pnpm run lint:fix` and `pnpm run typecheck` after modifying code. And fix the errors if possible before telling me you've finished the task.
+Run `pnpm run check` and `pnpm run typecheck` after modifying code. And fix the errors if possible before telling me you've finished the task.
 
 This project uses **Void** (`void` from npm) as the framework, deployed to Cloudflare Workers via `void deploy`. Dev: `pnpm dev`. Build: `pnpm build`, load Void skills please.
 

@@ -1,4 +1,4 @@
-import type { IInfo } from '~/types'
+import type { IInfo } from '~/types.ts'
 
 type Contact = IInfo['contact']
 
@@ -9,6 +9,6 @@ export function getContactUrls(contact: Contact): Record<keyof Contact, string> 
     email: `mailto:${contact.email}`,
     bsky: `https://bsky.app/profile/${contact.bsky}`,
     youtube: `https://www.youtube.com/@${contact.youtube}`,
-    bilibili: `https://space.bilibili.com/${contact.bilibili}`,
+    bilibili: `https://space.bilibili.com/${contact.bilibili}`
   }
 }

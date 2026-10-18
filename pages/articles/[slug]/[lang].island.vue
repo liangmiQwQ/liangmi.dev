@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { Props } from './[lang].server'
 import ArticleContent from '~/components/articles/ArticleContent.vue'
+
+import type { Props } from './[lang].server.ts'
 
 defineProps<Props>()
 </script>

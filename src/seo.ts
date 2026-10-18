@@ -1,5 +1,5 @@
-import { useIInfo } from '~/composables/info'
-import { getContactUrls } from '~/social'
+import { useIInfo } from '~/composables/info.ts'
+import { getContactUrls } from '~/social.ts'
 
 interface SocialImage {
   url: string
@@ -21,13 +21,14 @@ interface PageHead {
 
 export const siteUrl = 'https://liangmi.dev'
 
-export const personDescription = 'Liang (liangmiQwQ) is a student open-source developer from Hangzhou, China, and a member of the Vite+ team.'
+export const personDescription =
+  'Liang (liangmiQwQ) is a student open-source developer from Hangzhou, China, and a member of the Vite+ team.'
 
 export const author = {
   '@type': 'Person',
   '@id': `${siteUrl}/#person`,
-  'name': 'Liang',
-  'url': `${siteUrl}/`,
+  name: 'Liang',
+  url: `${siteUrl}/`
 }
 
 export const avatarImage: SocialImage = {
@@ -35,7 +36,7 @@ export const avatarImage: SocialImage = {
   type: 'image/png',
   width: 512,
   height: 512,
-  alt: 'Liang\'s avatar',
+  alt: "Liang's avatar"
 }
 
 export const person = createPerson()
@@ -50,9 +51,7 @@ export function createPageHead(page: PageHead) {
 
   return {
     title: page.title,
-    link: [
-      { rel: 'canonical', href: url },
-    ],
+    link: [{ rel: 'canonical', href: url }],
     meta: [
       { name: 'description', content: page.description },
       { name: 'author', content: author.name },
@@ -66,16 +65,17 @@ export function createPageHead(page: PageHead) {
       { property: 'og:image:width', content: String(image.width) },
       { property: 'og:image:height', content: String(image.height) },
       { property: 'og:image:alt', content: image.alt },
-      { name: 'twitter:card', content: image.width > image.height ? 'summary_large_image' : 'summary' },
+      {
+        name: 'twitter:card',
+        content: image.width > image.height ? 'summary_large_image' : 'summary'
+      },
       { name: 'twitter:creator', content: '@liangmiQwQ' },
       { name: 'twitter:title', content: page.socialTitle },
       { name: 'twitter:description', content: page.description },
       { name: 'twitter:image', content: image.url },
-      { name: 'twitter:image:alt', content: image.alt },
+      { name: 'twitter:image:alt', content: image.alt }
     ],
-    script: [
-      createJsonLdScript({ '@context': 'https://schema.org', '@graph': page.graph }),
-    ],
+    script: [createJsonLdScript({ '@context': 'https://schema.org', '@graph': page.graph })]
   }
 }
 
@@ -90,13 +90,16 @@ function createPerson() {
     sameAs: [urls.github, urls.twitter, urls.bsky, urls.youtube, urls.bilibili],
     memberOf: {
       '@type': 'Organization',
-      'name': 'Vite+ team',
-      'url': 'https://viteplus.dev/team',
-    },
+      name: 'Vite+ team',
+      url: 'https://viteplus.dev/team'
+    }
   }
 }
 
 function createJsonLdScript(data: object) {
   // Void injects innerHTML verbatim, so escape "<" to keep a "</script>" inside a title from closing the tag.
-  return { type: 'application/ld+json', innerHTML: JSON.stringify(data).replaceAll('<', '\\u003c') }
+  return {
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify(data).replaceAll('<', String.raw`\u003c`)
+  }
 }
