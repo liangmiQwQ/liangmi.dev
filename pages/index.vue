@@ -1,7 +1,7 @@
 <script setup lang="ts">
-// import Footer from '~/components/Footer.vue'
+// Import Footer from '~/components/Footer.vue'
 import Hero from '~/components/hero/index.vue'
-// import IndexNote from '~/components/index/Note.vue'
+// Import IndexNote from '~/components/index/Note.vue'
 </script>
 
 <template>

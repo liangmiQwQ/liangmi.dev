@@ -1,45 +1,46 @@
 {
   "name": "liangmi-dev",
-  "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
+  "type": "module",
   "scripts": {
-    "build": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && vite build",
-    "dev": "vite",
-    "typecheck": "vue-tsc --noEmit",
-    "preview": "vite preview",
-    "deploy": "void deploy",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "metadata": "tsx scripts/run.ts",
+    "build": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && vp run cbuild",
     "cdev": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && pnpm run dev",
+    "check": "vp run ccheck",
+    "deploy": "void deploy",
+    "dev": "vp dev",
+    "lint": "vp run clint",
+    "lint:fix": "vp lint --fix",
+    "metadata": "tsx scripts/run.ts",
+    "prepare": "vp config",
+    "preview": "vp preview",
+    "sitemap": "tsx scripts/sitemap.ts",
     "social-images": "tsx scripts/social-images.ts",
-    "sitemap": "tsx scripts/sitemap.ts"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "marked": "catalog:",
     "motion-v": "catalog:website"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:lint",
     "@iconify-json/ph": "catalog:website",
     "@iconify-json/streamline-cyber": "catalog:",
+    "@liangmi/vp-config": "catalog:",
     "@types/node": "catalog:types",
     "@types/to-ico": "catalog:types",
-    "@typescript-eslint/parser": "catalog:lint",
     "@void/md": "catalog:void",
     "@void/vue": "catalog:void",
     "@vueuse/core": "catalog:website",
     "dotenv": "catalog:cli",
-    "eslint": "catalog:lint",
     "sharp": "catalog:",
     "to-ico": "catalog:cli",
     "tsx": "catalog:cli",
     "typescript": "catalog:types",
     "unocss": "catalog:website",
     "vite": "catalog:void",
+    "vite-plus": "catalog:",
     "void": "catalog:void",
     "vue": "catalog:void",
     "vue-tsc": "catalog:types"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

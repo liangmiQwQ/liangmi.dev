@@ -5,7 +5,8 @@ import Footer from '~/components/Footer.vue'
 <template>
   <div
     class="prose-layout"
-    min-h-screen flex="~ col"
+    min-h-screen
+    flex="~ col"
     bg="taupe-50 dark:taupe-950"
     text="taupe-950 dark:taupe-50"
   >
@@ -17,9 +18,9 @@ import Footer from '~/components/Footer.vue'
 </template>
 
 <style>
-@import "@void/md/theme-content.css";
+@import '@void/md/theme-content.css';
 
-.prose-layout + a[aria-label="Built on Void"] {
+.prose-layout + a[aria-label='Built on Void'] {
   display: none;
 }
 

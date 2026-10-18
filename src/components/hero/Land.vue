@@ -1,8 +1,5 @@
 <template>
-  <div
-    w-200 h-200 rounded-full bg-stone-950
-    class="top-13/20 colossal-backlit-sphere"
-  />
+  <div w-200 h-200 rounded-full bg-stone-950 class="top-13/20 colossal-backlit-sphere" />
 </template>
 
 <style scoped>

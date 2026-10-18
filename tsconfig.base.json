@@ -2,9 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "target": "esnext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "rootDir": ".",
     "module": "esnext",
     "moduleResolution": "Bundler",
@@ -15,9 +13,5 @@
     "isolatedDeclarations": false,
     "skipLibCheck": true
   },
-  "include": [
-    "./uno.config.ts",
-    "./content.config.ts",
-    "scripts/**/*.ts"
-  ]
+  "include": ["./uno.config.ts", "./content.config.ts", "scripts/**/*.ts"]
 }

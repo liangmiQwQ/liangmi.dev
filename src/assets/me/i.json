@@ -10,5 +10,12 @@
     "youtube": "liangmiQwQ",
     "bilibili": "1964165864"
   },
-  "projects": ["mo", "simple-introduce", "vue-oxc-toolkit", "voidzero-dev/vite-plus", "oxc-project/oxc", "vitejs/devtools"]
+  "projects": [
+    "mo",
+    "simple-introduce",
+    "vue-oxc-toolkit",
+    "voidzero-dev/vite-plus",
+    "oxc-project/oxc",
+    "vitejs/devtools"
+  ]
 }

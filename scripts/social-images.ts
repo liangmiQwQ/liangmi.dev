@@ -1,16 +1,18 @@
+/* oxlint-disable node/no-sync -- Build scripts intentionally finish filesystem steps in order. */
 import { Buffer } from 'node:buffer'
 import { mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+
 import sharp from 'sharp'
-import { renderArticleContent } from '../src/article-content'
+
+import { renderArticleContent } from '../src/article-content.ts'
 
 interface ArticleMetadata {
   date?: string
   publish?: boolean
 }
 
-const rootDir = fileURLToPath(new URL('..', import.meta.url))
+const rootDir = join(import.meta.dirname, '..')
 const articlesDir = join(rootDir, 'content/articles')
 const avatarPath = join(rootDir, 'src/assets/me/avatar.png')
 const sourcePath = join(rootDir, 'src/assets/social/article-preview.png')
@@ -24,10 +26,7 @@ const background = await sharp(sourcePath)
   .resize(1200, 630, { fit: 'cover', position: 'right' })
   .png()
   .toBuffer()
-const avatar = await sharp(avatarPath)
-  .resize(72, 72, { fit: 'cover' })
-  .png()
-  .toBuffer()
+const avatar = await sharp(avatarPath).resize(72, 72, { fit: 'cover' }).png().toBuffer()
 const avatarDataUrl = `data:image/png;base64,${avatar.toString('base64')}`
 
 mkdirSync(socialDir, { recursive: true })
@@ -36,36 +35,48 @@ await sharp(avatarPath)
   .png()
   .toFile(join(socialDir, 'avatar.png'))
 
-await Promise.all(readdirSync(articlesDir, { withFileTypes: true }).flatMap((entry) => {
-  if (!entry.isDirectory())
-    return []
+await Promise.all(
+  readdirSync(articlesDir, { withFileTypes: true }).flatMap(entry => {
+    if (!entry.isDirectory()) {
+      return []
+    }
 
-  const articleDir = join(articlesDir, entry.name)
-  const metadata = JSON.parse(readFileSync(join(articleDir, 'metadata.json'), 'utf8')) as ArticleMetadata
-  if (metadata.publish !== true)
-    return []
+    const articleDir = join(articlesDir, entry.name)
+    const metadata = JSON.parse(
+      readFileSync(join(articleDir, 'metadata.json'), 'utf8')
+    ) as ArticleMetadata
+    if (metadata.publish !== true) {
+      return []
+    }
 
-  return readdirSync(articleDir)
-    .filter(file => file.endsWith('.md'))
-    .map(async (file) => {
-      const lang = file.slice(0, -3)
-      const rawContent = readFileSync(join(articleDir, file), 'utf8')
-      const article = renderArticleContent(rawContent)
-      const destinationDir = join(outputDir, entry.name)
+    return readdirSync(articleDir)
+      .filter(file => file.endsWith('.md'))
+      .map(async file => {
+        const lang = file.slice(0, -3)
+        const rawContent = readFileSync(join(articleDir, file), 'utf8')
+        const article = renderArticleContent(rawContent)
+        const destinationDir = join(outputDir, entry.name)
 
-      mkdirSync(destinationDir, { recursive: true })
-      await sharp(background)
-        .composite([{ input: Buffer.from(createTextOverlay({
-          date: metadata.date,
-          lang,
-          readingMinutes: article.readingMinutes,
-          title: article.title,
-        })) }])
-        .removeAlpha()
-        .jpeg({ quality: 90 })
-        .toFile(join(destinationDir, `${lang}.jpg`))
-    })
-}))
+        mkdirSync(destinationDir, { recursive: true })
+        await sharp(background)
+          .composite([
+            {
+              input: Buffer.from(
+                createTextOverlay({
+                  date: metadata.date,
+                  lang,
+                  readingMinutes: article.readingMinutes,
+                  title: article.title
+                })
+              )
+            }
+          ])
+          .removeAlpha()
+          .jpeg({ quality: 90 })
+          .toFile(join(destinationDir, `${lang}.jpg`))
+      })
+  })
+)
 
 console.log('Social preview images generated successfully')
 
@@ -77,16 +88,24 @@ function createTextOverlay(article: {
 }) {
   const { fontSize, lines } = layoutTitle(article.title)
   const lineHeight = fontSize + 10
-  const titleStartY = 312 - (lines.length - 1) * lineHeight / 2
+  const titleStartY = 312 - ((lines.length - 1) * lineHeight) / 2
   const metadataY = titleStartY + (lines.length - 1) * lineHeight + 58
   const title = lines
-    .map((line, index) => `<tspan x="72" y="${titleStartY + index * lineHeight}">${escapeXml(line)}</tspan>`)
+    .map(
+      (line, index) =>
+        `<tspan x="72" y="${titleStartY + index * lineHeight}">${escapeXml(line)}</tspan>`
+    )
     .join('')
   const details = [
-    article.date && new Intl.DateTimeFormat(article.lang, { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(`${article.date}T00:00:00Z`)),
+    article.date &&
+      new Intl.DateTimeFormat(article.lang, { dateStyle: 'medium', timeZone: 'UTC' }).format(
+        new Date(`${article.date}T00:00:00Z`)
+      ),
     `${article.readingMinutes} MIN READ`,
-    article.lang.toUpperCase(),
-  ].filter(Boolean).join('  ·  ')
+    article.lang.toUpperCase()
+  ]
+    .filter(Boolean)
+    .join('  ·  ')
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     <defs>
@@ -108,8 +127,9 @@ function createTextOverlay(article: {
 function layoutTitle(title: string) {
   for (const fontSize of [84, 78, 70]) {
     const lines = wrapText(title, 920, fontSize)
-    if (lines.length <= 3)
+    if (lines.length <= 3) {
       return { fontSize, lines }
+    }
   }
 
   const fontSize = 64
@@ -119,7 +139,10 @@ function layoutTitle(title: string) {
 }
 
 function wrapText(text: string, maxWidth: number, fontSize: number) {
-  const segments = Array.from(new Intl.Segmenter(undefined, { granularity: 'word' }).segment(text), item => item.segment)
+  const segments = Array.from(
+    new Intl.Segmenter(undefined, { granularity: 'word' }).segment(text),
+    item => item.segment
+  )
   const lines: string[] = []
   let line = ''
 
@@ -134,25 +157,32 @@ function wrapText(text: string, maxWidth: number, fontSize: number) {
     line = segment.trimStart()
   }
 
-  if (line)
+  if (line) {
     lines.push(line.trim())
+  }
 
   return lines
 }
 
 function estimateWidth(text: string, fontSize: number) {
   // SVG text metrics are unavailable before rendering; these ratios keep wrapping deterministic across build machines.
-  return Array.from(text).reduce((width, character) => {
-    if (/\s/u.test(character))
-      return width + fontSize * 0.3
-    if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(character))
-      return width + fontSize
-    if (/\p{Lu}/u.test(character))
-      return width + fontSize * 0.68
-    if (/\p{Ll}|\p{N}/u.test(character))
-      return width + fontSize * 0.55
-    return width + fontSize * 0.4
-  }, 0)
+  let width = 0
+  for (const character of text) {
+    if (/\s/u.test(character)) {
+      width += fontSize * 0.3
+    } else if (
+      /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(character)
+    ) {
+      width += fontSize
+    } else if (/\p{Lu}/u.test(character)) {
+      width += fontSize * 0.68
+    } else if (/\p{Ll}|\p{N}/u.test(character)) {
+      width += fontSize * 0.55
+    } else {
+      width += fontSize * 0.4
+    }
+  }
+  return width
 }
 
 function escapeXml(value: string) {
@@ -161,5 +191,5 @@ function escapeXml(value: string) {
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
-    .replaceAll('\'', '&apos;')
+    .replaceAll("'", '&apos;')
 }
