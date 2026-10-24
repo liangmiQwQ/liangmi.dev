@@ -18,5 +18,5 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src", "pages", "middleware", "vite.config.ts"]
+  "include": ["src", "pages", "middleware", "vite.config.ts", "void.config.ts"]
 }

@@ -3,12 +3,15 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=24.21.0"
+  },
   "scripts": {
     "build": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && vite build",
     "dev": "vite",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
-    "deploy": "void deploy",
+    "deploy": "pnpm run metadata && pnpm run social-images && pnpm run sitemap && void deploy --platform cloudflare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "metadata": "tsx scripts/run.ts",
@@ -40,6 +43,7 @@
     "vite": "catalog:void",
     "void": "catalog:void",
     "vue": "catalog:void",
-    "vue-tsc": "catalog:types"
+    "vue-tsc": "catalog:types",
+    "wrangler": "catalog:void"
   }
 }

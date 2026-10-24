@@ -38,3 +38,4 @@ app/assets/me
 .agents
 skills-lock.json
 skills
+.void-wrangler.jsonc

@@ -25,11 +25,12 @@ catalogs:
     vue-tsc: ^3.3.11
 
   void:
-    '@void/md': ^0.28.0
-    '@void/vue': ^0.28.0
+    '@void/md': ^1.2.1
+    '@void/vue': ^1.2.1
     vite: ^8.2.2
-    void: ^0.28.0
+    void: ^1.2.1
     vue: ^3.5.41
+    wrangler: ^4.152.0
 
   website:
     '@iconify-json/ph': ^1.2.2
