@@ -1,7 +1,8 @@
-import type { RenderedArticle } from '~/articles'
 import { defineHandler, defineHead } from 'void'
-import { createArticleHead } from '~/article-head'
-import { getPublishedArticlePaths, renderPublishedArticle } from '~/articles'
+
+import { createArticleHead } from '~/article-head.ts'
+import type { RenderedArticle } from '~/articles.ts'
+import { getPublishedArticlePaths, renderPublishedArticle } from '~/articles.ts'
 
 export const prerender = true
 
@@ -11,8 +12,11 @@ export function getPrerenderPaths() {
   return getPublishedArticlePaths()
 }
 
-export const loader = defineHandler((c) => {
+export const loader = defineHandler(c => {
   const { slug, lang } = c.req.param()
+  if (!slug) {
+    return c.notFound()
+  }
   return renderPublishedArticle(slug, lang) ?? c.notFound()
 })
 

@@ -1,12 +1,11 @@
+/* oxlint-disable node/no-sync -- Build scripts intentionally finish filesystem steps in order. */
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, rmSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { join } from 'node:path'
 import process, { exit } from 'node:process'
-import { fileURLToPath } from 'node:url'
-import 'dotenv/config'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+// oxlint-disable-next-line import/no-unassigned-import -- Load the build environment before reading it.
+import 'dotenv/config'
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const INFO_REPO = process.env.INFO_REPO
@@ -17,8 +16,8 @@ if (!GITHUB_TOKEN || !INFO_REPO || !ARTICLE_REPO) {
   exit(1)
 }
 
-const contentDir = join(__dirname, '..', 'content')
-const meDir = join(__dirname, '..', 'src/assets/me')
+const contentDir = join(import.meta.dirname, '..', 'content')
+const meDir = join(import.meta.dirname, '..', 'src/assets/me')
 
 if (existsSync(contentDir)) {
   console.log(`Cleaning content directory: ${contentDir}`)
@@ -48,8 +47,7 @@ function cloneRepo(repo: string, targetDir: string) {
     }
 
     console.log(`Successfully cloned ${repo}`)
-  }
-  catch (error) {
+  } catch (error) {
     console.error(`Failed to clone ${repo}:`, error)
     exit(1)
   }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+
 import Prose from '~/components/Prose.vue'
 
 const props = defineProps<{
@@ -10,12 +11,13 @@ const props = defineProps<{
 }>()
 
 const formattedDate = computed(() => {
-  if (!props.date)
+  if (!props.date) {
     return ''
+  }
 
   return new Intl.DateTimeFormat('en', {
     dateStyle: 'medium',
-    timeZone: 'UTC',
+    timeZone: 'UTC'
   }).format(new Date(`${props.date}T00:00:00Z`))
 })
 </script>

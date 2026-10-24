@@ -2,11 +2,37 @@
 import { animate, Motion } from 'motion-v'
 import { nextTick, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
-interface Meteor { id: number, top: number, left: number, length: number, angle: number, cycle: number, delay: number }
-interface Star { id: number, x: number, y: number, r: number, opacity: number, duration: number, delay: number, kind: 'normal' | 'flash' | 'glow' }
-interface ConstellationLine { x1: number, y1: number, x2: number, y2: number }
-interface Constellation { lines: ConstellationLine[] }
-interface FlashStar extends Star { visible: boolean }
+interface Meteor {
+  id: number
+  top: number
+  left: number
+  length: number
+  angle: number
+  cycle: number
+  delay: number
+}
+interface Star {
+  id: number
+  x: number
+  y: number
+  r: number
+  opacity: number
+  duration: number
+  delay: number
+  kind: 'normal' | 'flash' | 'glow'
+}
+interface ConstellationLine {
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+}
+interface Constellation {
+  lines: ConstellationLine[]
+}
+interface FlashStar extends Star {
+  visible: boolean
+}
 
 function rand(min: number, max: number) {
   return Math.random() * (max - min) + min
@@ -19,7 +45,15 @@ function randInt(min: number, max: number) {
 function generateMeteors(count: number): Meteor[] {
   return Array.from({ length: count }, (_, id) => {
     const cycle = rand(15, 25)
-    return { id, top: rand(0, 55), left: rand(0, 80), length: rand(100, 200), angle: rand(45, 60), cycle, delay: -rand(0, cycle) }
+    return {
+      id,
+      top: rand(0, 55),
+      left: rand(0, 80),
+      length: rand(100, 200),
+      angle: rand(45, 60),
+      cycle,
+      delay: -rand(0, cycle)
+    }
   })
 }
 
@@ -32,7 +66,7 @@ function generateNormalStars(count: number): Star[] {
     opacity: rand(0.2, 0.9),
     duration: rand(10, 30),
     delay: rand(0, 15),
-    kind: 'normal' as const,
+    kind: 'normal' as const
   }))
 }
 
@@ -45,7 +79,7 @@ function generateGlowStars(count: number, idOffset = 0): Star[] {
     opacity: rand(0.6, 1),
     duration: rand(12, 28),
     delay: rand(0, 12),
-    kind: 'glow' as const,
+    kind: 'glow' as const
   }))
 }
 
@@ -58,7 +92,7 @@ function generateFlashStars(count: number, idOffset = 0): Star[] {
     opacity: rand(0.4, 1),
     duration: rand(15, 40),
     delay: rand(0, 10),
-    kind: 'flash' as const,
+    kind: 'flash' as const
   }))
 }
 
@@ -72,13 +106,15 @@ function generateConstellations(count: number, maxTurnDeg = 55): Constellation[]
       const rad = (angle * Math.PI) / 180
       const len = rand(6, 16)
       const last = points[points.length - 1]!
-      points.push([Math.max(2, Math.min(98, last[0] + Math.cos(rad) * len)), Math.max(2, Math.min(98, last[1] + Math.sin(rad) * len))])
+      const x = last[0] + Math.cos(rad) * len
+      const y = last[1] + Math.sin(rad) * len
+      points.push([Math.max(2, Math.min(98, x)), Math.max(2, Math.min(98, y))])
     }
     return {
       lines: points.slice(0, -1).map((pt, i) => {
         const next = points[i + 1]!
         return { x1: pt[0], y1: pt[1], x2: next[0], y2: next[1] }
-      }),
+      })
     }
   })
 }
@@ -94,8 +130,9 @@ const flashTimers = new Map<number, ReturnType<typeof setTimeout>>()
 
 function schedule(index: number, delay: number, task: () => void): void {
   const existing = flashTimers.get(index)
-  if (existing)
+  if (existing) {
     clearTimeout(existing)
+  }
   const timer = setTimeout(() => {
     flashTimers.delete(index)
     task()
@@ -106,13 +143,15 @@ function schedule(index: number, delay: number, task: () => void): void {
 function scheduleFlash(index: number): void {
   schedule(index, rand(15, 40) * 1000, () => {
     const star = flashStars.value[index]
-    if (!star)
+    if (!star) {
       return
+    }
     star.visible = false
     schedule(index, FLASH_TRANSITION_MS, () => {
       const s = flashStars.value[index]
-      if (!s)
+      if (!s) {
         return
+      }
       s.x = rand(0, 100)
       s.y = rand(0, 100)
       s.visible = true
@@ -121,7 +160,7 @@ function scheduleFlash(index: number): void {
   })
 }
 
-const meteorEls: Array<HTMLElement | null> = []
+const meteorEls: (HTMLElement | null)[] = []
 const alive = ref(true)
 const meteorRgb = '255,255,255'
 
@@ -130,7 +169,9 @@ function meteorGradient(rgb: string): string {
 }
 
 function sleep(ms: number): Promise<void> {
-  return new Promise(r => setTimeout(r, ms))
+  return new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
 }
 
 async function runMeteorLoop(el: HTMLElement, m: Meteor): Promise<void> {
@@ -138,19 +179,24 @@ async function runMeteorLoop(el: HTMLElement, m: Meteor): Promise<void> {
   const tf = (x: number) => `rotate(${m.angle}deg) translateX(${x}px)`
   while (true) {
     try {
-      await animate(el, {
-        transform: [tf(-220), tf(480)],
-        opacity: [0, 1, 0],
-      }, { duration: m.cycle * 0.13, ease: 'linear' }).finished
-    }
-    catch {
+      await animate(
+        el,
+        {
+          transform: [tf(-220), tf(480)],
+          opacity: [0, 1, 0]
+        },
+        { duration: m.cycle * 0.13, ease: 'linear' }
+      ).finished
+    } catch {
       break
     }
-    if (!alive.value)
+    if (!alive.value) {
       break
+    }
     await sleep(m.cycle * 0.87 * 1000)
-    if (!alive.value)
+    if (!alive.value) {
       break
+    }
   }
 }
 
@@ -160,50 +206,64 @@ onMounted(async () => {
   glowStars.value = generateGlowStars(18, 190)
   constellations.value = generateConstellations(2)
   const raw = generateFlashStars(56, 190 + 18)
+  // oxlint-disable-next-line oxc/no-map-spread -- Keep generated star values separate from reactive animation state.
   flashStars.value = raw.map(s => ({ ...s, visible: true }))
-  flashStars.value.forEach((_, i) => schedule(i, rand(0, 20) * 1000, () => scheduleFlash(i)))
+  for (const [i] of flashStars.value.entries()) {
+    schedule(i, rand(0, 20) * 1000, () => scheduleFlash(i))
+  }
 
   await nextTick()
-  meteors.value.forEach((m, i) => {
+  for (const [i, m] of meteors.value.entries()) {
     const el = meteorEls[i]
-    if (el)
+    if (el) {
       runMeteorLoop(el, m)
-  })
+    }
+  }
 })
 
 onUnmounted(() => {
   alive.value = false
-  flashTimers.forEach(clearTimeout)
+  for (const timer of flashTimers.values()) {
+    clearTimeout(timer)
+  }
   flashTimers.clear()
 })
 
 function glowFilter(r: number): string {
-  if (r >= 2.8)
+  if (r >= 2.8) {
     return 'url(#glow-lg)'
-  if (r >= 1.8)
+  }
+  if (r >= 1.8) {
     return 'url(#glow-md)'
+  }
   return 'url(#glow-sm)'
 }
 </script>
 
 <template>
   <div class="absolute inset-0 overflow-hidden">
-    <svg
-      class="w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="glow-sm" x="-80%" y="-80%" width="260%" height="260%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
         <filter id="glow-md" x="-120%" y="-120%" width="340%" height="340%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
         <filter id="glow-lg" x="-160%" y="-160%" width="420%" height="420%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
       </defs>
 
@@ -211,9 +271,14 @@ function glowFilter(r: number): string {
         <line
           v-for="(line, li) in constellation.lines"
           :key="`cl-${li}`"
-          :x1="`${line.x1}%`" :y1="`${line.y1}%`"
-          :x2="`${line.x2}%`" :y2="`${line.y2}%`"
-          stroke="white" stroke-opacity="0.18" stroke-width="0.5" stroke-linecap="round"
+          :x1="`${line.x1}%`"
+          :y1="`${line.y1}%`"
+          :x2="`${line.x2}%`"
+          :y2="`${line.y2}%`"
+          stroke="white"
+          stroke-opacity="0.18"
+          stroke-width="0.5"
+          stroke-linecap="round"
         />
       </g>
 
@@ -221,9 +286,16 @@ function glowFilter(r: number): string {
         v-for="star in normalStars"
         :key="star.id"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
+        :cx="`${star.x}%`"
+        :cy="`${star.y}%`"
+        :r="star.r"
         :animate="{ opacity: [star.opacity, star.opacity * 0.07, star.opacity] }"
-        :transition="{ duration: star.duration, delay: star.delay, repeat: Infinity, ease: 'easeInOut' }"
+        :transition="{
+          duration: star.duration,
+          delay: star.delay,
+          repeat: Infinity,
+          ease: 'easeInOut'
+        }"
         fill="currentColor"
       />
 
@@ -231,10 +303,17 @@ function glowFilter(r: number): string {
         v-for="star in glowStars"
         :key="star.id"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
+        :cx="`${star.x}%`"
+        :cy="`${star.y}%`"
+        :r="star.r"
         :filter="glowFilter(star.r)"
         :animate="{ opacity: [star.opacity, star.opacity * 0.07, star.opacity] }"
-        :transition="{ duration: star.duration, delay: star.delay, repeat: Infinity, ease: 'easeInOut' }"
+        :transition="{
+          duration: star.duration,
+          delay: star.delay,
+          repeat: Infinity,
+          ease: 'easeInOut'
+        }"
         fill="currentColor"
       />
 
@@ -242,7 +321,9 @@ function glowFilter(r: number): string {
         v-for="(star, i) in flashStars"
         :key="`flash-${i}`"
         as="circle"
-        :cx="`${star.x}%`" :cy="`${star.y}%`" :r="star.r"
+        :cx="`${star.x}%`"
+        :cy="`${star.y}%`"
+        :r="star.r"
         :animate="{ opacity: star.visible ? star.opacity : 0 }"
         :transition="{ duration: 1.5, ease: 'easeInOut' }"
         fill="currentColor"
@@ -253,7 +334,11 @@ function glowFilter(r: number): string {
       <span
         v-for="(m, i) in meteors"
         :key="m.id"
-        :ref="(el: unknown) => { meteorEls[i] = el as HTMLElement | null }"
+        :ref="
+          (el: unknown) => {
+            meteorEls[i] = el as HTMLElement | null
+          }
+        "
         class="absolute"
         :style="{
           top: `${m.top}%`,
@@ -263,7 +348,7 @@ function glowFilter(r: number): string {
           opacity: 0,
           transformOrigin: 'left center',
           transform: `rotate(${m.angle}deg) translateX(-220px)`,
-          background: meteorGradient(meteorRgb),
+          background: meteorGradient(meteorRgb)
         }"
       />
     </div>

@@ -6,53 +6,55 @@ export default defineConfig({
   cloudflare: {
     name: 'liangmi-dev',
     workers_dev: true,
-    preview_urls: true,
+    preview_urls: true
   },
   routing: {
     redirects: {
       '/article/*': {
         to: '/articles/:splat',
-        status: 301,
+        status: 301
       },
-      '/bilibili': 'https://space.bilibili.com/1964165864',
-    },
+      '/bilibili': 'https://space.bilibili.com/1964165864'
+    }
   },
   head: {
     title: 'Liang',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     meta: [
       {
-        charset: 'utf-8',
+        // HTML charset declarations use the canonical encoding label.
+        // oxlint-disable-next-line unicorn/text-encoding-identifier-case
+        charset: 'utf-8'
       },
       {
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
+        content: 'width=device-width, initial-scale=1'
+      }
     ],
     link: [
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/favicon.ico',
+        href: '/favicon.ico'
       },
       {
         rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
+        href: 'https://fonts.googleapis.com'
       },
       {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
-        crossorigin: '',
+        crossorigin: ''
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@900&family=Inter:wght@400;500&family=Inter+Tight:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap',
-      },
-    ],
+        href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@900&family=Inter:wght@400;500&family=Inter+Tight:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap'
+      }
+    ]
   },
   worker: {
-    compatibility_date: '2026-02-24',
-  },
+    compatibility_date: '2026-02-24'
+  }
 })
