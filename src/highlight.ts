@@ -15,7 +15,14 @@ const highlighter = createHighlighterCoreSync({
   themes: [vitesseLight, vitesseDark]
 })
 
+// CodeCopy handles clicks on the button, and Prose styles both.
+const copyButton = '<button type="button" class="code-copy" aria-label="Copy code"></button>'
+
 export function highlightCode(code: string, lang = '') {
+  return `<div class="code-block">${copyButton}${highlight(code, lang)}</div>`
+}
+
+function highlight(code: string, lang: string) {
   return highlighter.codeToHtml(code, {
     lang: highlighter.getLoadedLanguages().includes(lang) ? lang : 'text',
     themes: { light: 'vitesse-light', dark: 'vitesse-dark' },

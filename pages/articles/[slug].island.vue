@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ArticleContent from '~/components/articles/ArticleContent.vue'
+import CodeCopy from '~/components/articles/CodeCopy.vue' with { island: 'idle' }
 
 import type { Props } from './[slug].server.ts'
 
@@ -8,4 +9,5 @@ defineProps<Props>()
 
 <template>
   <ArticleContent :date :html :reading-minutes :title-html />
+  <CodeCopy />
 </template>
