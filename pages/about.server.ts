@@ -1,20 +1,14 @@
 import { defineHandler, defineHead } from 'void'
 
-import { getPublishedArticleSlugs, renderPublishedArticle } from '~/articles.ts'
+import type { ArticleSummary } from '~/articles.ts'
+import { getArticleList } from '~/articles.ts'
 import { absoluteUrl, author, avatarImage, createPageHead, person } from '~/seo.ts'
 
 export interface Props {
-  articles: { slug: string; title: string; date?: string }[]
+  articles: ArticleSummary[]
 }
 
-export const loader = defineHandler<Props>(() => {
-  const articles = getPublishedArticleSlugs()
-    .flatMap(({ slug }) => renderPublishedArticle(slug) ?? [])
-    .map(({ slug, title, date }) => ({ slug, title, date }))
-    .toSorted((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
-
-  return { articles }
-})
+export const loader = defineHandler<Props>(() => ({ articles: getArticleList() }))
 
 export const head = defineHead(() =>
   createPageHead({
