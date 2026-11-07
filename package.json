@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "marked": "catalog:",
-    "motion-v": "catalog:website"
+    "motion-v": "catalog:website",
+    "shiki": "catalog:"
   },
   "devDependencies": {
     "@iconify-json/ph": "catalog:website",

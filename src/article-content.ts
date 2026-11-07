@@ -1,4 +1,6 @@
-import { marked } from 'marked'
+import { Marked } from 'marked'
+
+import { highlightCode } from './highlight.ts'
 
 interface ArticleContent {
   description: string
@@ -7,6 +9,12 @@ interface ArticleContent {
   title: string
   titleHtml: string
 }
+
+const marked = new Marked({
+  renderer: {
+    code: ({ text, lang }) => highlightCode(text, lang?.split(/\s/)[0])
+  }
+})
 
 export function renderArticleContent(rawContent: string): ArticleContent {
   const renderedHtml = marked.parse(rawContent, { async: false, gfm: true, breaks: true })
