@@ -24,11 +24,7 @@ const headlineLink =
       <a href="/about" :class="headlineLink">Learn about myself</a>
 
       <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8 hover:opacity100 duration-500>
-        <nav flex="~ items-center gap-3" text="xl md:2xl" font-serif>
-          <a href="/about">Liang</a>
-          <span aria-hidden="true" op50>·</span>
-          <a href="/articles">Writing</a>
-        </nav>
+        <a href="/about" class="text-xl md:text-2xl font-serif">Liang</a>
         <Contact />
       </div>
     </Motion>
