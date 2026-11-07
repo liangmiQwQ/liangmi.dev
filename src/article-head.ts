@@ -46,6 +46,14 @@ export function createArticleHead(article: RenderedArticle) {
   }
 }
 
+export function getArticleShareUrl(article: RenderedArticle) {
+  const params = new URLSearchParams({
+    text: article.title,
+    url: absoluteUrl(getArticlePath(article.slug, article.lang))
+  })
+  return `https://x.com/intent/post?${params}`
+}
+
 function createLanguageLinks(slug: string) {
   const langs = getPublishedArticleLangs(slug)
   if (langs.length < 2) {

@@ -19,6 +19,10 @@ html.dark {
   color-scheme: dark;
 }
 
+::selection {
+  background-color: rgb(136 136 136 / 0.25);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

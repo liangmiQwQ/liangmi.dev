@@ -2,8 +2,15 @@ import { Marked } from 'marked'
 
 import { highlightCode } from './highlight.ts'
 
+export interface ArticleHeading {
+  depth: number
+  id: string
+  text: string
+}
+
 interface ArticleContent {
   description: string
+  headings: ArticleHeading[]
   html: string
   readingMinutes: number
   title: string
@@ -19,7 +26,8 @@ const marked = new Marked({
 export function renderArticleContent(rawContent: string): ArticleContent {
   const renderedHtml = marked.parse(rawContent, { async: false, gfm: true, breaks: true })
   const titleMatch = /^<h1>(.*?)<\/h1>\n?/s.exec(renderedHtml)
-  const html = titleMatch ? renderedHtml.slice(titleMatch[0].length) : renderedHtml
+  const bodyHtml = titleMatch ? renderedHtml.slice(titleMatch[0].length) : renderedHtml
+  const { html, headings } = anchorHeadings(bodyHtml)
   const titleHtml = titleMatch?.[1] ?? ''
   const title = plainText(titleHtml)
   const description = Array.from(html.matchAll(/<p>(.*?)<\/p>/gs), match =>
@@ -28,11 +36,43 @@ export function renderArticleContent(rawContent: string): ArticleContent {
 
   return {
     description: truncate(description ?? '', 180) || title,
+    headings,
     html,
     readingMinutes: estimateReadingMinutes(rawContent),
     title,
     titleHtml
   }
+}
+
+function anchorHeadings(html: string) {
+  const headings: ArticleHeading[] = []
+  const usedIds = new Map<string, number>()
+
+  const anchoredHtml = html.replaceAll(
+    /<h([2-4])>(.*?)<\/h\1>/gs,
+    (_match, depth: string, inner: string) => {
+      const text = plainText(inner)
+      const id = uniqueId(slugify(text), usedIds)
+      headings.push({ depth: Number(depth), id, text })
+      return `<h${depth} id="${id}"><a class="header-anchor" href="#${id}" aria-hidden="true" tabindex="-1">#</a>${inner}</h${depth}>`
+    }
+  )
+
+  return { html: anchoredHtml, headings }
+}
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replaceAll(/[^\p{L}\p{N}]+/gu, '-')
+    .replaceAll(/^-|-$/g, '')
+}
+
+function uniqueId(slug: string, usedIds: Map<string, number>) {
+  const base = slug || 'section'
+  const count = usedIds.get(base) ?? 0
+  usedIds.set(base, count + 1)
+  return count ? `${base}-${count}` : base
 }
 
 function plainText(html: string) {
