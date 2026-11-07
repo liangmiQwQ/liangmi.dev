@@ -1,3 +1,4 @@
+import type { ArticleHeading } from '~/article-content.ts'
 import { renderArticleContent } from '~/article-content.ts'
 
 export interface ArticleMetadata {
@@ -12,6 +13,7 @@ export interface ArticleMetadata {
 export interface RenderedArticle {
   date?: string
   description: string
+  headings: ArticleHeading[]
   html: string
   lang: string
   readingMinutes: number

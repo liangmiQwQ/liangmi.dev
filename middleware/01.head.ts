@@ -4,7 +4,7 @@ export default defineMiddleware(async (c, next) => {
   c.set('headDefaults', {
     script: [
       {
-        innerHTML: `(function(){var c=localStorage.getItem("color-mode"),d=c?c==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark")})()`
+        innerHTML: `(function(){var c=localStorage.getItem("color-mode"),d=c?c==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");if(localStorage.getItem("article-toc-expanded")==="false")document.documentElement.classList.add("toc-collapsed")})()`
       }
     ]
   })
