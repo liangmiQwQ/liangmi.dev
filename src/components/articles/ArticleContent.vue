@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import Prose from '~/components/Prose.vue'
+import { formatDate } from '~/date.ts'
 
 const props = defineProps<{
   date?: string
@@ -10,16 +11,7 @@ const props = defineProps<{
   titleHtml: string
 }>()
 
-const formattedDate = computed(() => {
-  if (!props.date) {
-    return ''
-  }
-
-  return new Intl.DateTimeFormat('en', {
-    dateStyle: 'medium',
-    timeZone: 'UTC'
-  }).format(new Date(`${props.date}T00:00:00Z`))
-})
+const formattedDate = computed(() => (props.date ? formatDate(props.date) : ''))
 </script>
 
 <template>

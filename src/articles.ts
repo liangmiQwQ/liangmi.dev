@@ -20,6 +20,12 @@ export interface RenderedArticle {
   titleHtml: string
 }
 
+export interface ArticleSummary {
+  slug: string
+  title: string
+  date?: string
+}
+
 interface ArticlePath {
   slug: string
   lang: string
@@ -70,6 +76,14 @@ export function getArticlePath(slug: string, lang: string) {
   return lang === getArticleMetadata(slug)?.origin
     ? `/articles/${slug}`
     : `/articles/${slug}/${lang}`
+}
+
+// Newest first; articles without a date sink to the end.
+export function getArticleList(): ArticleSummary[] {
+  return getPublishedArticleSlugs()
+    .flatMap(({ slug }) => renderPublishedArticle(slug) ?? [])
+    .map(({ slug, title, date }) => ({ slug, title, date }))
+    .toSorted((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
 }
 
 export function renderPublishedArticle(slug: string, lang?: string): RenderedArticle | null {

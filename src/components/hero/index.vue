@@ -5,6 +5,10 @@ import Contact from '~/components/Contact.vue'
 import HeroFirstMagnitudeStar from '~/components/hero/FirstMagnitudeStar.vue'
 import HeroLand from '~/components/hero/Land.vue'
 import HeroSky from '~/components/hero/Sky.vue'
+
+// The underline fades in on hover so the headline reads as a link
+const headlineLink =
+  'underline decoration-1 underline-offset-[0.2em] decoration-transparent transition-colors duration-500 hover:decoration-stone-50/40 focus-visible:decoration-stone-50/40'
 </script>
 
 <template>
@@ -16,8 +20,8 @@ import HeroSky from '~/components/hero/Sky.vue'
       :animate="{ opacity: 0.95, y: 0 }"
       :transition="{ duration: 1, delay: 2.2, ease: 'easeOut' }"
     >
-      <span opacity-80> Do things I love </span>
-      <span> Learn about myself </span>
+      <a href="/articles" :class="headlineLink" opacity-80>Do things I love</a>
+      <a href="/about" :class="headlineLink">Learn about myself</a>
 
       <div flex="~ items-center gap-3 justify-center" opacity-60 mt-8 hover:opacity100 duration-500>
         <a href="/about" class="text-xl md:text-2xl font-serif">Liang</a>
