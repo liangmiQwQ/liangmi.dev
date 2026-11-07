@@ -42,7 +42,7 @@ import Footer from '~/components/Footer.vue'
   }
 
   /* Two columns: center the article in the space right of the TOC, keeping a 3rem gap to the text. */
-  .prose-layout:has(.article-nav[data-expanded]) .prose-main {
+  :root:not(.toc-collapsed) .prose-layout:has(.article-nav) .prose-main {
     --toc-end: max(16rem, 50vw - 21rem);
     margin-left: max(var(--toc-end) + 1rem, (100vw + var(--toc-end) - 48rem) / 2);
   }
@@ -50,7 +50,7 @@ import Footer from '~/components/Footer.vue'
 
 /* Three columns: the TOC and actions mirror each other, so the article sits 4rem right of center. */
 @media (min-width: 80rem) {
-  .prose-layout:has(.article-nav[data-expanded]) .prose-main {
+  :root:not(.toc-collapsed) .prose-layout:has(.article-nav) .prose-main {
     margin-left: calc(50vw - 20rem);
   }
 }

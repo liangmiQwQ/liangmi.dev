@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onClickOutside, useEventListener, useLocalStorage } from '@vueuse/core'
-import { computed, onMounted, ref, useTemplateRef } from 'vue'
+import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 
 import type { ArticleHeading } from '~/article-content.ts'
 import ArticleActions from '~/components/articles/ArticleActions.vue'
@@ -16,6 +16,8 @@ const ACTIVE_OFFSET = 96
 // `open` is the mobile popup, `expanded` the desktop sidebar; read storage after hydration to match the server render.
 const open = ref(false)
 const expanded = useLocalStorage('article-toc-expanded', true, { initOnMounted: true })
+// The sidebar's look follows `html.toc-collapsed`, which the head script sets before paint, so the static page never flashes expanded.
+watch(expanded, value => document.documentElement.classList.toggle('toc-collapsed', !value))
 const activeId = ref('')
 const minDepth = computed(() => Math.min(...props.headings.map(heading => heading.depth)))
 const toggle = useTemplateRef('toggle')
@@ -36,7 +38,7 @@ onClickOutside(panel, () => (open.value = false), { ignore: [toggle] })
 
 <template>
   <!-- Below md: one popup with TOC and actions. From md: a TOC sidebar. From xl: an actions column too, mirroring the TOC 41rem from center. ProseLayout places the article. -->
-  <div class="article-nav" :data-expanded="expanded || undefined">
+  <div class="article-nav">
     <button
       ref="toggle"
       type="button"
@@ -85,7 +87,8 @@ onClickOutside(panel, () => (open.value = false), { ignore: [toggle] })
         class="hidden transition-opacity hover:op100 md:block"
         @click="expanded = !expanded"
       >
-        <span :class="expanded ? 'i-ph-x' : 'i-ph-list'" block aria-hidden="true" />
+        <span class="i-ph-x block [.toc-collapsed_&]:hidden" aria-hidden="true" />
+        <span class="i-ph-list hidden [.toc-collapsed_&]:block" aria-hidden="true" />
       </button>
       <ul
         list-none
@@ -94,8 +97,7 @@ onClickOutside(panel, () => (open.value = false), { ignore: [toggle] })
         min-h-0
         overflow-y-auto
         flex="~ col gap-2"
-        class="[scrollbar-width:none]"
-        :class="!expanded && 'md:hidden'"
+        class="[scrollbar-width:none] [.toc-collapsed_&]:md:hidden"
       >
         <li
           v-for="heading in headings"
